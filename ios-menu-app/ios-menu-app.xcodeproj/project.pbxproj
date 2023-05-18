@@ -22,6 +22,7 @@
 		809DCD322A16706F0030F746 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD312A16706F0030F746 /* ListViewController.swift */; };
 		809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD332A1670920030F746 /* PushAlarmViewController.swift */; };
 		809DCD382A1671570030F746 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD372A1671570030F746 /* TabBarModel.swift */; };
+		809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD3B2A1672230030F746 /* TabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		809DCD312A16706F0030F746 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		809DCD332A1670920030F746 /* PushAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAlarmViewController.swift; sourceTree = "<group>"; };
 		809DCD372A1671570030F746 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
+		809DCD3B2A1672230030F746 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				809DCD352A16712D0030F746 /* Models */,
+				809DCD392A16720D0030F746 /* Views */,
 				809DCD232A166AAA0030F746 /* Controllers */,
 				809DCD2B2A166BFD0030F746 /* Extensions */,
 				809DCD222A166A890030F746 /* Resources */,
@@ -197,6 +200,22 @@
 			isa = PBXGroup;
 			children = (
 				809DCD372A1671570030F746 /* TabBarModel.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		809DCD392A16720D0030F746 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD3A2A1672120030F746 /* TabBar */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		809DCD3A2A1672120030F746 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD3B2A1672230030F746 /* TabBarView.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -340,6 +359,7 @@
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
 				809DCD292A166BC10030F746 /* Palette.swift in Sources */,
 				809DCD2D2A166C0E0030F746 /* UIColor+.swift in Sources */,
+				809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */,
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

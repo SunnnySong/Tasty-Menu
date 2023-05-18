@@ -12,13 +12,14 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setValue(TabBarView(frame: tabBar.frame), forKey: "tabBar")
         configureViewControllers()
-        selectedIndex = 1
     }
     
     private func configureViewControllers() {
     
         self.viewControllers = TabBarModel.allCases.map { tabBarViewController($0) }
+        selectedIndex = 1
     }
     
     private func tabBarViewController(_ type: TabBarModel) -> UINavigationController {
