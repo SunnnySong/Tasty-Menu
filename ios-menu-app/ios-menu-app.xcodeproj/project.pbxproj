@@ -21,6 +21,7 @@
 		809DCD302A1670000030F746 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD2F2A1670000030F746 /* TabBarController.swift */; };
 		809DCD322A16706F0030F746 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD312A16706F0030F746 /* ListViewController.swift */; };
 		809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD332A1670920030F746 /* PushAlarmViewController.swift */; };
+		809DCD382A1671570030F746 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD372A1671570030F746 /* TabBarModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		809DCD2F2A1670000030F746 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		809DCD312A16706F0030F746 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		809DCD332A1670920030F746 /* PushAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAlarmViewController.swift; sourceTree = "<group>"; };
+		809DCD372A1671570030F746 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		809DCCF12A1667BE0030F746 /* ios-menu-app */ = {
 			isa = PBXGroup;
 			children = (
+				809DCD352A16712D0030F746 /* Models */,
 				809DCD232A166AAA0030F746 /* Controllers */,
 				809DCD2B2A166BFD0030F746 /* Extensions */,
 				809DCD222A166A890030F746 /* Resources */,
@@ -178,6 +181,22 @@
 			isa = PBXGroup;
 			children = (
 				809DCD2F2A1670000030F746 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		809DCD352A16712D0030F746 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD362A1671310030F746 /* TabBar */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		809DCD362A1671310030F746 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD372A1671570030F746 /* TabBarModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -313,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
 				809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
