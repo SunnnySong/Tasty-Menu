@@ -26,7 +26,7 @@
 		809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD3B2A1672230030F746 /* TabBarView.swift */; };
 		809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */; };
 		809DCD422A1713390030F746 /* DiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD412A1713390030F746 /* DiffableDataSourceProvider.swift */; };
-		809DCD4B2A174D810030F746 /* CellProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4A2A174D810030F746 /* CellProvidable.swift */; };
+		809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */; };
 		809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4C2A174E6E0030F746 /* DateCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +71,7 @@
 		809DCD3B2A1672230030F746 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		809DCD412A1713390030F746 /* DiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableDataSourceProvider.swift; sourceTree = "<group>"; };
-		809DCD4A2A174D810030F746 /* CellProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellProvidable.swift; sourceTree = "<group>"; };
+		809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellProvidable.swift; sourceTree = "<group>"; };
 		809DCD4C2A174E6E0030F746 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,11 +103,27 @@
 		805B99D62A17606E003FB5BF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
+				805B99DC2A17D709003FB5BF /* Implementation */,
+				805B99DB2A17D704003FB5BF /* Interface */,
 				809DCD412A1713390030F746 /* DiffableDataSourceProvider.swift */,
 				805B99D72A1769C7003FB5BF /* CalendarDataSource.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		805B99DB2A17D704003FB5BF /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		805B99DC2A17D709003FB5BF /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
+			);
+			path = Implementation;
 			sourceTree = "<group>";
 		};
 		809DCCE62A1667BE0030F746 = {
@@ -261,7 +277,7 @@
 		809DCD472A174D220030F746 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				809DCD4A2A174D810030F746 /* CellProvidable.swift */,
+				809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -414,7 +430,7 @@
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
 				805B99D82A1769C7003FB5BF /* CalendarDataSource.swift in Sources */,
-				809DCD4B2A174D810030F746 /* CellProvidable.swift in Sources */,
+				809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */,
 				809DCD422A1713390030F746 /* DiffableDataSourceProvider.swift in Sources */,
 				809DCD292A166BC10030F746 /* Palette.swift in Sources */,
 				809DCD2D2A166C0E0030F746 /* UIColor+.swift in Sources */,
