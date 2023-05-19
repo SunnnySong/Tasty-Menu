@@ -31,9 +31,6 @@ final class CalendarCollectionView: UICollectionView {
         
         self.isScrollEnabled = false
         self.translatesAutoresizingMaskIntoConstraints = false
-
-//        let cell = CustomListCell.self
-//        self.register(cell: cell)
     }
     
     required init?(coder: NSCoder) {
