@@ -1,5 +1,5 @@
 //
-//  DiffableDataSourceProvider.swift
+//  CalendarDiffableDataSourceProvider.swift
 //  ios-menu-app
 //
 //  Created by Sunny on 2023/05/19.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiffableDataSourceProvider<CellType: CollectionViewCellProvidable> {
+final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvidable>: CollectionViewDiffableDataSourceProvidable {
     
     enum Section {
         case main
@@ -24,23 +24,24 @@ class DiffableDataSourceProvider<CellType: CollectionViewCellProvidable> {
     }
     
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
-        
+
         collectionView.register(CellType.self, forCellWithReuseIdentifier: CellType.reuseIdentifier)
-        
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.reuseIdentifier, for: indexPath) as? CellType else {
             return UICollectionViewCell()
         }
-        
+
         cell.configure(item: item)
-        
+
         return cell
     }
     
     func makeDataSource() -> UICollectionViewDiffableDataSource<Section, CellType.Item>? {
-        
+
         guard let collectionView = collectionView else { return nil }
         let dataSource = UICollectionViewDiffableDataSource<Section, CellType.Item>(collectionView: collectionView, cellProvider: cellProvider)
         self.dataSource = dataSource
+
         return dataSource
     }
     

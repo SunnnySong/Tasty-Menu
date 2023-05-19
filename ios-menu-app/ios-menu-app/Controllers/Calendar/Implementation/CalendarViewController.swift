@@ -10,7 +10,7 @@ import UIKit
 final class CalendarViewController: UIViewController {
     
     private var calendarView = CalendarCollectionView(frame: .zero)
-    private lazy var dataSourceProvider = CalendarDataSource(collectionView: calendarView, items: mockDate)
+    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView, items: mockDate)
     
     // 추후 모델 계층에서 데이터 받아와야 함
     private var mockDate: Array<Int> = Array(0..<42)
