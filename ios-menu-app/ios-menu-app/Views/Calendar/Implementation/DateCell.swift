@@ -25,6 +25,11 @@ final class DateCell: CollectionViewCellProvidable {
         fatalError("not implemnted")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
+    }
+    
     func configure(with item: Int) {
         
         label.text = item.description
@@ -44,11 +49,6 @@ final class DateCell: CollectionViewCellProvidable {
             label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
         ])
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
     private func configureCell() {
