@@ -46,10 +46,14 @@ final class DateCell: CollectionViewCellProvidable {
         ])
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
+    }
+    
     private func configureCell() {
         
         contentView.backgroundColor = .systemBlue
-        layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
     private func configureDateLabel() {
