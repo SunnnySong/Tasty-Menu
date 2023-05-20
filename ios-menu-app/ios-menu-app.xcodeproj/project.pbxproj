@@ -42,6 +42,7 @@
 		809DCD422A1713390030F746 /* CalendarDiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */; };
 		809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */; };
 		809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4C2A174E6E0030F746 /* DateCell.swift */; };
+		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDiffableDataSourceProvider.swift; sourceTree = "<group>"; };
 		809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellProvidable.swift; sourceTree = "<group>"; };
 		809DCD4C2A174E6E0030F746 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 				805B99F42A17E779003FB5BF /* UIFont+.swift */,
 				805B99FC2A1928BC003FB5BF /* UICollectionView+.swift */,
 				805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */,
+				80F341D12A19411100F3C750 /* CALayer+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,
 				805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
+				80F341D22A19411100F3C750 /* CALayer+.swift in Sources */,
 				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,

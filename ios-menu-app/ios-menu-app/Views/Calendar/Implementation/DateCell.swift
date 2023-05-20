@@ -49,8 +49,7 @@ final class DateCell: CollectionViewCellProvidable {
     private func configureCell() {
         
         contentView.backgroundColor = .systemBlue
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 1
+        layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
     private func configureDateLabel() {
