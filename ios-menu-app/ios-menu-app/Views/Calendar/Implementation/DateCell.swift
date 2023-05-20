@@ -25,7 +25,7 @@ final class DateCell: CollectionViewCellProvidable {
         fatalError("not implemnted")
     }
     
-    func configure(item: Int) {
+    func configure(with item: Int) {
         
         label.text = item.description
     }

@@ -7,18 +7,11 @@
 
 import UIKit
 
-typealias CollectionViewCellProvidable = UICollectionViewCell & CollectionCellProvidable
+typealias CollectionViewCellProvidable = UICollectionViewCell & CollectionViewProvidable
 
-protocol CollectionCellProvidable {
+protocol CollectionViewProvidable {
     
     associatedtype Item: Hashable
     
-    func configure(item: Item)
-}
-
-extension CollectionCellProvidable {
-    
-    static var reuseIdentifier: String {
-        return String(describing: Self.self)
-    }
+    func configure(with item: Item)
 }

@@ -25,13 +25,10 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
     
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
 
-        collectionView.register(CellType.self, forCellWithReuseIdentifier: CellType.reuseIdentifier)
+        collectionView.register(CellType.self)
+        let cell: CellType = collectionView.dequeue(for: indexPath)
 
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.reuseIdentifier, for: indexPath) as? CellType else {
-            return UICollectionViewCell()
-        }
-
-        cell.configure(item: item)
+        cell.configure(with: item)
 
         return cell
     }

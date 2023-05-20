@@ -18,6 +18,9 @@
 		805B99F12A17E70D003FB5BF /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99F02A17E70D003FB5BF /* Pretendard-SemiBold.otf */; };
 		805B99F32A17E711003FB5BF /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99F22A17E711003FB5BF /* Pretendard-Thin.otf */; };
 		805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99F42A17E779003FB5BF /* UIFont+.swift */; };
+		805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99FA2A192837003FB5BF /* DateCalculator.swift */; };
+		805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99FC2A1928BC003FB5BF /* UICollectionView+.swift */; };
+		805B99FF2A1928F5003FB5BF /* UICollectionViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99FE2A1928F5003FB5BF /* UICollectionViewCell+.swift */; };
 		809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF22A1667BE0030F746 /* AppDelegate.swift */; };
 		809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF42A1667BE0030F746 /* SceneDelegate.swift */; };
 		809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF62A1667BE0030F746 /* CalendarViewController.swift */; };
@@ -58,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		805B99E62A17E6E8003FB5BF /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -68,7 +72,9 @@
 		805B99F02A17E70D003FB5BF /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		805B99F22A17E711003FB5BF /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		805B99F42A17E779003FB5BF /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
-		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
+		805B99FA2A192837003FB5BF /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
+		805B99FC2A1928BC003FB5BF /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		805B99FE2A1928F5003FB5BF /* UICollectionViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+.swift"; sourceTree = "<group>"; };
 		809DCCEF2A1667BE0030F746 /* ios-menu-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-menu-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		809DCCF22A1667BE0030F746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809DCCF42A1667BE0030F746 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 			children = (
 				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
 				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
+				805B99FA2A192837003FB5BF /* DateCalculator.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -250,6 +257,8 @@
 			children = (
 				809DCD2C2A166C0E0030F746 /* UIColor+.swift */,
 				805B99F42A17E779003FB5BF /* UIFont+.swift */,
+				805B99FC2A1928BC003FB5BF /* UICollectionView+.swift */,
+				805B99FE2A1928F5003FB5BF /* UICollectionViewCell+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -471,10 +480,13 @@
 			files = (
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
+				805B99FF2A1928F5003FB5BF /* UICollectionViewCell+.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
 				809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */,
+				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,
 				805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
+				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
