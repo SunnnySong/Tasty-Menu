@@ -9,22 +9,15 @@ import UIKit
 
 final class HeaderView: UICollectionReusableView {
     
-    private let weakTitle = ["일", "월", "화", "수", "목", "금", "토",]
+    private let weakTitle = ["일", "월", "화", "수", "목", "금", "토"]
     
-    private var weakStackView: UIStackView {
-        let stackView = UIStackView(frame: self.bounds)
-        let weakLabels = weakTitle.map { makeWeakLabel(title: $0) }
-        stackView.addArrangedSubviews(weakLabels)
-        
-        return stackView
-    }
+    private var weakStackView = UIStackView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureHierarchy()
-//        configureCell()
-//        configureDateLabel()
+        configureWeakLabel()
     }
     
     required init(coder: NSCoder) {
@@ -34,7 +27,8 @@ final class HeaderView: UICollectionReusableView {
     private func makeWeakLabel(title: String) -> UILabel {
         
         let label = UILabel()
-        label.font = UIFont.pretendard(size: ._13, weight: .black)
+        label.font = UIFont.pretendard(size: ._17, weight: .semibold)
+        label.textAlignment = .center
         label.text = title
         
         if label.text == weakTitle[0] {
@@ -46,14 +40,29 @@ final class HeaderView: UICollectionReusableView {
     private func configureHierarchy() {
         
         self.addSubview(weakStackView)
+        
+        weakStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            weakStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            weakStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            weakStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            weakStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    
+    private func configureWeakLabel() {
+        
+        let weakLabels = weakTitle.map { makeWeakLabel(title: $0) }
+        weakStackView.addArrangedSubviews(weakLabels)
+        weakStackView.distribution = .fillEqually
     }
 }
-
 
 extension UIStackView {
     
     func addArrangedSubviews(_ views: [UIView]) {
         
-        views.map { self.addArrangedSubview($0) }
+        views.forEach { self.addArrangedSubview($0) }
     }
 }

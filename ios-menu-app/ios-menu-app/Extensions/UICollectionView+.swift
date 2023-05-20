@@ -13,12 +13,22 @@ extension UICollectionView {
         register(cellType, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
     
+    func headerRegister<T: UICollectionReusableView>(_ cellType: T.Type) {
+        register(cellType, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.reuseIdentifier)
+    }
+    
     func dequeue<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         
-        guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            return UICollectionViewCell() as! T
-        }
+        let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
         
         return cell
+    }
+    
+    func headerDequeue<T: UICollectionReusableView>(for indexPath: IndexPath) -> T {
+        
+        let header = dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                      withReuseIdentifier: T.reuseIdentifier,
+                                                      for: indexPath) as! T
+        return header
     }
 }
