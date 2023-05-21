@@ -60,6 +60,7 @@ final class HeaderDateView: UIView {
         
         configureHeaderDateView()
         updateDateLabel()
+        setupShadow()
     }
     
     override func layoutSubviews() {
@@ -92,7 +93,13 @@ final class HeaderDateView: UIView {
         layer.borderWidth = 1
         layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
         
+        backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupShadow() {
+        
+        layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
     }
     
     @objc private func didTapPreviousButton() {
