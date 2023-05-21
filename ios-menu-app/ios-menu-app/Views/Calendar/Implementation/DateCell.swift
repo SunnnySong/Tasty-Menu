@@ -11,14 +11,35 @@ final class DateCell: CollectionViewCellProvidable {
     
     typealias Item = Int
     
-    private let label = UILabel()
+    private let numberLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .pretendard(size: 12, weight: .bold)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let selectionView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let heartImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "suit.heart.fill")
+        imageView.tintColor = .designSystem(.mainOrange)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureHierarchy()
-        configureCell()
-        configureDateLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -27,38 +48,47 @@ final class DateCell: CollectionViewCellProvidable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
     func configure(with item: Int) {
         
-        label.text = item.description
+        numberLabel.text = item.description
     }
     
     private func configureHierarchy() {
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        contentView.addSubview(label)
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        let inset = CGFloat(10)
+        contentView.addSubview(selectionView)
+        contentView.addSubview(numberLabel)
+        contentView.addSubview(heartImageView)
+        
+        let topinset: CGFloat = 15
+        
+        let contentHeight = contentView.frame.height
+        let contentWeight = contentView.frame.width
+        
+        let selectionDateSize = contentHeight / 3.5
+        let heartImageSize = contentHeight / 6
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
+                numberLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: topinset),
+                numberLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+                
+                selectionView.centerYAnchor
+                    .constraint(equalTo: numberLabel.centerYAnchor),
+                selectionView.centerXAnchor
+                    .constraint(equalTo: numberLabel.centerXAnchor),
+                selectionView.widthAnchor.constraint(equalToConstant: selectionDateSize),
+                selectionView.heightAnchor
+                    .constraint(equalTo: selectionView.widthAnchor),
+                
+                heartImageView.centerXAnchor.constraint(equalTo: numberLabel.centerXAnchor),
+                heartImageView.topAnchor.constraint(equalTo: selectionView.bottomAnchor, constant: 8),
+                heartImageView.widthAnchor.constraint(equalToConstant: heartImageSize),
+                heartImageView.heightAnchor.constraint(equalTo: heartImageView.widthAnchor)
         ])
-    }
-    
-    private func configureCell() {
         
-        contentView.backgroundColor = .systemBlue
-    }
-    
-    private func configureDateLabel() {
-        
-        label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .title1)
+        selectionView.layer.cornerRadius = selectionDateSize / 2
     }
 }

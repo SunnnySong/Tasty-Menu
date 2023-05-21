@@ -11,13 +11,19 @@ final class HeaderView: UICollectionReusableView {
     
     private let weakTitle = ["일", "월", "화", "수", "목", "금", "토"]
     
-    private var weakStackView = UIStackView()
+    private lazy var weakStackView: UIStackView = {
+        let stackView = UIStackView()
+        let weakLabels = weakTitle.map { makeWeakLabel(title: $0) }
+        stackView.addArrangedSubviews(weakLabels)
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureHierarchy()
-        configureWeakLabel()
     }
     
     required init(coder: NSCoder) {
@@ -27,7 +33,7 @@ final class HeaderView: UICollectionReusableView {
     private func makeWeakLabel(title: String) -> UILabel {
         
         let label = UILabel()
-        label.font = UIFont.pretendard(size: ._17, weight: .semibold)
+        label.font = UIFont.pretendard(size: 14, weight: .semibold)
         label.textAlignment = .center
         label.text = title
         
@@ -41,21 +47,12 @@ final class HeaderView: UICollectionReusableView {
         
         self.addSubview(weakStackView)
         
-        weakStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             weakStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             weakStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             weakStackView.topAnchor.constraint(equalTo: self.topAnchor),
             weakStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-    }
-    
-    private func configureWeakLabel() {
-        
-        let weakLabels = weakTitle.map { makeWeakLabel(title: $0) }
-        weakStackView.addArrangedSubviews(weakLabels)
-        weakStackView.distribution = .fillEqually
     }
 }
 
