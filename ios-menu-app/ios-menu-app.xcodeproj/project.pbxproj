@@ -44,6 +44,8 @@
 		809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4C2A174E6E0030F746 /* DateCell.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
+		80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */; };
+		80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341DA2A1A714500F3C750 /* SeparateBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		809DCD4C2A174E6E0030F746 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDateView.swift; sourceTree = "<group>"; };
+		80F341DA2A1A714500F3C750 /* SeparateBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +255,7 @@
 		809DCD262A166BAF0030F746 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				80F341D92A1A712A00F3C750 /* UIObjects */,
 				805B99E12A17E6D3003FB5BF /* Fonts */,
 				809DCD282A166BC10030F746 /* Color.xcassets */,
 				809DCD272A166BC10030F746 /* Palette.swift */,
@@ -343,8 +348,17 @@
 				809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */,
 				809DCD4C2A174E6E0030F746 /* DateCell.swift */,
 				805B9A002A192AF3003FB5BF /* WeakView.swift */,
+				80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */,
 			);
 			path = Implementation;
+			sourceTree = "<group>";
+		};
+		80F341D92A1A712A00F3C750 /* UIObjects */ = {
+			isa = PBXGroup;
+			children = (
+				80F341DA2A1A714500F3C750 /* SeparateBarView.swift */,
+			);
+			path = UIObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */,
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
@@ -508,6 +523,7 @@
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,
 				80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */,
 				805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */,
+				80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */,
 				809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

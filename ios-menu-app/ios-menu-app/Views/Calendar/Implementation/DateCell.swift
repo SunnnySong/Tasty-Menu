@@ -22,7 +22,7 @@ final class DateCell: CollectionViewCellProvidable {
     
     private let selectionView: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .designSystem(.mainBlack)
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -66,7 +66,6 @@ final class DateCell: CollectionViewCellProvidable {
         let topinset: CGFloat = 15
         
         let contentHeight = contentView.frame.height
-        let contentWeight = contentView.frame.width
         
         let selectionDateSize = contentHeight / 3.5
         let heartImageSize = contentHeight / 6
