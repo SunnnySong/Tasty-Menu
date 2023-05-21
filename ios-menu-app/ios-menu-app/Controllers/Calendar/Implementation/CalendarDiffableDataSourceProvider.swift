@@ -35,8 +35,8 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
     
     private func headerProvider(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
         
-        collectionView.headerRegister(HeaderView.self)
-        let header: HeaderView = collectionView.headerDequeue(for: indexPath)
+        collectionView.headerRegister(WeakView.self)
+        let header: WeakView = collectionView.headerDequeue(for: indexPath)
         
         return header
     }
