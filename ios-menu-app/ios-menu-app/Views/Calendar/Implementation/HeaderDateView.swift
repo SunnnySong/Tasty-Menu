@@ -25,8 +25,8 @@ final class HeaderDateView: UIView {
                                        dateLabel,
                                        SeparateBarView(width: 1, height: 12),
                                        nextButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .equalSpacing
+        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
@@ -36,6 +36,7 @@ final class HeaderDateView: UIView {
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = .designSystem(.mainBlack)
         button.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
+        button.contentEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15 / 2)
         return button
     }()
     
@@ -45,6 +46,7 @@ final class HeaderDateView: UIView {
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = .designSystem(.mainBlack)
         button.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+        button.contentEdgeInsets = .init(top: 0, left: 15 / 2, bottom: 0, right: 15)
         return button
     }()
     
@@ -52,6 +54,7 @@ final class HeaderDateView: UIView {
         let label = UILabel()
         label.font = .pretendard(size: 16, weight: .bold)
         label.textColor = .designSystem(.mainBlack)
+        label.textAlignment = .center
         return label
     }()
     
@@ -74,21 +77,8 @@ final class HeaderDateView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let headerDateViewWidth = frame.width
         let headerDateViewHeight = frame.height
-        
         layer.cornerRadius = headerDateViewHeight / 2
-        
-        addSubview(totalStackView)
-
-        let totalStackViewConstant = headerDateViewWidth * 0.18 / 2
-        
-        NSLayoutConstraint.activate([
-            totalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: totalStackViewConstant),
-            totalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -totalStackViewConstant),
-            totalStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            totalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
     }
     
     private func configureHeaderDateView() {
@@ -99,6 +89,7 @@ final class HeaderDateView: UIView {
         
         backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
+        addSubview(totalStackView)
     }
     
     private func setupShadow() {
