@@ -14,5 +14,5 @@ protocol CollectionViewDiffableDataSourceProvidable {
     associatedtype SectionType: Hashable
     
     func makeDataSource() -> UICollectionViewDiffableDataSource<SectionType, CellType.Item>?
-    func update()
+    func update(_ items: [CellType.Item])
 }

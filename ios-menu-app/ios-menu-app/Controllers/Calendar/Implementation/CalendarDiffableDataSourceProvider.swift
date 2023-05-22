@@ -16,11 +16,8 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
     private weak var collectionView: UICollectionView?
     private var dataSource: UICollectionViewDiffableDataSource<Section, CellType.Item>?
     
-    private var items: [CellType.Item] = []
-    
-    init(collectionView: UICollectionView, items: [CellType.Item]) {
+    init(collectionView: UICollectionView) {
         self.collectionView = collectionView
-        self.items = items
     }
     
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
@@ -51,8 +48,8 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
         return dataSource
     }
     
-    func update() {
-        
+    func update(_ items: [CellType.Item]) {
+
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)

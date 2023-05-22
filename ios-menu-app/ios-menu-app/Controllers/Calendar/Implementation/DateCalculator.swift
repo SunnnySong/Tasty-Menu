@@ -14,8 +14,6 @@ final class DateCalculator {
     private var selectedDate: Date = Date()
     private var baseDate: Date = Date() {
         didSet {
-            print("baseData 변경")
-            // collectionview reload
             monthlyDayData = getDaysInMonth(for: baseDate)
             // headerview에서도 새로운 basedata 기준으로 update
         }
@@ -24,11 +22,29 @@ final class DateCalculator {
     private lazy var monthlyDayData = getDaysInMonth(for: baseDate)
     private var mockDate: Array<Int> = Array(0..<42)
     
+    // MARK: Public
     func getMonthlyDayData() -> [Day] {
         monthlyDayData
     }
     
-    func getMonthlyDay(for baseDate: Date) throws -> MonthlyDay {
+    func moveToNextMonth() {
+        
+        guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: baseDate) else {
+            return
+        }
+        baseDate = nextMonth
+    }
+    
+    func moveToPreviousMonth() {
+        
+        guard let previousMonth = calendar.date(byAdding: .month, value: -1, to: baseDate) else {
+            return
+        }
+        baseDate = previousMonth
+    }
+    
+    // MARK: Private
+    private func getMonthlyDay(for baseDate: Date) throws -> MonthlyDay {
         
         guard let numberOfDaysInMonth = calendar.range(
             of: .day, in: .month, for: baseDate)?.count,
@@ -44,7 +60,7 @@ final class DateCalculator {
         return monthlyDay
     }
     
-    func getDaysInMonth(for baseDate: Date) -> [Day] {
+    private func getDaysInMonth(for baseDate: Date) -> [Day] {
         
         guard let monthlyData = try? getMonthlyDay(for: baseDate) else {
             return []
@@ -69,7 +85,7 @@ final class DateCalculator {
         return days
     }
     
-    func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> Day {
+    private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> Day {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
         let day = Day(date: date,
@@ -80,7 +96,7 @@ final class DateCalculator {
         return day
     }
     
-    func generateStartOfNextMonth(using currentMonth: Date) -> [Day] {
+    private func generateStartOfNextMonth(using currentMonth: Date) -> [Day] {
         
         guard let lastDay = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: currentMonth) else {
             return []
@@ -98,7 +114,7 @@ final class DateCalculator {
         return days
     }
     
-    func generateDayNumber(_ date: Date) -> String {
+    private func generateDayNumber(_ date: Date) -> String {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "d"

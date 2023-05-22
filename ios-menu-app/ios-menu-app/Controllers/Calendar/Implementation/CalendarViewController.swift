@@ -10,16 +10,18 @@ import UIKit
 final class CalendarViewController: UIViewController {
     
     // Data
-    private let dateCalcutaor = DateCalculator()
-    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView, items: dateCalcutaor.getMonthlyDayData())
+    private let dateCalculator = DateCalculator()
+    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView)
     
     // Views
     private lazy var headerDateView = HeaderDateView(
         didTapPreviousButton: {
-            print("CalendarViewController : didTapPreviousButton 작동")
+            self.dateCalculator.moveToPreviousMonth()
+            self.dataSourceProvider.update(self.dateCalculator.getMonthlyDayData())
         },
         didTapNextButton: {
-            print("CalendarViewController : didTapNextButton 작동")
+            self.dateCalculator.moveToNextMonth()
+            self.dataSourceProvider.update(self.dateCalculator.getMonthlyDayData())
         }
     )
     
@@ -62,7 +64,7 @@ final class CalendarViewController: UIViewController {
     private func configureDataSource() {
         
         let dataSource = dataSourceProvider.makeDataSource()
-        dataSourceProvider.update()
         calendarView.dataSource = dataSource
+        dataSourceProvider.update(dateCalculator.getMonthlyDayData())
     }
 }
