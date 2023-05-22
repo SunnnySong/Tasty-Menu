@@ -14,16 +14,20 @@ final class CalendarViewController: UIViewController {
     private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView)
     
     // Views
-    private lazy var headerDateView = HeaderDateView(
-        didTapPreviousButton: {
-            self.dateCalculator.moveToPreviousMonth()
-            self.dataSourceProvider.update(self.dateCalculator.getMonthlyDayData())
-        },
-        didTapNextButton: {
-            self.dateCalculator.moveToNextMonth()
-            self.dataSourceProvider.update(self.dateCalculator.getMonthlyDayData())
-        }
-    )
+    private lazy var headerDateView: HeaderDateView = { [weak self] in
+        HeaderDateView (
+            didTapPreviousButton: {
+                self?.dateCalculator.moveToPreviousMonth()
+                self?.dataSourceProvider.update(self?.dateCalculator.getMonthlyDayData() ?? [])
+                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+            },
+            didTapNextButton: {
+                self?.dateCalculator.moveToNextMonth()
+                self?.dataSourceProvider.update(self?.dateCalculator.getMonthlyDayData() ?? [])
+                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+            }
+        )
+    }()
     
     private var calendarView = CalendarCollectionView(frame: .zero)
     

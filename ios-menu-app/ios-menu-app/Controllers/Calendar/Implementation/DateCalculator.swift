@@ -27,6 +27,10 @@ final class DateCalculator {
         monthlyDayData
     }
     
+    func getMonthlyDay() -> Date {
+        baseDate
+    }
+    
     func moveToNextMonth() {
         
         guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: baseDate) else {

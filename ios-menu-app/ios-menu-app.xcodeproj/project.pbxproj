@@ -145,6 +145,7 @@
 		805B99D62A17606E003FB5BF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
 				805B99DC2A17D709003FB5BF /* Implementation */,
 				805B99DB2A17D704003FB5BF /* Interface */,
 			);
@@ -162,7 +163,6 @@
 		805B99DC2A17D709003FB5BF /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
 				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
 				805B99FA2A192837003FB5BF /* DateCalculator.swift */,
 			);

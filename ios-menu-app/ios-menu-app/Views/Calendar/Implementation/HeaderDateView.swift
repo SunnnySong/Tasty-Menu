@@ -107,13 +107,13 @@ final class HeaderDateView: UIView {
         nextButtonAction?()
     }
     
-    private func updateDateLabel() {
+    func updateDateLabel() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월"
         
-        let headerDate = formatter.string(from: headerDate)
-        dateLabel.text = headerDate
+        let date = formatter.string(from: headerDate)
+        dateLabel.text = date
     }
     
     func updateHeaderDate(date: Date) {
