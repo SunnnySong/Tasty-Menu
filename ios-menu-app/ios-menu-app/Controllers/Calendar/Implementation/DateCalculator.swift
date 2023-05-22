@@ -9,6 +9,7 @@ import Foundation
 
 final class DateCalculator {
     
+    // MARK: Properties - Data
     private let calendar = Calendar(identifier: .gregorian)
     
     private var selectedDate: Date = Date()
@@ -18,11 +19,9 @@ final class DateCalculator {
             // headerview에서도 새로운 basedata 기준으로 update
         }
     }
-    
     private lazy var monthlyDayData = getDaysInMonth(for: baseDate)
-    private var mockDate: Array<Int> = Array(0..<42)
     
-    // MARK: Public
+    // MARK: Functions - Public
     func getMonthlyDayData() -> [Day] {
         monthlyDayData
     }
@@ -47,7 +46,7 @@ final class DateCalculator {
         baseDate = previousMonth
     }
     
-    // MARK: Private
+    // MARK: Functions - Private
     private func getMonthlyDay(for baseDate: Date) throws -> MonthlyDay {
         
         guard let numberOfDaysInMonth = calendar.range(

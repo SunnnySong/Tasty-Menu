@@ -9,6 +9,7 @@ import UIKit
 
 final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvidable>: CollectionViewDiffableDataSourceProvidable {
     
+    // MARK: Properties - Data
     enum Section {
         case main
     }
@@ -16,28 +17,12 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
     private weak var collectionView: UICollectionView?
     private var dataSource: UICollectionViewDiffableDataSource<Section, CellType.Item>?
     
+    // MARK: Lifecycle
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
     }
     
-    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
-
-        collectionView.register(CellType.self)
-        let cell: CellType = collectionView.dequeue(for: indexPath)
-
-        cell.configure(with: item)
-
-        return cell
-    }
-    
-    private func headerProvider(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
-        
-        collectionView.headerRegister(WeakView.self)
-        let header: WeakView = collectionView.headerDequeue(for: indexPath)
-        
-        return header
-    }
-    
+    // MARK: Functions - Public
     func makeDataSource() -> UICollectionViewDiffableDataSource<Section, CellType.Item>? {
 
         guard let collectionView = collectionView else { return nil }
@@ -56,4 +41,22 @@ final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvi
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
+    // MARK: Functions - Private
+    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
+
+        collectionView.register(CellType.self)
+        let cell: CellType = collectionView.dequeue(for: indexPath)
+
+        cell.configure(with: item)
+
+        return cell
+    }
+    
+    private func headerProvider(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
+        
+        collectionView.headerRegister(WeakView.self)
+        let header: WeakView = collectionView.headerDequeue(for: indexPath)
+        
+        return header
+    }
 }

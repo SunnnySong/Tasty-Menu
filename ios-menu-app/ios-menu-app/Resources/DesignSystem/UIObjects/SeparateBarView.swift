@@ -9,6 +9,7 @@ import UIKit
 
 final class SeparateBarView: UIView {
     
+    // MARK: Properties - View
     private var separatorBar: UIView = {
         let view = UIView()
         view.backgroundColor = .designSystem(.separateBarGray)
@@ -16,6 +17,7 @@ final class SeparateBarView: UIView {
         return view
     }()
     
+    // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -32,6 +34,7 @@ final class SeparateBarView: UIView {
         configure(width: width, height: height)
     }
     
+    // MARK: Functions - Private
     private func configure(width: CGFloat, height: CGFloat) {
         
         NSLayoutConstraint.activate([

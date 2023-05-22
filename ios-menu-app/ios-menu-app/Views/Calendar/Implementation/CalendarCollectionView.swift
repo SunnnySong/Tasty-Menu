@@ -9,6 +9,7 @@ import UIKit
 
 final class CalendarCollectionView: UICollectionView {
     
+    // MARK: Properties - Data
     private var layout: UICollectionViewLayout {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0 / 7),
@@ -33,6 +34,7 @@ final class CalendarCollectionView: UICollectionView {
         return layout
     }
     
+    // MARK: Lifecycle
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: UICollectionViewLayout())
         self.collectionViewLayout = self.layout

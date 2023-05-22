@@ -9,8 +9,10 @@ import UIKit
 
 final class WeakView: UICollectionReusableView {
     
+    // MARK: Properties - Data
     private let weakTitle = ["일", "월", "화", "수", "목", "금", "토"]
     
+    // MARK: Properties - View
     private lazy var weakStackView: UIStackView = {
         let stackView = UIStackView()
         let weakLabels = weakTitle.map { makeWeakLabel(title: $0) }
@@ -20,6 +22,7 @@ final class WeakView: UICollectionReusableView {
         return stackView
     }()
     
+    // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -30,6 +33,7 @@ final class WeakView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Functions - Private
     private func makeWeakLabel(title: String) -> UILabel {
         
         let label = UILabel()

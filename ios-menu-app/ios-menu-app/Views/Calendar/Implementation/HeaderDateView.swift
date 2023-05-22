@@ -9,6 +9,7 @@ import UIKit
 
 final class HeaderDateView: UIView {
     
+    // MARK: Properties - Data
     var previousButtonAction: (() -> Void)?
     var nextButtonAction: (() -> Void)?
     
@@ -18,6 +19,7 @@ final class HeaderDateView: UIView {
         }
     }
     
+    // MARK: Properties - View
     private lazy var totalStackView: UIStackView = {
         let stackView = UIStackView(frame: self.bounds)
         stackView.addArrangedSubviews([previousButton,
@@ -58,6 +60,7 @@ final class HeaderDateView: UIView {
         return label
     }()
     
+    // MARK: Lifecycle
     init(didTapPreviousButton: @escaping (() -> Void),
          didTapNextButton: @escaping (() -> Void)
     ) {
@@ -81,6 +84,22 @@ final class HeaderDateView: UIView {
         layer.cornerRadius = headerDateViewHeight / 2
     }
     
+    // MARK: Functions - Public
+    func updateDateLabel() {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY년 M월"
+        
+        let date = formatter.string(from: headerDate)
+        dateLabel.text = date
+    }
+    
+    func updateHeaderDate(date: Date) {
+        
+        self.headerDate = date
+    }
+    
+    // MARK: Functions - Private
     private func configureHeaderDateView() {
         
         clipsToBounds = true
@@ -105,19 +124,5 @@ final class HeaderDateView: UIView {
     @objc private func didTapNextButton() {
 
         nextButtonAction?()
-    }
-    
-    func updateDateLabel() {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY년 M월"
-        
-        let date = formatter.string(from: headerDate)
-        dateLabel.text = date
-    }
-    
-    func updateHeaderDate(date: Date) {
-        
-        self.headerDate = date
     }
 }

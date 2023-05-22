@@ -9,11 +9,11 @@ import UIKit
 
 final class CalendarViewController: UIViewController {
     
-    // Data
+    // MARK: Properties - Data
     private let dateCalculator = DateCalculator()
     private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView)
     
-    // Views
+    // MARK: Properties - View
     private lazy var headerDateView: HeaderDateView = { [weak self] in
         HeaderDateView (
             didTapPreviousButton: {
@@ -31,6 +31,7 @@ final class CalendarViewController: UIViewController {
     
     private var calendarView = CalendarCollectionView(frame: .zero)
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +40,7 @@ final class CalendarViewController: UIViewController {
         configureDataSource()
     }
     
+    // MARK: Functions - private
     private func configureHierarchy() {
         
         view.addSubview(headerDateView)

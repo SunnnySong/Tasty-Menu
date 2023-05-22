@@ -11,6 +11,7 @@ final class DateCell: CollectionViewCellProvidable {
 
     typealias Item = Day
     
+    // MARK: Properties - View
     private let numberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -35,6 +36,7 @@ final class DateCell: CollectionViewCellProvidable {
         return imageView
     }()
     
+    // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -51,6 +53,7 @@ final class DateCell: CollectionViewCellProvidable {
         layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
+    // MARK: Functions - Public
     func configure(with dayData: Day) {
         
         numberLabel.text = dayData.number
@@ -65,6 +68,7 @@ final class DateCell: CollectionViewCellProvidable {
         heartImageView.isHidden = !dayData.hasHeart
     }
     
+    // MARK: Functions - Private
     private func configureHierarchy() {
         
         contentView.addSubview(selectionView)
