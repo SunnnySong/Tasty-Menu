@@ -15,7 +15,6 @@ final class DateCell: CollectionViewCellProvidable {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .pretendard(size: 12, weight: .bold)
-        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,9 +51,18 @@ final class DateCell: CollectionViewCellProvidable {
         layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
-    func configure(with day: Day) {
+    func configure(with dayData: Day) {
         
-        numberLabel.text = day.number
+        numberLabel.text = dayData.number
+        
+        if dayData.isIncludeInMonth {
+            numberLabel.textColor = dayData.isSelected ? .white : .designSystem(.mainBlack)
+        } else {
+            numberLabel.textColor = .designSystem(.calendarDayGray)
+        }
+        
+        selectionView.isHidden = !dayData.isSelected
+        heartImageView.isHidden = !dayData.hasHeart
     }
     
     private func configureHierarchy() {
