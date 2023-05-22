@@ -25,7 +25,7 @@ final class HeaderDateView: UIView {
                                        dateLabel,
                                        SeparateBarView(width: 1, height: 12),
                                        nextButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         stackView.distribution = .fillProportionally
         return stackView
     }()
@@ -36,6 +36,7 @@ final class HeaderDateView: UIView {
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = .designSystem(.mainBlack)
         button.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
+        button.contentEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15 / 2)
         return button
     }()
     
@@ -45,6 +46,7 @@ final class HeaderDateView: UIView {
         button.setImage(image, for: .normal)
         button.imageView?.tintColor = .designSystem(.mainBlack)
         button.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+        button.contentEdgeInsets = .init(top: 0, left: 15 / 2, bottom: 0, right: 15)
         return button
     }()
     
@@ -64,31 +66,15 @@ final class HeaderDateView: UIView {
         setupShadow()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let headerDateViewWidth = frame.width
         let headerDateViewHeight = frame.height
-        
         layer.cornerRadius = headerDateViewHeight / 2
-        
-        addSubview(totalStackView)
-
-        let totalStackViewConstant = headerDateViewWidth * 0.18 / 2
-        
-        previousButton.contentEdgeInsets = .init(top: 0, left: totalStackViewConstant, bottom: 0, right: totalStackViewConstant / 2)
-        nextButton.contentEdgeInsets = .init(top: 0, left: totalStackViewConstant / 2, bottom: 0, right: totalStackViewConstant)
-        
-        NSLayoutConstraint.activate([
-            totalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            totalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            totalStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            totalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func configureHeaderDateView() {
@@ -99,6 +85,7 @@ final class HeaderDateView: UIView {
         
         backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
+        addSubview(totalStackView)
     }
     
     private func setupShadow() {
