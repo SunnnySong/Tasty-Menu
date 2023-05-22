@@ -8,8 +8,8 @@
 import UIKit
 
 final class DateCell: CollectionViewCellProvidable {
-    
-    typealias Item = Int
+
+    typealias Item = Day
     
     private let numberLabel: UILabel = {
         let label = UILabel()
@@ -52,9 +52,9 @@ final class DateCell: CollectionViewCellProvidable {
         layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
-    func configure(with item: Int) {
+    func configure(with day: Day) {
         
-        numberLabel.text = item.description
+        numberLabel.text = day.number
     }
     
     private func configureHierarchy() {

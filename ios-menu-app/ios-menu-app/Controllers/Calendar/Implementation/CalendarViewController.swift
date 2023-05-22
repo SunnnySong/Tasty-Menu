@@ -11,7 +11,7 @@ final class CalendarViewController: UIViewController {
     
     // Data
     private let dateCalcutaor = DateCalculator()
-    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView, items: dateCalcutaor.getDate())
+    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView, items: dateCalcutaor.getMonthlyDayData())
     
     // Views
     private lazy var headerDateView = HeaderDateView(
