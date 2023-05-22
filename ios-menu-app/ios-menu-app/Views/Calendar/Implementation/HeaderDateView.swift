@@ -26,7 +26,7 @@ final class HeaderDateView: UIView {
                                        SeparateBarView(width: 1, height: 12),
                                        nextButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     
@@ -52,6 +52,7 @@ final class HeaderDateView: UIView {
         let label = UILabel()
         label.font = .pretendard(size: 16, weight: .bold)
         label.textColor = .designSystem(.mainBlack)
+        label.textAlignment = .center
         return label
     }()
     
@@ -75,9 +76,12 @@ final class HeaderDateView: UIView {
 
         let totalStackViewConstant = headerDateViewWidth * 0.18 / 2
         
+        previousButton.contentEdgeInsets = .init(top: 0, left: totalStackViewConstant, bottom: 0, right: totalStackViewConstant / 2)
+        nextButton.contentEdgeInsets = .init(top: 0, left: totalStackViewConstant / 2, bottom: 0, right: totalStackViewConstant)
+        
         NSLayoutConstraint.activate([
-            totalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: totalStackViewConstant),
-            totalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -totalStackViewConstant),
+            totalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            totalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             totalStackView.topAnchor.constraint(equalTo: self.topAnchor),
             totalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
