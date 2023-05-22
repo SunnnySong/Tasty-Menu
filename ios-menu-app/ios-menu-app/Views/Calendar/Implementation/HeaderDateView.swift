@@ -55,12 +55,20 @@ final class HeaderDateView: UIView {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(didTapPreviousButton: @escaping (() -> Void),
+         didTapNextButton: @escaping (() -> Void)
+    ) {
+        self.previousButtonAction = didTapPreviousButton
+        self.nextButtonAction = didTapNextButton
+        super.init(frame: .zero)
         
         configureHeaderDateView()
         updateDateLabel()
         setupShadow()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func layoutSubviews() {
@@ -83,10 +91,6 @@ final class HeaderDateView: UIView {
         ])
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func configureHeaderDateView() {
         
         clipsToBounds = true
@@ -103,15 +107,13 @@ final class HeaderDateView: UIView {
     }
     
     @objc private func didTapPreviousButton() {
-        
+
         previousButtonAction?()
-        print(" 전달로 이동 ")
     }
-    
+
     @objc private func didTapNextButton() {
-        
+
         nextButtonAction?()
-        print(" 다음 달로 이동 ")
     }
     
     private func updateDateLabel() {

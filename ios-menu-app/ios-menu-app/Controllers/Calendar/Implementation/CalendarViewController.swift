@@ -14,7 +14,15 @@ final class CalendarViewController: UIViewController {
     private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView, items: dateCalcutaor.getDate())
     
     // Views
-    private lazy var headerDateView = HeaderDateView(frame: .zero)
+    private lazy var headerDateView = HeaderDateView(
+        didTapPreviousButton: {
+            print("CalendarViewController : didTapPreviousButton 작동")
+        },
+        didTapNextButton: {
+            print("CalendarViewController : didTapNextButton 작동")
+        }
+    )
+    
     private var calendarView = CalendarCollectionView(frame: .zero)
     
     override func viewDidLoad() {
