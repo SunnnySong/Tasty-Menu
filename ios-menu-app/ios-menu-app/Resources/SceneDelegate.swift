@@ -19,8 +19,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: TabBarController())
+        let navigationController = UINavigationController(rootViewController: TabBarController())
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        let navigationBarAppearance = navigationController.navigationBar.standardAppearance
+        
+        navigationBarAppearance.largeTitleTextAttributes = [
+            .font: UIFont.pretendard(size: ._28, weight: .bold),
+            .foregroundColor: UIColor.white,
+        ]
+        navigationController.navigationBar.standardAppearance = navigationBarAppearance
+    
+        navigationController.navigationBar.topItem?.title = "야곰 아카데미 식단표"
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.backgroundColor = .custom(.mainOrange)
+        
+        let statusBarManager = window.windowScene?.statusBarManager
+        let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
+        statusBarView.backgroundColor = .custom(.mainOrange)
+        window.addSubview(statusBarView)
         
         self.window = window
     }
