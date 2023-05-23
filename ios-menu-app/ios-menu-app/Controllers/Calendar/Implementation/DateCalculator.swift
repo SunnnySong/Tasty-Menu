@@ -16,7 +16,6 @@ final class DateCalculator {
     private var baseDate: Date = Date() {
         didSet {
             monthlyDayData = getDaysInMonth(for: baseDate)
-            // headerview에서도 새로운 basedata 기준으로 update
         }
     }
     private lazy var monthlyDayData = getDaysInMonth(for: baseDate)
