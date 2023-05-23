@@ -85,7 +85,13 @@ final class HeaderDateView: UIView {
     }
     
     // MARK: Functions - Public
-    func updateDateLabel() {
+    func updateHeaderDate(_ date: Date) {
+        
+        self.headerDate = date
+    }
+    
+    // MARK: Functions - Private
+    private func updateDateLabel() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월"
@@ -94,12 +100,6 @@ final class HeaderDateView: UIView {
         dateLabel.text = date
     }
     
-    func updateHeaderDate(date: Date) {
-        
-        self.headerDate = date
-    }
-    
-    // MARK: Functions - Private
     private func configureHeaderDateView() {
         
         clipsToBounds = true

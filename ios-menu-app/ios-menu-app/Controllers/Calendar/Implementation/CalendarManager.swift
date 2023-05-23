@@ -64,13 +64,15 @@ final class CalendarManager {
         calendarDiffableDataSourceProvider.updateSnapshot(daysData, to: dataSource)
     }
     
-    func moveToPreviousMonth() {
+    func moveToPreviousMonth() -> Date {
         
         baseDate = dateCalculator.calculatePreviousMonth(by: baseDate)
+        return baseDate
     }
     
-    func moveToNextMonth() {
+    func moveToNextMonth() -> Date {
         
         baseDate = dateCalculator.calculateNextMonth(by: baseDate)
+        return baseDate
     }
 }

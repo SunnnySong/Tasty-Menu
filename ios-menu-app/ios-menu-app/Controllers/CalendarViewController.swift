@@ -16,12 +16,12 @@ final class CalendarViewController: UIViewController {
     private lazy var headerDateView: HeaderDateView = { [weak self] in
         HeaderDateView (
             didTapPreviousButton: {
-                self?.calendarManager.moveToPreviousMonth()
-//                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+                let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? Date()
+                self?.headerDateView.updateHeaderDate(previousBaseDate)
             },
             didTapNextButton: {
-                self?.calendarManager.moveToNextMonth()
-//                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+                let nextBaseDate = self?.calendarManager.moveToNextMonth() ?? Date()
+                self?.headerDateView.updateHeaderDate(nextBaseDate)
             }
         )
     }()
