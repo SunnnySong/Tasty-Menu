@@ -11,7 +11,7 @@ final class CalendarViewController: UIViewController {
     
     // MARK: Properties - Data
     private let dateCalculator = DateCalculator()
-    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView)
+    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider()
     
     // MARK: Properties - View
     private lazy var headerDateView: HeaderDateView = { [weak self] in
@@ -69,7 +69,7 @@ final class CalendarViewController: UIViewController {
     
     private func configureDataSource() {
         
-        let dataSource = dataSourceProvider.makeDataSource()
+        let dataSource = dataSourceProvider.makeDataSource(collectionView: calendarView)
         calendarView.dataSource = dataSource
         dataSourceProvider.update(dateCalculator.getMonthlyDayData())
     }

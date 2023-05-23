@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
 		805B99E32A17E6DD003FB5BF /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */; };
 		805B99E52A17E6E3003FB5BF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -162,8 +164,9 @@
 		805B99DC2A17D709003FB5BF /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
+				800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */,
 				805B99FA2A192837003FB5BF /* DateCalculator.swift */,
+				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				80F341DF2A1B2E8900F3C750 /* MonthlyDay.swift in Sources */,
 				809DCD422A1713390030F746 /* CalendarDiffableDataSourceProvider.swift in Sources */,
 				809DCD292A166BC10030F746 /* Palette.swift in Sources */,
+				800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */,
 				805B9A012A192AF3003FB5BF /* WeakView.swift in Sources */,
 				809DCD2D2A166C0E0030F746 /* UIColor+.swift in Sources */,
 				80F341E22A1B333000F3C750 /* CalendarError.swift in Sources */,

@@ -7,25 +7,21 @@
 
 import UIKit
 
-final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvidable>: CollectionViewDiffableDataSourceProvidable {
+final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
+    
+    typealias CellType = DateCell
+    typealias SectionType = Section
     
     // MARK: Properties - Data
     enum Section {
         case main
     }
     
-    private weak var collectionView: UICollectionView?
     private var dataSource: UICollectionViewDiffableDataSource<Section, CellType.Item>?
     
-    // MARK: Lifecycle
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-    }
-    
     // MARK: Functions - Public
-    func makeDataSource() -> UICollectionViewDiffableDataSource<Section, CellType.Item>? {
+    func makeDataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, CellType.Item>? {
 
-        guard let collectionView = collectionView else { return nil }
         let dataSource = UICollectionViewDiffableDataSource<Section, CellType.Item>(collectionView: collectionView, cellProvider: cellProvider)
         dataSource.supplementaryViewProvider = headerProvider
         self.dataSource = dataSource
