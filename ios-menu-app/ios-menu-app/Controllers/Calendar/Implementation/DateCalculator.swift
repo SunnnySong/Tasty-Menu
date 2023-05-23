@@ -62,7 +62,6 @@ struct DateCalculator {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
         let day = Day(date: date,
-                      number: generateDayNumber(date),
                       isSelected: calendar.isDate(date, inSameDayAs: selectedDate),
                       isIncludeInMonth: isIncludeInMonth)
         
@@ -108,13 +107,5 @@ struct DateCalculator {
         }
         
         return days
-    }
-    
-    private func generateDayNumber(_ date: Date) -> String {
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d"
-        
-        return formatter.string(from: date)
     }
 }

@@ -10,8 +10,17 @@ import Foundation
 struct Day: Hashable {
     
     let date: Date
-    let number: String
     var isSelected: Bool
     let isIncludeInMonth: Bool
     var hasHeart: Bool = false
+}
+
+extension Day {
+    
+    var number: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        
+        return formatter.string(from: date)
+    }
 }
