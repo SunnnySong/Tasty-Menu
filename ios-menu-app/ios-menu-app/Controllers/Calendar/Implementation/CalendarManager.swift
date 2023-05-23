@@ -15,21 +15,19 @@ final class CalendarManager {
     
     private var selectedDate: Date = Date() {
         didSet {
-            print("CalendarManager headerDate 변경")
+            // 초기 설정: 오늘, 이후에는 사용자가 클릭한 날짜로 selectedDate 변경
+            update()
         }
     }
 
     private var baseDate: Date = Date() {
         didSet {
-            print("CalendarManager baseDate 변경")
             daysData = dateCalculator.getDaysInMonth(for: baseDate, selectedDate: selectedDate)
         }
     }
     
     private lazy var daysData: [Day] = dateCalculator.getDaysInMonth(for: baseDate, selectedDate: selectedDate) {
         didSet {
-            print("월별 데이터 변경!")
-            // snapshot update
             update()
         }
     }

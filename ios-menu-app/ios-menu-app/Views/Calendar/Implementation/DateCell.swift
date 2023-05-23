@@ -53,38 +53,6 @@ final class DateCell: CollectionViewCellProvidable {
         layer.addBorder([.top], color: .designSystem(.separateBarGray), width: 1)
     }
     
-    // MARK: 그럼 updateConstraints 는 언제 호출되는거지?
-    // 내가 configure 만든 것과 다르게 호출되나?
-    // 둘 중 어떤 방법을 사용하는 것이 좋은 거지?
-
-//    private var items: Item?
-    
-//    override func updateConfiguration(using state: UICellConfigurationState) {
-//        super.updateConfiguration(using: state)
-//
-//        print("updateConfiguration 호출")
-//
-//        guard let items = items else { return }
-//
-//        numberLabel.text = items.number
-//
-//        if items.isIncludeInMonth {
-//            numberLabel.textColor = items.isSelected ? .white : .designSystem(.mainBlack)
-//        } else {
-//            numberLabel.textColor = .designSystem(.calendarDayGray)
-//        }
-//
-//        print(items.isSelected)
-//        selectionView.isHidden = !items.isSelected
-//        heartImageView.isHidden = !items.hasHeart
-//    }
-    
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//
-//        print("prepareForReuse 실행")
-//    }
-    
     // MARK: Functions - Public
     func configure(with dayData: Day) {
         
