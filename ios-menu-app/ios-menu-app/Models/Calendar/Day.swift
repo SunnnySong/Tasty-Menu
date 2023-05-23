@@ -11,7 +11,7 @@ struct Day: Hashable {
     
     let date: Date
     let number: String
-    let isSelected: Bool
+    var isSelected: Bool
     let isIncludeInMonth: Bool
     var hasHeart: Bool = false
 }

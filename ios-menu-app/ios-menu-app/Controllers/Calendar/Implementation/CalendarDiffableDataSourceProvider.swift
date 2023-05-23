@@ -7,38 +7,28 @@
 
 import UIKit
 
-final class CalendarDiffableDataSourceProvider<CellType: CollectionViewCellProvidable>: CollectionViewDiffableDataSourceProvidable {
+struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
-    enum Section {
-        case main
-    }
-    
-    private weak var collectionView: UICollectionView?
-    private var dataSource: UICollectionViewDiffableDataSource<Section, CellType.Item>?
-    
-    // MARK: Lifecycle
-    init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-    }
-    
+    typealias CellType = DateCell
+    typealias SectionType = Section
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, DateCell.Item>
+        
     // MARK: Functions - Public
-    func makeDataSource() -> UICollectionViewDiffableDataSource<Section, CellType.Item>? {
+    func dataSource(collectionView: UICollectionView) -> DataSource? {
 
-        guard let collectionView = collectionView else { return nil }
-        let dataSource = UICollectionViewDiffableDataSource<Section, CellType.Item>(collectionView: collectionView, cellProvider: cellProvider)
+        let dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
         dataSource.supplementaryViewProvider = headerProvider
-        self.dataSource = dataSource
 
         return dataSource
     }
     
-    func update(_ items: [CellType.Item]) {
+    func updateSnapshot(_ items: [CellType.Item], to dataSource: DataSource) {
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     // MARK: Functions - Private

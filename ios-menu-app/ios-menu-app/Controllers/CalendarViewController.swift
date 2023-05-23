@@ -10,21 +10,18 @@ import UIKit
 final class CalendarViewController: UIViewController {
     
     // MARK: Properties - Data
-    private let dateCalculator = DateCalculator()
-    private lazy var dataSourceProvider = CalendarDiffableDataSourceProvider<DateCell>(collectionView: calendarView)
+    private lazy var calendarManager = CalendarManager(collectionView: calendarView)
     
     // MARK: Properties - View
     private lazy var headerDateView: HeaderDateView = { [weak self] in
         HeaderDateView (
             didTapPreviousButton: {
-                self?.dateCalculator.moveToPreviousMonth()
-                self?.dataSourceProvider.update(self?.dateCalculator.getMonthlyDayData() ?? [])
-                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+                let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? Date()
+                self?.headerDateView.updateHeaderDate(previousBaseDate)
             },
             didTapNextButton: {
-                self?.dateCalculator.moveToNextMonth()
-                self?.dataSourceProvider.update(self?.dateCalculator.getMonthlyDayData() ?? [])
-                self?.headerDateView.updateHeaderDate(date: self?.dateCalculator.getMonthlyDay() ?? Date())
+                let nextBaseDate = self?.calendarManager.moveToNextMonth() ?? Date()
+                self?.headerDateView.updateHeaderDate(nextBaseDate)
             }
         )
     }()
@@ -69,8 +66,6 @@ final class CalendarViewController: UIViewController {
     
     private func configureDataSource() {
         
-        let dataSource = dataSourceProvider.makeDataSource()
-        calendarView.dataSource = dataSource
-        dataSourceProvider.update(dateCalculator.getMonthlyDayData())
+        calendarManager.createDataSource()
     }
 }
