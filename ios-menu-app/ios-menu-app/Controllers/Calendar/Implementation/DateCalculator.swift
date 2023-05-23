@@ -7,87 +7,58 @@
 
 import Foundation
 
-final class DateCalculator {
+struct DateCalculator {
     
     // MARK: Properties - Data
     private let calendar = Calendar(identifier: .gregorian)
     
-    private var selectedDate: Date = Date()
-    private var baseDate: Date = Date() {
-        didSet {
-            monthlyDayData = getDaysInMonth(for: baseDate)
-        }
-    }
-    private lazy var monthlyDayData = getDaysInMonth(for: baseDate)
-    
     // MARK: Functions - Public
-    func getMonthlyDayData() -> [Day] {
-        monthlyDayData
-    }
-    
-    func getMonthlyDay() -> Date {
-        baseDate
-    }
-    
-    func moveToNextMonth() {
-        
+    func calculateNextMonth(by baseDate: Date) -> Date {
+
         guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: baseDate) else {
-            return
+            return Date()
         }
-        baseDate = nextMonth
+        return nextMonth
+    }
+
+    func calculatePreviousMonth(by baseDate: Date) -> Date {
+
+        guard let previousMonth = calendar.date(byAdding: .month, value: -1, to: baseDate) else {
+            return Date()
+        }
+        return previousMonth
     }
     
-    func moveToPreviousMonth() {
+    func getDaysInMonth(for baseDate: Date, selectedDate: Date) -> [Day] {
         
-        guard let previousMonth = calendar.date(byAdding: .month, value: -1, to: baseDate) else {
-            return
+        guard let monthlyData = try? getMonth(for: baseDate) else {
+            return []
         }
-        baseDate = previousMonth
+        let firstDayOfMonth = monthlyData.firstDay
+        
+        let daysInThisMonth = generateDays(for: baseDate, selectedDate: selectedDate)
+        let daysInNextMonth = generateStartOfNextMonth(using: firstDayOfMonth, selectedDate: selectedDate)
+        
+        return daysInThisMonth + daysInNextMonth
     }
     
     // MARK: Functions - Private
-    private func getMonthlyDay(for baseDate: Date) throws -> MonthlyDay {
+    private func getMonth(for baseDate: Date) throws -> Month {
         
         guard let numberOfDaysInMonth = calendar.range(
             of: .day, in: .month, for: baseDate)?.count,
               let firstDayOfMonth = calendar.date(
-                from: calendar.dateComponents([.year, .month], from: baseDate))
-        else {
+                from: calendar.dateComponents([.year, .month], from: baseDate)) else {
             throw CalendarError.isFailGenerateMonthlyDay
         }
         
         let firstDayWeekday = calendar.component(.weekday, from: firstDayOfMonth)
-        let monthlyDay = MonthlyDay(numberOfDays: numberOfDaysInMonth, firstDay: firstDayOfMonth, firstDayWeekday: firstDayWeekday)
+        let monthlyDay = Month(numberOfDays: numberOfDaysInMonth, firstDay: firstDayOfMonth, firstDayWeekday: firstDayWeekday)
         
         return monthlyDay
     }
     
-    private func getDaysInMonth(for baseDate: Date) -> [Day] {
-        
-        guard let monthlyData = try? getMonthlyDay(for: baseDate) else {
-            return []
-        }
-        
-        let numberOfDays = monthlyData.numberOfDays
-        let firstDayOfMonth = monthlyData.firstDay
-        let offsetInFirstRow = monthlyData.firstDayWeekday
-        
-        var days: [Day] = (1..<(numberOfDays + offsetInFirstRow)).map { day in
-            
-            let isIncludeInMonth = day >= offsetInFirstRow
-            let dayOffset = isIncludeInMonth ? (day - offsetInFirstRow) : -(offsetInFirstRow - day)
-            
-            let day = generateDay(offsetBy: dayOffset, for: firstDayOfMonth, isIncludeInMonth: isIncludeInMonth)
-            
-            return day
-        }
-        
-        days += generateStartOfNextMonth(using: firstDayOfMonth)
-        
-        return days
-    }
-    
-    private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> Day {
+    private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool, selectedDate: Date) -> Day {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
         let day = Day(date: date,
@@ -98,7 +69,30 @@ final class DateCalculator {
         return day
     }
     
-    private func generateStartOfNextMonth(using currentMonth: Date) -> [Day] {
+    private func generateDays(for baseDate: Date, selectedDate: Date) -> [Day] {
+        
+        guard let monthlyData = try? getMonth(for: baseDate) else {
+            return []
+        }
+        
+        let numberOfDays = monthlyData.numberOfDays
+        let firstDayOfMonth = monthlyData.firstDay
+        let offsetInFirstRow = monthlyData.firstDayWeekday
+        
+        let days: [Day] = (1..<(numberOfDays + offsetInFirstRow)).map { day in
+            
+            let isIncludeInMonth = day >= offsetInFirstRow
+            let dayOffset = isIncludeInMonth ? (day - offsetInFirstRow) : -(offsetInFirstRow - day)
+            
+            let day = generateDay(offsetBy: dayOffset, for: firstDayOfMonth, isIncludeInMonth: isIncludeInMonth, selectedDate: selectedDate)
+            
+            return day
+        }
+        
+        return days
+    }
+    
+    private func generateStartOfNextMonth(using currentMonth: Date, selectedDate: Date) -> [Day] {
         
         guard let lastDay = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: currentMonth) else {
             return []
@@ -110,7 +104,7 @@ final class DateCalculator {
         }
         
         let days: [Day] = (1...additionalDays).map {
-            generateDay(offsetBy: $0, for: lastDay, isIncludeInMonth: false)
+            generateDay(offsetBy: $0, for: lastDay, isIncludeInMonth: false, selectedDate: selectedDate)
         }
         
         return days

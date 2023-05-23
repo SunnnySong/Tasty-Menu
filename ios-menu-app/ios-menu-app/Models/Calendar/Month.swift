@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MonthlyDay {
+struct Month {
     
     let numberOfDays: Int
     let firstDay: Date

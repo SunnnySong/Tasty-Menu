@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
+struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
     typealias CellType = DateCell
