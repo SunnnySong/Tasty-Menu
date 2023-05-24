@@ -9,7 +9,6 @@ import Foundation
 
 struct DailyMenu {
     
-    let id = UUID()
     var isHeart: Bool
     var food: Food
     let date: Date
