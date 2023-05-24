@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Food {
+struct DailyFood {
     
     var image: UIImage
     var name: String
