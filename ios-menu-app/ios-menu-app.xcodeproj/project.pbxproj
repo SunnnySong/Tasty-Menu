@@ -44,8 +44,11 @@
 		809DCD422A1713390030F746 /* CalendarDiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */; };
 		809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */; };
 		809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4C2A174E6E0030F746 /* DateCell.swift */; };
+		80C806CF2A1E52FC00506FAC /* Menu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80C806CD2A1E52FC00506FAC /* Menu.xcdatamodeld */; };
+		80C806DE2A1E58E700506FAC /* Menu+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C806DA2A1E58E700506FAC /* Menu+CoreDataClass.swift */; };
+		80C806E02A1E58E700506FAC /* Food+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C806DC2A1E58E700506FAC /* Food+CoreDataClass.swift */; };
 		80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */; };
-		80EDF9C12A1DC0B9002DF0EA /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9C02A1DC0B9002DF0EA /* Food.swift */; };
+		80EDF9C12A1DC0B9002DF0EA /* DailyFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9C02A1DC0B9002DF0EA /* DailyFood.swift */; };
 		80EDF9C32A1DC0E2002DF0EA /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9C22A1DC0E2002DF0EA /* FoodCategory.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
@@ -115,8 +118,11 @@
 		809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDiffableDataSourceProvider.swift; sourceTree = "<group>"; };
 		809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellProvidable.swift; sourceTree = "<group>"; };
 		809DCD4C2A174E6E0030F746 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		80C806CE2A1E52FC00506FAC /* Menu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Menu.xcdatamodel; sourceTree = "<group>"; };
+		80C806DA2A1E58E700506FAC /* Menu+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataClass.swift"; sourceTree = "<group>"; };
+		80C806DC2A1E58E700506FAC /* Food+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataClass.swift"; sourceTree = "<group>"; };
 		80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMenu.swift; sourceTree = "<group>"; };
-		80EDF9C02A1DC0B9002DF0EA /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		80EDF9C02A1DC0B9002DF0EA /* DailyFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFood.swift; sourceTree = "<group>"; };
 		80EDF9C22A1DC0E2002DF0EA /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 		809DCCE62A1667BE0030F746 = {
 			isa = PBXGroup;
 			children = (
+				80C806DA2A1E58E700506FAC /* Menu+CoreDataClass.swift */,
+				80C806DC2A1E58E700506FAC /* Food+CoreDataClass.swift */,
 				809DCCF12A1667BE0030F746 /* ios-menu-app */,
 				809DCD082A1667BF0030F746 /* ios-menu-appTests */,
 				809DCD122A1667BF0030F746 /* ios-menu-appUITests */,
@@ -305,6 +313,7 @@
 		809DCD352A16712D0030F746 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				80C806CC2A1E52E700506FAC /* CoreData */,
 				80EDF9BD2A1DC082002DF0EA /* Menu */,
 				809DCD402A1712FC0030F746 /* Calendar */,
 				809DCD362A1671310030F746 /* TabBar */,
@@ -375,11 +384,19 @@
 			path = Implementation;
 			sourceTree = "<group>";
 		};
+		80C806CC2A1E52E700506FAC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				80C806CD2A1E52FC00506FAC /* Menu.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		80EDF9BD2A1DC082002DF0EA /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */,
-				80EDF9C02A1DC0B9002DF0EA /* Food.swift */,
+				80EDF9C02A1DC0B9002DF0EA /* DailyFood.swift */,
 				80EDF9C22A1DC0E2002DF0EA /* FoodCategory.swift */,
 			);
 			path = Menu;
@@ -549,12 +566,13 @@
 				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,
 				805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
-				80EDF9C12A1DC0B9002DF0EA /* Food.swift in Sources */,
+				80EDF9C12A1DC0B9002DF0EA /* DailyFood.swift in Sources */,
 				80F341D22A19411100F3C750 /* CALayer+.swift in Sources */,
 				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				800BDDE22A1C88F9001C6F17 /* Section.swift in Sources */,
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,
+				80C806E02A1E58E700506FAC /* Food+CoreDataClass.swift in Sources */,
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
 				809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */,
 				80F341DF2A1B2E8900F3C750 /* Month.swift in Sources */,
@@ -568,10 +586,12 @@
 				80F341DD2A1B2C5400F3C750 /* Day.swift in Sources */,
 				809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */,
 				80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */,
+				80C806CF2A1E52FC00506FAC /* Menu.xcdatamodeld in Sources */,
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,
 				80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */,
 				805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */,
 				80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */,
+				80C806DE2A1E58E700506FAC /* Menu+CoreDataClass.swift in Sources */,
 				809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -912,6 +932,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		80C806CD2A1E52FC00506FAC /* Menu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80C806CE2A1E52FC00506FAC /* Menu.xcdatamodel */,
+			);
+			currentVersion = 80C806CE2A1E52FC00506FAC /* Menu.xcdatamodel */;
+			path = Menu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 809DCCE72A1667BE0030F746 /* Project object */;
 }
