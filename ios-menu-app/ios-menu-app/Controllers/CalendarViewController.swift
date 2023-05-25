@@ -11,6 +11,7 @@ final class CalendarViewController: UIViewController {
     
     // MARK: Properties - Data
     private lazy var calendarManager = CalendarManager(collectionView: calendarView)
+    private let calendarCollectionViewDelegate = CalendarCollectionViewDelegate()
     
     // MARK: Properties - View
     private lazy var headerDateView: HeaderDateView = { [weak self] in
@@ -35,6 +36,7 @@ final class CalendarViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureHierarchy()
         configureDataSource()
+        configureCollectionViewDelegate()
     }
     
     // MARK: Functions - private
@@ -67,5 +69,11 @@ final class CalendarViewController: UIViewController {
     private func configureDataSource() {
         
         calendarManager.createDataSource()
+    }
+    
+    private func configureCollectionViewDelegate() {
+        
+        calendarView.delegate = calendarCollectionViewDelegate
+        calendarCollectionViewDelegate.calendarDelegate = calendarManager
     }
 }

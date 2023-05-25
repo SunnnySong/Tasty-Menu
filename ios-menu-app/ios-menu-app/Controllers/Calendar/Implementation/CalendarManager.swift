@@ -74,3 +74,10 @@ final class CalendarManager {
         return baseDate
     }
 }
+
+extension CalendarManager: CalendarDelegate {
+    
+    func calendarView(_ calendarView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}

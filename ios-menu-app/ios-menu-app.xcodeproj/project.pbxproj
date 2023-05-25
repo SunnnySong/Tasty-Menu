@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */; };
 		800BDDE22A1C88F9001C6F17 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BDDE12A1C88F9001C6F17 /* Section.swift */; };
+		802BE78A2A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */; };
+		802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
 		805B99E32A17E6DD003FB5BF /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */; };
 		805B99E52A17E6E3003FB5BF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		800BDDE12A1C88F9001C6F17 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */,
+				802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				805B99FA2A192837003FB5BF /* DateCalculator.swift */,
 				800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */,
 				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
+				802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -531,11 +537,13 @@
 				809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */,
 				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,
 				805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */,
+				802BE78A2A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
 				80F341D22A19411100F3C750 /* CALayer+.swift in Sources */,
 				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				800BDDE22A1C88F9001C6F17 /* Section.swift in Sources */,
+				802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */,
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
 				809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */,
