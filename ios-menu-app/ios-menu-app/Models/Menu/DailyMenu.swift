@@ -9,7 +9,7 @@ import Foundation
 
 struct DailyMenu {
     
+    let date: Date
     var isHeart: Bool
     var food: Food
-    let date: Date
 }

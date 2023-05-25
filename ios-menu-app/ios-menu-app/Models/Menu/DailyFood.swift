@@ -9,7 +9,7 @@ import UIKit
 
 struct DailyFood {
     
-    let id = UUID()
+//    let id = UUID()
     var image: UIImage?
     var name: String
     var category: FoodCategory
