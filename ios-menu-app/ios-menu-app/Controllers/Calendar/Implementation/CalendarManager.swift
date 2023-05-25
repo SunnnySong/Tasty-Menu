@@ -11,22 +11,15 @@ final class CalendarManager {
     
     // MARK: Properties - Data
     private let calendarDiffableDataSourceProvider = CalendarDiffableDataSourceProvider()
-    private let dateCalculator = DateCalculator()
-    
-    private var selectedDate: Date = Date() {
-        didSet {
-            // 초기 설정: 오늘, 이후에는 사용자가 클릭한 날짜로 selectedDate 변경
-            update()
-        }
-    }
+    private lazy var dateCalculator = DateCalculator(baseDate: baseDate)
 
     private var baseDate: Date = Date() {
         didSet {
-            daysData = dateCalculator.getDaysInMonth(for: baseDate, selectedDate: selectedDate)
+            daysData = dateCalculator.getDaysInMonth(for: baseDate)
         }
     }
     
-    private lazy var daysData: [Day] = dateCalculator.getDaysInMonth(for: baseDate, selectedDate: selectedDate) {
+    private lazy var daysData: [Day] = dateCalculator.getDaysInMonth(for: baseDate) {
         didSet {
             update()
         }
@@ -79,5 +72,9 @@ extension CalendarManager: CalendarDelegate {
     
     func calendarView(_ calendarView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        
+//        selectedDate = daysData[indexPath.item].date
+        
+        print(daysData[indexPath.item].date)
     }
 }
