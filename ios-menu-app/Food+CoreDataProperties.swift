@@ -16,7 +16,7 @@ extension Food {
         return NSFetchRequest<Food>(entityName: "Food")
     }
 
-    @NSManaged public var category: Int32
+    @NSManaged public var categoryValue: Int32
     @NSManaged public var image: Data?
     @NSManaged public var name: String?
 

@@ -63,7 +63,7 @@ final class CoreDataTest: XCTestCase {
         
         var foods = try! context.fetch(Food.fetchRequest())
         // foods에서 index로 접근해 값 변경 가능
-        foods[1].category = 10
+        foods[1].category = .korean
         
         foods.forEach { food in
             print(food.name, food.category)
@@ -84,10 +84,8 @@ final class CoreDataTest: XCTestCase {
         // Food ManagedObjectModel instance 생성
         let food1 = Food(context: context)
         food1.name = "양념게장"
-        food1.category = 1
         let food2 = Food(context: context)
         food2.name = "간장게장"
-        food2.category = 2
         
         // ver1) Menu ManagedObjectModel에 relationship인 food 추가할 수 있는 메서드 제공
         menu.addToFoods(food1)
@@ -136,6 +134,17 @@ final class CoreDataTest: XCTestCase {
         let fetchedFoods = try! context.fetch(Food.fetchRequest())
         for fetchedFood in fetchedFoods {
             print("Food: \(fetchedFood.name ?? "")")
+        }
+    }
+    
+    func test_CoreData에_Enum저장하기() {
+        
+        let food = Food(context: context)
+        food.category = .japanese
+        
+        let fetchedFoods = try! context.fetch(Food.fetchRequest())
+        for fetchedFood in fetchedFoods {
+            print("Food: \(fetchedFood.category)")
         }
     }
 }

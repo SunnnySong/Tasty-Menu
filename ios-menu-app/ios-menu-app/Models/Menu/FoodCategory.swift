@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FoodCategory {
+enum FoodCategory: Int32 {
     
     case korean
     case japanese
