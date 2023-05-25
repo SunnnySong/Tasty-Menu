@@ -137,6 +137,30 @@ final class CoreDataTest: XCTestCase {
         }
     }
     
+    func test_MenuEntity의_foods에서_특정food만_삭제하기() {
+        
+        let fetchedMenus = try! context.fetch(Menu.fetchRequest())
+        fetchedMenus.forEach { fetchedMenu in
+            print(fetchedMenu.foods?.count)
+        }
+        
+        guard let filteredMenus = fetchedMenus.filter { menu in
+            guard let menuDate = menu.date else {
+                return false
+            }
+            
+            return Calendar.current.isDate(menuDate, inSameDayAs: Date())
+        }.first else { return }
+        
+        // index로 특정 food 삭제
+        filteredMenus.removeFromFoods(at: 0)
+        
+        fetchedMenus.forEach { fetchedMenu in
+            print(fetchedMenu.foods?.count)
+        }
+        
+    }
+    
     func test_CoreData에_Enum저장하기() {
         
         let food = Food(context: context)
