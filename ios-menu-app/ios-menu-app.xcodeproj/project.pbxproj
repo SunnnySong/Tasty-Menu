@@ -13,6 +13,7 @@
 		802BE77A2A1F2EDE005174E6 /* Food+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7762A1F2EDE005174E6 /* Food+CoreDataProperties.swift */; };
 		802BE77B2A1F2EDE005174E6 /* Menu+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */; };
 		802BE77C2A1F2EDE005174E6 /* Menu+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7782A1F2EDE005174E6 /* Menu+CoreDataProperties.swift */; };
+		802BE77F2A1F4CAC005174E6 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE77E2A1F4CAB005174E6 /* PersistenceManager.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
 		805B99E32A17E6DD003FB5BF /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */; };
 		805B99E52A17E6E3003FB5BF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */; };
@@ -85,6 +86,7 @@
 		802BE7762A1F2EDE005174E6 /* Food+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802BE7782A1F2EDE005174E6 /* Menu+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		802BE77E2A1F4CAB005174E6 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		802BE77D2A1F4C97005174E6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				802BE77E2A1F4CAB005174E6 /* PersistenceManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		805B99D62A17606E003FB5BF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +284,7 @@
 				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
 				809DCD312A16706F0030F746 /* ListViewController.swift */,
 				809DCD332A1670920030F746 /* PushAlarmViewController.swift */,
+				802BE77D2A1F4C97005174E6 /* CoreData */,
 				805B99D62A17606E003FB5BF /* Calendar */,
 				809DCD2E2A166FEB0030F746 /* TabBar */,
 			);
@@ -599,6 +610,7 @@
 				802BE77A2A1F2EDE005174E6 /* Food+CoreDataProperties.swift in Sources */,
 				80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */,
 				805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */,
+				802BE77F2A1F4CAC005174E6 /* PersistenceManager.swift in Sources */,
 				80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */,
 				809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */,
 			);

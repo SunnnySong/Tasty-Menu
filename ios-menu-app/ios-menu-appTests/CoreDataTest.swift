@@ -13,8 +13,6 @@ final class CoreDataTest: XCTestCase {
     
     var sut: String!
     
-    // appDelegate
-    var appDelegate: AppDelegate!
     // Context 생성
     var context: NSManagedObjectContext!
     
@@ -25,8 +23,7 @@ final class CoreDataTest: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         
-        appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        context = appDelegate.persistentContainer.viewContext
+        context = PersistenceManager.shared.context
         
         menuEntity = NSEntityDescription.entity(forEntityName: "Menu", in: context)
         foodEntity = NSEntityDescription.entity(forEntityName: "Food", in: context)
@@ -34,9 +31,6 @@ final class CoreDataTest: XCTestCase {
     
     override func tearDownWithError() throws {
         sut = nil
-        
-        menuEntity = nil
-        foodEntity = nil
         try super.tearDownWithError()
     }
     
@@ -167,6 +161,16 @@ final class CoreDataTest: XCTestCase {
         food.category = .japanese
         
         let fetchedFoods = try! context.fetch(Food.fetchRequest())
+        for fetchedFood in fetchedFoods {
+            print("Food: \(fetchedFood.category)")
+        }
+    }
+    
+    func test_PersistenceManager_함수작동여부확인() {
+        
+        let fetchedFoods: [Food] = PersistenceManager.shared.fetch()
+        
+        
         for fetchedFood in fetchedFoods {
             print("Food: \(fetchedFood.category)")
         }
