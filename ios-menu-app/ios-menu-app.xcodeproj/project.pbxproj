@@ -34,7 +34,6 @@
 		809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF62A1667BE0030F746 /* CalendarViewController.swift */; };
 		809DCCFC2A1667BF0030F746 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809DCCFB2A1667BF0030F746 /* Assets.xcassets */; };
 		809DCCFF2A1667BF0030F746 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 809DCCFD2A1667BF0030F746 /* LaunchScreen.storyboard */; };
-		809DCD0A2A1667BF0030F746 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD092A1667BF0030F746 /* CoreDataTest.swift */; };
 		809DCD142A1667BF0030F746 /* ios_menu_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD132A1667BF0030F746 /* ios_menu_appUITests.swift */; };
 		809DCD162A1667BF0030F746 /* ios_menu_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD152A1667BF0030F746 /* ios_menu_appUITestsLaunchTests.swift */; };
 		809DCD292A166BC10030F746 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD272A166BC10030F746 /* Palette.swift */; };
@@ -620,7 +619,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809DCD0A2A1667BF0030F746 /* CoreDataTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
