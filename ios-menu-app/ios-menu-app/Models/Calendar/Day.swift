@@ -10,7 +10,6 @@ import Foundation
 struct Day: Hashable {
     
     let date: Date
-    var isSelected: Bool
     let isIncludeInMonth: Bool
     var hasHeart: Bool = false
 }

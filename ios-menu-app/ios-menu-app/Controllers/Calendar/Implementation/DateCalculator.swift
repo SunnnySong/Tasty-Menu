@@ -67,7 +67,6 @@ struct DateCalculator {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
         let day = Day(date: date,
-                      isSelected: calendar.isDate(date, inSameDayAs: selectedDate),
                       isIncludeInMonth: isIncludeInMonth)
         
         return day
