@@ -1,5 +1,5 @@
 //
-//  CalendarHeaderDateView.swift
+//  HeaderDateView.swift
 //  ios-menu-app
 //
 //  Created by Sunny on 2023/05/21.
@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class CalendarHeaderDateView: UIView {
+final class HeaderDateView: UIView {
+    
+    enum HeaderType {
+        case calendar
+        case menu
+    }
     
     // MARK: Properties - Data
     var previousButtonAction: (() -> Void)?
@@ -15,26 +20,14 @@ final class CalendarHeaderDateView: UIView {
     
     private var headerDate: Date {
         didSet {
-            updateDateLabel()
+            updateDateLabel(type: headerType)
         }
     }
     
+    private var headerType: HeaderType
+    
     // MARK: Properties - View
-    private lazy var totalStackView: UIStackView = {
-        let stackView = UIStackView(frame: .zero)
-        stackView.addArrangedSubviews([previousButton,
-                                       SeparateBarView(width: 1, height: 12),
-                                       dateLabel,
-                                       SeparateBarView(width: 1, height: 12),
-                                       nextButton])
-        stackView.distribution = .fillProportionally
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.clipsToBounds = true
-        stackView.layer.borderWidth = 1
-        stackView.layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
-        stackView.layer.cornerRadius = 20
-        return stackView
-    }()
+    private lazy var totalStackView = totalStackView(type: headerType)
     
     private lazy var previousButton: UIButton = {
         let button = UIButton()
@@ -64,18 +57,41 @@ final class CalendarHeaderDateView: UIView {
         return label
     }()
     
+    private let heartButton: UIButton = {
+        let button = UIButton()
+        let heartImage = UIImage(systemName: "suit.heart.fill")
+        button.setImage(heartImage, for: .normal)
+        button.tintColor = .designSystem(.mainOrange)
+        button.contentEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 10)
+        return button
+    }()
+    
     // MARK: Lifecycle
     init(didTapPreviousButton: @escaping (() -> Void),
          didTapNextButton: @escaping (() -> Void),
-         headerDate: Date
+         headerDate: Date,
+         type: HeaderType
     ) {
         self.previousButtonAction = didTapPreviousButton
         self.nextButtonAction = didTapNextButton
         self.headerDate = headerDate
+        self.headerType = type
         super.init(frame: .zero)
         
         configureHeaderDateView()
-        updateDateLabel()
+        updateDateLabel(type: type)
+        setupShadow()
+    }
+    
+    init(headerDate: Date,
+         type: HeaderType) {
+        
+        self.headerDate = headerDate
+        self.headerType = type
+        super.init(frame: .zero)
+        
+        configureHeaderDateView()
+        updateDateLabel(type: type)
         setupShadow()
     }
     
@@ -96,10 +112,44 @@ final class CalendarHeaderDateView: UIView {
     }
     
     // MARK: Functions - Private
-    private func updateDateLabel() {
+    private func totalStackView(type: HeaderType) -> UIStackView {
+        
+        let stackView = UIStackView(frame: .zero)
+        
+        switch type {
+        case .calendar:
+            stackView.addArrangedSubviews([previousButton,
+                                           SeparateBarView(width: 1, height: 12),
+                                           dateLabel,
+                                           SeparateBarView(width: 1, height: 12),
+                                           nextButton])
+        case .menu:
+            stackView.addArrangedSubviews([dateLabel,
+                                           SeparateBarView(width: 1, height: 12),
+                                           heartButton
+                                          ])
+        }
+       
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+        stackView.layer.borderWidth = 1
+        stackView.layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
+        stackView.layer.cornerRadius = 20
+        return stackView
+    }
+    
+    private func updateDateLabel(type: HeaderType) {
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY년 M월"
+        
+        switch type {
+        case .calendar:
+            formatter.dateFormat = "YYYY년 M월"
+        case .menu:
+            formatter.dateFormat = "M월 d일 EEEE"
+            formatter.locale = Locale(identifier: "ko_KR")
+        }
         
         let date = formatter.string(from: headerDate)
         dateLabel.text = date
