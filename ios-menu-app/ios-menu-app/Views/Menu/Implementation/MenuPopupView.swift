@@ -14,7 +14,7 @@ final class MenuPopupView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .blue
+        stackView.backgroundColor = .systemBackground
         return stackView
     }()
     
@@ -22,7 +22,6 @@ final class MenuPopupView: UIView {
     
     private let menuCollectionView = MenuCollectionView(frame: .zero)
 
-    
     // MARK: Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +50,7 @@ final class MenuPopupView: UIView {
         
         NSLayoutConstraint.activate([
             popupStackView.widthAnchor.constraint(equalToConstant: popupStackViewWidth),
+            popupStackView.heightAnchor.constraint(equalToConstant: popupStackViewWidth),
             popupStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             popupStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])

@@ -25,9 +25,5 @@ final class MenuPopupViewController: UIViewController {
     private func configureHierarchy() {
         
         view.addSubview(menuPopupView)
-        
     }
-    
-  
-
 }
