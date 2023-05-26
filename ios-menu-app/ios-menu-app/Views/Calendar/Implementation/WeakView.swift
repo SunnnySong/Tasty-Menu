@@ -36,14 +36,14 @@ final class WeakView: UICollectionReusableView {
     // MARK: Functions - Private
     private func makeWeakLabel(title: String) -> UILabel {
         
-        let label = UILabel()
-        label.font = UIFont.pretendard(size: 14, weight: .semibold)
-        label.textAlignment = .center
-        label.text = title
-        
+        let label = PretendardLabel(size: 14,
+                                    weight: .semibold,
+                                    color: .designSystem(.mainBlack),
+                                    textAlignment: .center)
         if label.text == weakTitle[0] {
             label.textColor = .systemRed
         }
+        label.text = title
         return label
     }
     

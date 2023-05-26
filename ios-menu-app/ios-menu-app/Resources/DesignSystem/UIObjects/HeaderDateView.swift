@@ -45,13 +45,10 @@ final class HeaderDateView: UIView {
         return button
     }()
     
-    private var dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = .pretendard(size: 16, weight: .bold)
-        label.textColor = .designSystem(.mainBlack)
-        label.textAlignment = .center
-        return label
-    }()
+    private var dateLabel: UILabel = PretendardLabel(size: 16,
+                                                     weight: .bold,
+                                                     color: .designSystem(.mainBlack),
+                                                     textAlignment: .center)
     
     private let heartButton: UIButton = {
         let button = UIButton(imageName: .heartFill,

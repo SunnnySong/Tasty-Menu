@@ -21,9 +21,10 @@ final class DateCell: CollectionViewCellProvidable {
     
     // MARK: Properties - View
     private let numberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .pretendard(size: 12, weight: .bold)
+        let label =  PretendardLabel(size: 12,
+                                     weight: .bold,
+                                     color: .designSystem(.mainBlack),
+                                     textAlignment: .center)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
