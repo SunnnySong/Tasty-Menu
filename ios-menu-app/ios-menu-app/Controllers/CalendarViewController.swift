@@ -14,8 +14,8 @@ final class CalendarViewController: UIViewController {
     private let calendarCollectionViewDelegate = CalendarCollectionViewDelegate()
     
     // MARK: Properties - View
-    private lazy var headerDateView: HeaderDateView = { [weak self] in
-        HeaderDateView (
+    private lazy var headerDateView: CalendarHeaderDateView = { [weak self] in
+        CalendarHeaderDateView (
             didTapPreviousButton: {
                 let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? .today
                 self?.headerDateView.updateHeaderDate(previousBaseDate)

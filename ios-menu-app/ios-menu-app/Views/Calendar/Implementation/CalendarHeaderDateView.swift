@@ -1,5 +1,5 @@
 //
-//  HeaderDateView.swift
+//  CalendarHeaderDateView.swift
 //  ios-menu-app
 //
 //  Created by Sunny on 2023/05/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HeaderDateView: UIView {
+final class CalendarHeaderDateView: UIView {
     
     // MARK: Properties - Data
     var previousButtonAction: (() -> Void)?

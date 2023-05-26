@@ -50,9 +50,10 @@
 		809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCD4C2A174E6E0030F746 /* DateCell.swift */; };
 		80D4BCDB2A20872E009FEFC5 /* MenuPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */; };
 		80D4BCDD2A209386009FEFC5 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCDC2A209386009FEFC5 /* Date+.swift */; };
+		80D4BCDF2A209D7A009FEFC5 /* MenuHeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCDE2A209D7A009FEFC5 /* MenuHeaderDateView.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
-		80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */; };
+		80F341D62A1A0F3F00F3C750 /* CalendarHeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D52A1A0F3F00F3C750 /* CalendarHeaderDateView.swift */; };
 		80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341DA2A1A714500F3C750 /* SeparateBarView.swift */; };
 		80F341DD2A1B2C5400F3C750 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341DC2A1B2C5400F3C750 /* Day.swift */; };
 		80F341DF2A1B2E8900F3C750 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341DE2A1B2E8900F3C750 /* Month.swift */; };
@@ -124,9 +125,10 @@
 		809DCD4C2A174E6E0030F746 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupView.swift; sourceTree = "<group>"; };
 		80D4BCDC2A209386009FEFC5 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		80D4BCDE2A209D7A009FEFC5 /* MenuHeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderDateView.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
-		80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDateView.swift; sourceTree = "<group>"; };
+		80F341D52A1A0F3F00F3C750 /* CalendarHeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderDateView.swift; sourceTree = "<group>"; };
 		80F341DA2A1A714500F3C750 /* SeparateBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateBarView.swift; sourceTree = "<group>"; };
 		80F341DC2A1B2C5400F3C750 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		80F341DE2A1B2E8900F3C750 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
@@ -173,27 +175,12 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		802BE7932A20830B005174E6 /* CollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				802BE7942A208329005174E6 /* Implementation */,
-			);
-			path = CollectionView;
-			sourceTree = "<group>";
-		};
-		802BE7942A208329005174E6 /* Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */,
-			);
-			path = Implementation;
-			sourceTree = "<group>";
-		};
 		802BE7952A20833E005174E6 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
 				802BE7962A208359005174E6 /* MenuCollectionView.swift */,
 				80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */,
+				80D4BCDE2A209D7A009FEFC5 /* MenuHeaderDateView.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -373,7 +360,6 @@
 		809DCD392A16720D0030F746 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				802BE7932A20830B005174E6 /* CollectionView */,
 				802BE7922A2082D6005174E6 /* Menu */,
 				809DCD3D2A1711070030F746 /* Calendar */,
 				809DCD3A2A1672120030F746 /* TabBar */,
@@ -422,6 +408,7 @@
 				809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */,
 				809DCD4C2A174E6E0030F746 /* DateCell.swift */,
 				805B9A002A192AF3003FB5BF /* WeakView.swift */,
+				80F341D52A1A0F3F00F3C750 /* CalendarHeaderDateView.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -591,7 +578,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */,
-				80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */,
+				80F341D62A1A0F3F00F3C750 /* CalendarHeaderDateView.swift in Sources */,
+				80D4BCDF2A209D7A009FEFC5 /* MenuHeaderDateView.swift in Sources */,
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
