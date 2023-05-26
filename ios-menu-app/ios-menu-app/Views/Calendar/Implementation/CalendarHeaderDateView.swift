@@ -21,14 +21,18 @@ final class CalendarHeaderDateView: UIView {
     
     // MARK: Properties - View
     private lazy var totalStackView: UIStackView = {
-        let stackView = UIStackView(frame: self.bounds)
+        let stackView = UIStackView(frame: .zero)
         stackView.addArrangedSubviews([previousButton,
                                        SeparateBarView(width: 1, height: 12),
                                        dateLabel,
                                        SeparateBarView(width: 1, height: 12),
                                        nextButton])
-        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+        stackView.layer.borderWidth = 1
+        stackView.layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
+        stackView.layer.cornerRadius = 20
         return stackView
     }()
     
@@ -82,8 +86,7 @@ final class CalendarHeaderDateView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let headerDateViewHeight = frame.height
-        layer.cornerRadius = headerDateViewHeight / 2
+        configureHierarchy()
     }
     
     // MARK: Functions - Public
@@ -104,18 +107,25 @@ final class CalendarHeaderDateView: UIView {
     
     private func configureHeaderDateView() {
         
-        clipsToBounds = true
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
-        
         backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
-        addSubview(totalStackView)
     }
     
     private func setupShadow() {
         
-        layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
+        totalStackView.layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
+    }
+    
+    private func configureHierarchy() {
+        
+        addSubview(totalStackView)
+
+        NSLayoutConstraint.activate([
+            totalStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            totalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            totalStackView.widthAnchor.constraint(equalToConstant: self.frame.width * 0.59),
+            totalStackView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     @objc private func didTapPreviousButton() {

@@ -94,7 +94,7 @@ final class MenuHeaderDateView: UIView {
     
     private func setupShadow() {
         
-        layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
+        totalStackView.layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
     }
     
     private func configureHierarchy() {
