@@ -13,9 +13,11 @@ final class DateCell: CollectionViewCellProvidable {
     
     override var isSelected: Bool {
         willSet {
-            self.setSelected(newValue)
+            self.setSelected(newValue, isIncludeInMonth: isIncludeInMonth)
         }
     }
+    
+    private var isIncludeInMonth: Bool = true
     
     // MARK: Properties - View
     private let numberLabel: UILabel = {
@@ -47,6 +49,7 @@ final class DateCell: CollectionViewCellProvidable {
         super.init(frame: frame)
         
         configureHierarchy()
+        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
     }
     
     required init?(coder: NSCoder) {
@@ -65,21 +68,20 @@ final class DateCell: CollectionViewCellProvidable {
         numberLabel.text = dayData.number
         heartImageView.isHidden = !dayData.hasHeart
         
-        setSelected(self.isSelected)
-        
         if !dayData.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
+        
+        self.isIncludeInMonth = dayData.isIncludeInMonth
     }
     
-    private func setSelected(_ selected: Bool) {
+    private func setSelected(_ selected: Bool, isIncludeInMonth: Bool) {
         
         numberLabel.textColor = selected ? .white : .designSystem(.mainBlack)
+        selectionView.isHidden = !selected
         
-        if selected {
-            selectionView.isHidden = false
-        } else {
-            selectionView.isHidden = true
+        if !isIncludeInMonth {
+            numberLabel.textColor = selected ? .white : .designSystem(.calendarDayGray)
         }
     }
     

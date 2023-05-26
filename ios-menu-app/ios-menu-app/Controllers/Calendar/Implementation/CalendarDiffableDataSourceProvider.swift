@@ -13,6 +13,8 @@ struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvi
     typealias CellType = DateCell
     typealias SectionType = Section
     typealias DataSource = UICollectionViewDiffableDataSource<Section, DateCell.Item>
+    
+    private let calendar = Calendar(identifier: .gregorian)
         
     // MARK: Functions - Public
     func dataSource(collectionView: UICollectionView) -> DataSource? {
@@ -37,7 +39,6 @@ struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvi
         collectionView.register(CellType.self)
         let cell: CellType = collectionView.dequeue(for: indexPath)
 
-        let calendar = Calendar(identifier: .gregorian)
         if calendar.isDateInToday(item.date) {
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
         }
