@@ -18,11 +18,15 @@ final class MenuPopupView: UIView {
         return stackView
     }()
     
-    private let headerDateView = HeaderDateView {
-        print("hih")
-    } didTapNextButton: {
-        print("hello")
-    }
+    private let headerDateView = HeaderDateView(
+        didTapPreviousButton: {
+            print("hihi")
+        },
+        didTapNextButton: {
+            print(":hello")
+        },
+        headerDate: .today
+    )
     
     private let menuCollectionView = MenuCollectionView(frame: .zero)
 

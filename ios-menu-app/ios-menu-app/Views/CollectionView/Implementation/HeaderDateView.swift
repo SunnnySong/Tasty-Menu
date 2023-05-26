@@ -13,7 +13,7 @@ final class HeaderDateView: UIView {
     var previousButtonAction: (() -> Void)?
     var nextButtonAction: (() -> Void)?
     
-    private var headerDate: Date = Date() {
+    private var headerDate: Date {
         didSet {
             updateDateLabel()
         }
@@ -62,10 +62,12 @@ final class HeaderDateView: UIView {
     
     // MARK: Lifecycle
     init(didTapPreviousButton: @escaping (() -> Void),
-         didTapNextButton: @escaping (() -> Void)
+         didTapNextButton: @escaping (() -> Void),
+         headerDate: Date
     ) {
         self.previousButtonAction = didTapPreviousButton
         self.nextButtonAction = didTapNextButton
+        self.headerDate = headerDate
         super.init(frame: .zero)
         
         configureHeaderDateView()

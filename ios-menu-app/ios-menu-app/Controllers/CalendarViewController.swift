@@ -17,13 +17,14 @@ final class CalendarViewController: UIViewController {
     private lazy var headerDateView: HeaderDateView = { [weak self] in
         HeaderDateView (
             didTapPreviousButton: {
-                let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? Date()
+                let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? .today
                 self?.headerDateView.updateHeaderDate(previousBaseDate)
             },
             didTapNextButton: {
-                let nextBaseDate = self?.calendarManager.moveToNextMonth() ?? Date()
+                let nextBaseDate = self?.calendarManager.moveToNextMonth() ?? .today
                 self?.headerDateView.updateHeaderDate(nextBaseDate)
-            }
+            },
+            headerDate: .today
         )
     }()
     
