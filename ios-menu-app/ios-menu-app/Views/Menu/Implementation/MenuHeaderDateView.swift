@@ -18,13 +18,17 @@ final class MenuHeaderDateView: UIView {
     
     // MARK: Properties - View
     private lazy var totalStackView: UIStackView = {
-        let stackView = UIStackView(frame: self.bounds)
+        let stackView = UIStackView(frame: .zero)
         stackView.addArrangedSubviews([dateLabel,
                                        SeparateBarView(width: 1, height: 12),
                                        heartButton
                                       ])
-        stackView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+        stackView.layer.borderWidth = 1
+        stackView.layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
+        stackView.layer.cornerRadius = 20
         return stackView
     }()
     
@@ -41,6 +45,7 @@ final class MenuHeaderDateView: UIView {
         let heartImage = UIImage(systemName: "suit.heart.fill")
         button.setImage(heartImage, for: .normal)
         button.tintColor = .designSystem(.mainOrange)
+        button.contentEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 10)
         return button
     }()
     
@@ -60,9 +65,8 @@ final class MenuHeaderDateView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let headerDateViewHeight = frame.height
-        layer.cornerRadius = headerDateViewHeight / 2
+
+        configureHierarchy()
     }
     
     // MARK: Functions - Public
@@ -72,28 +76,36 @@ final class MenuHeaderDateView: UIView {
     }
     
     // MARK: Functions - Private
+    private func configureHeaderDateView() {
+        
+        backgroundColor = .systemBackground
+//        translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     private func updateDateLabel() {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "M월 d일 EEEE"
+        formatter.locale = Locale(identifier: "ko_KR")
         
         let date = formatter.string(from: headerDate)
         dateLabel.text = date
     }
     
-    private func configureHeaderDateView() {
-        
-        clipsToBounds = true
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.designSystem(.mainOrange)?.cgColor
-        
-        backgroundColor = .systemBackground
-        translatesAutoresizingMaskIntoConstraints = false
-        addSubview(totalStackView)
-    }
-    
     private func setupShadow() {
         
         layer.applySketchShadow(color: .designSystem(.mainBlack)!, alpha: 0.1, x: 0, y: 6, blur: 24, spread: 0)
+    }
+    
+    private func configureHierarchy() {
+        
+        addSubview(totalStackView)
+
+        NSLayoutConstraint.activate([
+            totalStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            totalStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            totalStackView.widthAnchor.constraint(equalToConstant: self.frame.width * 0.59),
+            totalStackView.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
 }
