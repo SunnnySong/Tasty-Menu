@@ -9,6 +9,7 @@ import UIKit
 
 final class TabBarView: UITabBar {
     
+    // MARK: Lifecycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -23,12 +24,13 @@ final class TabBarView: UITabBar {
         return sizeThatFits
     }
     
+    // MARK: Functions - Private
     private func configureTabBar() {
         
         self.backgroundColor = .systemBackground
-        self.tintColor = .custom(.mainOrange)
-        self.unselectedItemTintColor = .custom(.tabBarGray)
-        self.layer.borderColor = UIColor.custom(.tabBarSeparateGray)?.cgColor
+        self.tintColor = .designSystem(.mainOrange)
+        self.unselectedItemTintColor = .designSystem(.tabBarGray)
+        self.layer.borderColor = UIColor.designSystem(.tabBarSeparateGray)?.cgColor
         self.layer.borderWidth = 1
     }
 

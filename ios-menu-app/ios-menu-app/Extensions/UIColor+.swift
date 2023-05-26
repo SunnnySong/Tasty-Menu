@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    class func custom(_ color: Palette) -> UIColor? {
+    class func designSystem(_ color: Palette) -> UIColor? {
         return UIColor(named: color.rawValue)
     }
 }

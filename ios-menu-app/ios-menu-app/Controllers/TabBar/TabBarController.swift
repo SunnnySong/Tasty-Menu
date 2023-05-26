@@ -9,6 +9,7 @@ import UIKit
 
 final class TabBarController: UITabBarController {
     
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +17,7 @@ final class TabBarController: UITabBarController {
         configureViewControllers()
     }
     
+    // MARK: Functions - Private
     private func configureViewControllers() {
     
         self.viewControllers = TabBarModel.allCases.map { tabBarViewController($0) }
