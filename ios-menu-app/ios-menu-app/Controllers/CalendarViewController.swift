@@ -71,9 +71,10 @@ final class CalendarViewController: UIViewController {
         calendarManager.createDataSource()
     }
     
+    // MARK: CollectionView delegate 설정
     private func configureCollectionViewDelegate() {
         
-        calendarView.delegate = calendarCollectionViewDelegate
-        calendarCollectionViewDelegate.calendarDelegate = calendarManager
+//        calendarView.delegate = calendarCollectionViewDelegate
+//        calendarCollectionViewDelegate.calendarDelegate = calendarManager
     }
 }

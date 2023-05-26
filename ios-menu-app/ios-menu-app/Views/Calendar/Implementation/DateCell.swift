@@ -8,8 +8,14 @@
 import UIKit
 
 final class DateCell: CollectionViewCellProvidable {
-
+    
     typealias Item = Day
+    
+    override var isSelected: Bool {
+        willSet {
+            self.setSelected(newValue)
+        }
+    }
     
     // MARK: Properties - View
     private let numberLabel: UILabel = {
@@ -57,15 +63,24 @@ final class DateCell: CollectionViewCellProvidable {
     func configure(with dayData: Day) {
         
         numberLabel.text = dayData.number
+        heartImageView.isHidden = !dayData.hasHeart
         
-        if dayData.isIncludeInMonth {
-            numberLabel.textColor = dayData.isSelected ? .white : .designSystem(.mainBlack)
-        } else {
+        setSelected(self.isSelected)
+        
+        if !dayData.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
+    }
+    
+    private func setSelected(_ selected: Bool) {
         
-        selectionView.isHidden = !dayData.isSelected
-        heartImageView.isHidden = !dayData.hasHeart
+        numberLabel.textColor = selected ? .white : .designSystem(.mainBlack)
+        
+        if selected {
+            selectionView.isHidden = false
+        } else {
+            selectionView.isHidden = true
+        }
     }
     
     // MARK: Functions - Private

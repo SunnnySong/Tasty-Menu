@@ -67,14 +67,3 @@ final class CalendarManager {
         return baseDate
     }
 }
-
-extension CalendarManager: CalendarDelegate {
-    
-    func calendarView(_ calendarView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-//        selectedDate = daysData[indexPath.item].date
-        
-        print(daysData[indexPath.item].date)
-    }
-}

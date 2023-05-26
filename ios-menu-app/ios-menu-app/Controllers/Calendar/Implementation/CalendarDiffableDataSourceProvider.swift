@@ -37,6 +37,10 @@ struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvi
         collectionView.register(CellType.self)
         let cell: CellType = collectionView.dequeue(for: indexPath)
 
+        let calendar = Calendar(identifier: .gregorian)
+        if calendar.isDateInToday(item.date) {
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+        }
         cell.configure(with: item)
 
         return cell
