@@ -49,7 +49,6 @@ final class DateCell: CollectionViewCellProvidable {
         super.init(frame: frame)
         
         configureHierarchy()
-        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
     }
     
     required init?(coder: NSCoder) {
@@ -67,12 +66,13 @@ final class DateCell: CollectionViewCellProvidable {
         
         numberLabel.text = dayData.number
         heartImageView.isHidden = !dayData.hasHeart
-        
+
         if !dayData.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
-        
+
         self.isIncludeInMonth = dayData.isIncludeInMonth
+        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
     }
     
     private func setSelected(_ selected: Bool, isIncludeInMonth: Bool) {
