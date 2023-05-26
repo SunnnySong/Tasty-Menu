@@ -30,22 +30,18 @@ final class HeaderDateView: UIView {
     private lazy var totalStackView = totalStackView(type: headerType)
     
     private lazy var previousButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "chevron.left")
-        button.setImage(image, for: .normal)
-        button.imageView?.tintColor = .designSystem(.mainBlack)
+        let button = UIButton(imageName: .chevronLeft,
+                              imageColor: .designSystem(.mainBlack),
+                              insets: .init(top: 0, left: 15, bottom: 0, right: 15 / 2))
         button.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
-        button.contentEdgeInsets = .init(top: 0, left: 15, bottom: 0, right: 15 / 2)
         return button
     }()
     
     private lazy var nextButton: UIButton = {
-        let button = UIButton()
-        let image = UIImage(systemName: "chevron.right")
-        button.setImage(image, for: .normal)
-        button.imageView?.tintColor = .designSystem(.mainBlack)
+        let button = UIButton(imageName: .chevronRight,
+                              imageColor: .designSystem(.mainBlack),
+                              insets: .init(top: 0, left: 15 / 2, bottom: 0, right: 15))
         button.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
-        button.contentEdgeInsets = .init(top: 0, left: 15 / 2, bottom: 0, right: 15)
         return button
     }()
     
@@ -58,11 +54,9 @@ final class HeaderDateView: UIView {
     }()
     
     private let heartButton: UIButton = {
-        let button = UIButton()
-        let heartImage = UIImage(systemName: "suit.heart.fill")
-        button.setImage(heartImage, for: .normal)
-        button.tintColor = .designSystem(.mainOrange)
-        button.contentEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 10)
+        let button = UIButton(imageName: .heartFill,
+                              imageColor: .designSystem(.mainOrange),
+                              insets: .init(top: 0, left: 10, bottom: 0, right: 10))
         return button
     }()
     
