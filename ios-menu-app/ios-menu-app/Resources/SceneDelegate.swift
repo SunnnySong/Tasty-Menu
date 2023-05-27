@@ -20,11 +20,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController(rootViewController: TabBarController())
         
         configureNavigationBarAppearance(navigationBar: navigationController.navigationBar)
-        
-        navigationController.navigationBar.topItem?.title = "야곰 아카데미 식단표"
+        configureNavigationTitle(navigationController: navigationController)
+     
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
+    }
+    
+    private func configureNavigationTitle(navigationController: UINavigationController) {
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "야곰 아카데미 급식"
+        titleLabel.font = .pretendard(size: ._22, weight: .bold)
+        titleLabel.textColor = .white
+        
+        let rightBarButtonItem = UIBarButtonItem(customView: titleLabel)
+        navigationController.topViewController?.navigationItem.leftBarButtonItem = rightBarButtonItem
     }
     
     private func configureNavigationBarAppearance(navigationBar: UINavigationBar) {
