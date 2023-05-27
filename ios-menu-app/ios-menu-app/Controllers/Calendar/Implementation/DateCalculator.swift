@@ -21,7 +21,7 @@ struct DateCalculator {
     func calculateNextMonth(by baseDate: Date) -> Date {
 
         guard let nextMonth = calendar.date(byAdding: .month, value: 1, to: baseDate) else {
-            return Date()
+            return .today
         }
         return nextMonth
     }
@@ -29,7 +29,7 @@ struct DateCalculator {
     func calculatePreviousMonth(by baseDate: Date) -> Date {
 
         guard let previousMonth = calendar.date(byAdding: .month, value: -1, to: baseDate) else {
-            return Date()
+            return .today
         }
         return previousMonth
     }
