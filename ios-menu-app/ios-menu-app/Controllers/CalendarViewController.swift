@@ -57,7 +57,7 @@ final class CalendarViewController: UIViewController {
             headerDateView.widthAnchor.constraint(equalToConstant: headerDateViewWidth),
             headerDateView.heightAnchor.constraint(equalToConstant: headerDateViewHeight),
             headerDateView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            headerDateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: headerTopConstant),
+            headerDateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerDateView.bottomAnchor.constraint(equalTo: calendarView.topAnchor, constant: -headerTopConstant),
             
             calendarView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),

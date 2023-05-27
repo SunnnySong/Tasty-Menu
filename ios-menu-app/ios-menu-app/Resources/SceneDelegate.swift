@@ -30,23 +30,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func configureNavigationTitle(navigationController: UINavigationController) {
         
         let titleLabel = UILabel()
-        titleLabel.text = "야곰 아카데미 급식"
-        titleLabel.font = .pretendard(size: ._22, weight: .bold)
+        titleLabel.text = "야곰 아카데미 식단표"
+        titleLabel.font = .pretendard(size: 21, weight: .bold)
         titleLabel.textColor = .white
-        
+
         let rightBarButtonItem = UIBarButtonItem(customView: titleLabel)
         navigationController.topViewController?.navigationItem.leftBarButtonItem = rightBarButtonItem
+        
+        navigationController.navigationBar.topItem?.prompt = ""
     }
     
     private func configureNavigationBarAppearance(navigationBar: UINavigationBar) {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .custom(.mainOrange)
-        appearance.titleTextAttributes = [
-            .font: UIFont.pretendard(size: ._22, weight: .bold),
-            .foregroundColor: UIColor.white
-        ]
+        appearance.backgroundColor = .designSystem(.mainOrange)
 
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
