@@ -13,16 +13,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: TabBarController())
-        window.makeKeyAndVisible()
+        let navigationController = UINavigationController(rootViewController: TabBarController())
         
+        configureNavigationBarAppearance(navigationBar: navigationController.navigationBar)
+        configureNavigationTitle(navigationController: navigationController)
+     
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
         self.window = window
+    }
+    
+    private func configureNavigationTitle(navigationController: UINavigationController) {
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "야곰 아카데미 식단표"
+        titleLabel.font = .pretendard(size: 21, weight: .bold)
+        titleLabel.textColor = .white
+
+        let rightBarButtonItem = UIBarButtonItem(customView: titleLabel)
+        navigationController.topViewController?.navigationItem.leftBarButtonItem = rightBarButtonItem
+        
+        navigationController.navigationBar.topItem?.prompt = ""
+    }
+    
+    private func configureNavigationBarAppearance(navigationBar: UINavigationBar) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .designSystem(.mainOrange)
+
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.compactAppearance = appearance
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
