@@ -14,4 +14,6 @@ enum Palette: String {
     case tabBarSeparateGray
     case calendarDayGray
     case separateBarGray
+    case toolBarGray
+    case toolBarBlack
 }
