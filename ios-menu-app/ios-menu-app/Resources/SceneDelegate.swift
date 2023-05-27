@@ -13,34 +13,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
         let navigationController = UINavigationController(rootViewController: TabBarController())
+        
+        configureNavigationBarAppearance(navigationBar: navigationController.navigationBar)
+        
+        navigationController.navigationBar.topItem?.title = "야곰 아카데미 식단표"
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        
-        let navigationBarAppearance = navigationController.navigationBar.standardAppearance
-        
-        navigationBarAppearance.largeTitleTextAttributes = [
-            .font: UIFont.pretendard(size: ._28, weight: .bold),
-            .foregroundColor: UIColor.white,
-        ]
-        navigationController.navigationBar.standardAppearance = navigationBarAppearance
-    
-        navigationController.navigationBar.topItem?.title = "야곰 아카데미 식단표"
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.backgroundColor = .custom(.mainOrange)
-        
-        let statusBarManager = window.windowScene?.statusBarManager
-        let statusBarView = UIView(frame: statusBarManager?.statusBarFrame ?? .zero)
-        statusBarView.backgroundColor = .custom(.mainOrange)
-        window.addSubview(statusBarView)
-        
         self.window = window
+    }
+    
+    private func configureNavigationBarAppearance(navigationBar: UINavigationBar) {
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .custom(.mainOrange)
+        appearance.titleTextAttributes = [
+            .font: UIFont.pretendard(size: ._22, weight: .bold),
+            .foregroundColor: UIColor.white
+        ]
+
+        navigationBar.standardAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
+        navigationBar.compactAppearance = appearance
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
