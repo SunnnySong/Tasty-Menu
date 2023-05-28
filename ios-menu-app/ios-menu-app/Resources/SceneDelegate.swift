@@ -15,40 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
         
-        let window = UIWindow(windowScene: windowScene)
-        let navigationController = UINavigationController(rootViewController: TabBarController())
-        
-        configureNavigationBarAppearance(navigationBar: navigationController.navigationBar)
-        configureNavigationTitle(navigationController: navigationController)
-     
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
-        self.window = window
-    }
-    
-    private func configureNavigationTitle(navigationController: UINavigationController) {
-        
-        let titleLabel = UILabel()
-        titleLabel.text = "야곰 아카데미 식단표"
-        titleLabel.font = .pretendard(size: 21, weight: .bold)
-        titleLabel.textColor = .white
-
-        let rightBarButtonItem = UIBarButtonItem(customView: titleLabel)
-        navigationController.topViewController?.navigationItem.leftBarButtonItem = rightBarButtonItem
-        
-        navigationController.navigationBar.topItem?.prompt = ""
-    }
-    
-    private func configureNavigationBarAppearance(navigationBar: UINavigationBar) {
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .designSystem(.mainOrange)
-
-        navigationBar.standardAppearance = appearance
-        navigationBar.scrollEdgeAppearance = appearance
-        navigationBar.compactAppearance = appearance
+        window?.rootViewController = TabBarController()
+        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
