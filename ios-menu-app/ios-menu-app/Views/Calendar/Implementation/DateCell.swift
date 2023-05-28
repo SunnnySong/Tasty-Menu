@@ -47,14 +47,10 @@ final class DateCell: CollectionViewCellProvidable {
     }()
     
     // MARK: Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
         
         configureHierarchy()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("not implemnted")
     }
     
     override func layoutSubviews() {
