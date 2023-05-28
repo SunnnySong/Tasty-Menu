@@ -57,6 +57,8 @@
 		80D4BCFC2A228C5E009FEFC5 /* DailyFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFB2A228C5E009FEFC5 /* DailyFood.swift */; };
 		80D4BCFE2A228C78009FEFC5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */; };
 		80D4BD002A228CD6009FEFC5 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFF2A228CD6009FEFC5 /* FoodCategory.swift */; };
+		80EBF0C42A232CE70094798E /* MenuDiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */; };
+		80EBF0C62A23319D0094798E /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C52A23319D0094798E /* MenuManager.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
 		80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */; };
@@ -138,6 +140,8 @@
 		80D4BCFB2A228C5E009FEFC5 /* DailyFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFood.swift; sourceTree = "<group>"; };
 		80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		80D4BCFF2A228CD6009FEFC5 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
+		80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDiffableDataSourceProvider.swift; sourceTree = "<group>"; };
+		80EBF0C52A23319D0094798E /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDateView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		802BE7912A2082CF005174E6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				80EBF0C22A232C8D0094798E /* Implementation */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -460,6 +465,15 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		80EBF0C22A232C8D0094798E /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */,
+				80EBF0C52A23319D0094798E /* MenuManager.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		80F341D92A1A712A00F3C750 /* UIObjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +661,7 @@
 				80D4BD002A228CD6009FEFC5 /* FoodCategory.swift in Sources */,
 				802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */,
 				80D4BCEC2A211FAF009FEFC5 /* PretendardLabel.swift in Sources */,
+				80EBF0C42A232CE70094798E /* MenuDiffableDataSourceProvider.swift in Sources */,
 				80D4BCFC2A228C5E009FEFC5 /* DailyFood.swift in Sources */,
 				80D4BCF52A226298009FEFC5 /* ToolBarButton.swift in Sources */,
 				805B9A012A192AF3003FB5BF /* WeakView.swift in Sources */,
@@ -658,6 +673,7 @@
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,
 				80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */,
 				805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */,
+				80EBF0C62A23319D0094798E /* MenuManager.swift in Sources */,
 				80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */,
 				809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */,
 				80D4BCE32A211C32009FEFC5 /* UIButton+.swift in Sources */,
