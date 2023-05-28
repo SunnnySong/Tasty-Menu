@@ -13,7 +13,7 @@ final class CalendarManager {
     private let calendarDiffableDataSourceProvider = CalendarDiffableDataSourceProvider()
     private lazy var dateCalculator = DateCalculator(baseDate: baseDate)
 
-    private var baseDate: Date = Date() {
+    private var baseDate: Date = .today {
         didSet {
             daysData = dateCalculator.getDaysInMonth(for: baseDate)
         }

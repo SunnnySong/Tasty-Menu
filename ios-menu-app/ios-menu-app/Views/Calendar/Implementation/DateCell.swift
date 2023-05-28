@@ -10,7 +10,8 @@ import UIKit
 final class DateCell: CollectionViewCellProvidable {
     
     typealias Item = Day
-    
+
+    // MARK: Properties - Data
     override var isSelected: Bool {
         willSet {
             self.setSelected(newValue, isIncludeInMonth: isIncludeInMonth)
@@ -21,9 +22,10 @@ final class DateCell: CollectionViewCellProvidable {
     
     // MARK: Properties - View
     private let numberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .pretendard(size: 12, weight: .bold)
+        let label =  PretendardLabel(size: 12,
+                                     weight: .bold,
+                                     color: .designSystem(.mainBlack),
+                                     textAlignment: .center)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,15 +47,10 @@ final class DateCell: CollectionViewCellProvidable {
     }()
     
     // MARK: Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
         
         configureHierarchy()
-        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("not implemnted")
     }
     
     override func layoutSubviews() {
@@ -67,12 +64,13 @@ final class DateCell: CollectionViewCellProvidable {
         
         numberLabel.text = dayData.number
         heartImageView.isHidden = !dayData.hasHeart
-        
+
         if !dayData.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
-        
+
         self.isIncludeInMonth = dayData.isIncludeInMonth
+        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
     }
     
     private func setSelected(_ selected: Bool, isIncludeInMonth: Bool) {
