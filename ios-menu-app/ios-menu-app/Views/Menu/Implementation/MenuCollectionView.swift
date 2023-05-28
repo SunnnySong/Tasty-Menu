@@ -12,10 +12,20 @@ final class MenuCollectionView: UICollectionView {
     // MARK: Properties - Data
     private var layout: UICollectionViewLayout {
         
-        var configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
-        configuration.backgroundColor = .yellow
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 3)
+        group.interItemSpacing = .fixed(20)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 20
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
         return layout
     }
     
@@ -23,8 +33,6 @@ final class MenuCollectionView: UICollectionView {
     init(frame: CGRect) {
         super.init(frame: frame, collectionViewLayout: UICollectionViewLayout())
         self.collectionViewLayout = layout
-        
-        self.isScrollEnabled = false
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
