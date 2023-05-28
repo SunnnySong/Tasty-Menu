@@ -9,6 +9,7 @@ import UIKit
 
 struct DailyFood: Hashable {
     
+    let id = UUID()
     var image: UIImage?
     var name: String
     var category: FoodCategory

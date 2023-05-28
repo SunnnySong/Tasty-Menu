@@ -17,23 +17,22 @@ final class MenuPopupView: UIView {
         return view
     }()
     
-    private let headerDateView = HeaderDateView(headerDate: .today, type: .menu)
-    
-    private let menuCollectionView = MenuCollectionView(frame: .zero)
-    
-    private lazy var toolBarAddButton: ToolBarButton = {
-        let button = ToolBarButton(type: .add)
-        button.addTarget(self, action: #selector(didTaptoolBarAddButton), for: .touchUpInside)
-        return button
-    }()
-    
-    private lazy var toolBarCloseButton: ToolBarButton = {
-        let button = ToolBarButton(type: ._close)
-        button.addTarget(self, action: #selector(didTaptoolBarCloseButton), for: .touchUpInside)
-        return button
-    }()
+    private let headerDateView: HeaderDateView
+    private var menuCollectionView: UICollectionView?
     
     private lazy var toolBarStackView: UIStackView = {
+        var toolBarAddButton: ToolBarButton = {
+            let button = ToolBarButton(type: .add)
+            button.addTarget(self, action: #selector(didTaptoolBarAddButton), for: .touchUpInside)
+            return button
+        }()
+        
+        var toolBarCloseButton: ToolBarButton = {
+            let button = ToolBarButton(type: ._close)
+            button.addTarget(self, action: #selector(didTaptoolBarCloseButton), for: .touchUpInside)
+            return button
+        }()
+        
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -43,11 +42,13 @@ final class MenuPopupView: UIView {
     }()
 
     // MARK: Lifecycle
-    override init(frame: CGRect) {
+    init(frame: CGRect, collectionView: UICollectionView, headerDate: Date) {
+        self.headerDateView = HeaderDateView(headerDate: headerDate, type: .menu)
         super.init(frame: frame)
-        
-        configureMenuPopupView()
+
+        self.menuCollectionView = collectionView
         configureHierarchy()
+        configureMenuPopupView()
     }
     
     required init?(coder: NSCoder) {
@@ -82,17 +83,26 @@ final class MenuPopupView: UIView {
     
     private func configurePopupViewHierarchy() {
         
+        guard let menuCollectionView = menuCollectionView else { return }
         popupView.addSubview(headerDateView)
+        popupView.addSubview(menuCollectionView)
         popupView.addSubview(toolBarStackView)
         
         let popupViewHeight = popupView.frame.height
         let headerDateViewHeight = popupViewHeight * 0.275
         let toolBarStackViewHeight = popupViewHeight * 0.15
+        let menuCollectionViewHorizontal: CGFloat = 16
+        let menuCollectionViewBottom: CGFloat = -24
         NSLayoutConstraint.activate([
             headerDateView.topAnchor.constraint(equalTo: popupView.topAnchor),
             headerDateView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
             headerDateView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor),
             headerDateView.heightAnchor.constraint(equalToConstant: headerDateViewHeight),
+            
+            menuCollectionView.topAnchor.constraint(equalTo: headerDateView.bottomAnchor),
+            menuCollectionView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: menuCollectionViewHorizontal),
+            menuCollectionView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -menuCollectionViewHorizontal),
+            menuCollectionView.bottomAnchor.constraint(equalTo: toolBarStackView.topAnchor, constant: menuCollectionViewBottom),
             
             toolBarStackView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor),
             toolBarStackView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
