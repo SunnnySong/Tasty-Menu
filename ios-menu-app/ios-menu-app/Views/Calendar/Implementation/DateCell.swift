@@ -8,14 +8,24 @@
 import UIKit
 
 final class DateCell: CollectionViewCellProvidable {
-
+    
     typealias Item = Day
+
+    // MARK: Properties - Data
+    override var isSelected: Bool {
+        willSet {
+            self.setSelected(newValue, isIncludeInMonth: isIncludeInMonth)
+        }
+    }
+    
+    private var isIncludeInMonth: Bool = true
     
     // MARK: Properties - View
     private let numberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .pretendard(size: 12, weight: .bold)
+        let label =  PretendardLabel(size: 12,
+                                     weight: .bold,
+                                     color: .designSystem(.mainBlack),
+                                     textAlignment: .center)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -37,14 +47,10 @@ final class DateCell: CollectionViewCellProvidable {
     }()
     
     // MARK: Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
         
         configureHierarchy()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("not implemnted")
     }
     
     override func layoutSubviews() {
@@ -57,15 +63,24 @@ final class DateCell: CollectionViewCellProvidable {
     func configure(with dayData: Day) {
         
         numberLabel.text = dayData.number
-        
-        if dayData.isIncludeInMonth {
-            numberLabel.textColor = dayData.isSelected ? .white : .designSystem(.mainBlack)
-        } else {
+        heartImageView.isHidden = !dayData.hasHeart
+
+        if !dayData.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
+
+        self.isIncludeInMonth = dayData.isIncludeInMonth
+        setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
+    }
+    
+    private func setSelected(_ selected: Bool, isIncludeInMonth: Bool) {
         
-        selectionView.isHidden = !dayData.isSelected
-        heartImageView.isHidden = !dayData.hasHeart
+        numberLabel.textColor = selected ? .white : .designSystem(.mainBlack)
+        selectionView.isHidden = !selected
+        
+        if !isIncludeInMonth {
+            numberLabel.textColor = selected ? .white : .designSystem(.calendarDayGray)
+        }
     }
     
     // MARK: Functions - Private

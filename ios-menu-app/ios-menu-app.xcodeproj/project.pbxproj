@@ -14,6 +14,10 @@
 		802BE77B2A1F2EDE005174E6 /* Menu+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */; };
 		802BE77C2A1F2EDE005174E6 /* Menu+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7782A1F2EDE005174E6 /* Menu+CoreDataProperties.swift */; };
 		802BE77F2A1F4CAC005174E6 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE77E2A1F4CAB005174E6 /* PersistenceManager.swift */; };
+		802BE78A2A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */; };
+		802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */; };
+		802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */; };
+		802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7962A208359005174E6 /* MenuCollectionView.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
 		805B99E32A17E6DD003FB5BF /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */; };
 		805B99E52A17E6E3003FB5BF /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */; };
@@ -52,6 +56,17 @@
 		80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */; };
 		80EDF9C12A1DC0B9002DF0EA /* DailyFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9C02A1DC0B9002DF0EA /* DailyFood.swift */; };
 		80EDF9C32A1DC0E2002DF0EA /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9C22A1DC0E2002DF0EA /* FoodCategory.swift */; };
+		80D4BCDB2A20872E009FEFC5 /* MenuPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */; };
+		80D4BCDD2A209386009FEFC5 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCDC2A209386009FEFC5 /* Date+.swift */; };
+		80D4BCE32A211C32009FEFC5 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCE22A211C32009FEFC5 /* UIButton+.swift */; };
+		80D4BCE82A211D5E009FEFC5 /* SystemName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCE72A211D5E009FEFC5 /* SystemName.swift */; };
+		80D4BCEC2A211FAF009FEFC5 /* PretendardLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCEB2A211FAF009FEFC5 /* PretendardLabel.swift */; };
+		80D4BCF52A226298009FEFC5 /* ToolBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCF42A226298009FEFC5 /* ToolBarButton.swift */; };
+		80D4BCFC2A228C5E009FEFC5 /* DailyFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFB2A228C5E009FEFC5 /* DailyFood.swift */; };
+		80D4BCFE2A228C78009FEFC5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */; };
+		80D4BD002A228CD6009FEFC5 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFF2A228CD6009FEFC5 /* FoodCategory.swift */; };
+		80EBF0C42A232CE70094798E /* MenuDiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */; };
+		80EBF0C62A23319D0094798E /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C52A23319D0094798E /* MenuManager.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
 		80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */; };
@@ -86,6 +101,10 @@
 		802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802BE7782A1F2EDE005174E6 /* Menu+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		802BE77E2A1F4CAB005174E6 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
+		802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
+		802BE7962A208359005174E6 /* MenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		805B99E42A17E6E3003FB5BF /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -129,6 +148,17 @@
 		80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMenu.swift; sourceTree = "<group>"; };
 		80EDF9C02A1DC0B9002DF0EA /* DailyFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFood.swift; sourceTree = "<group>"; };
 		80EDF9C22A1DC0E2002DF0EA /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
+		80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupView.swift; sourceTree = "<group>"; };
+		80D4BCDC2A209386009FEFC5 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		80D4BCE22A211C32009FEFC5 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		80D4BCE72A211D5E009FEFC5 /* SystemName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemName.swift; sourceTree = "<group>"; };
+		80D4BCEB2A211FAF009FEFC5 /* PretendardLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretendardLabel.swift; sourceTree = "<group>"; };
+		80D4BCF42A226298009FEFC5 /* ToolBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarButton.swift; sourceTree = "<group>"; };
+		80D4BCFB2A228C5E009FEFC5 /* DailyFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFood.swift; sourceTree = "<group>"; };
+		80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		80D4BCFF2A228CD6009FEFC5 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
+		80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDiffableDataSourceProvider.swift; sourceTree = "<group>"; };
+		80EBF0C52A23319D0094798E /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderDateView.swift; sourceTree = "<group>"; };
@@ -171,6 +201,32 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		802BE7912A2082CF005174E6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				80EBF0C22A232C8D0094798E /* Implementation */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		802BE7922A2082D6005174E6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				802BE7952A20833E005174E6 /* Implementation */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		802BE7952A20833E005174E6 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				802BE7962A208359005174E6 /* MenuCollectionView.swift */,
+				80D4BCDA2A20872E009FEFC5 /* MenuPopupView.swift */,
+				80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		805B99D62A17606E003FB5BF /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +239,7 @@
 		805B99DB2A17D704003FB5BF /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */,
+				802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -194,6 +250,7 @@
 				805B99FA2A192837003FB5BF /* DateCalculator.swift */,
 				800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */,
 				809DCD412A1713390030F746 /* CalendarDiffableDataSourceProvider.swift */,
+				802BE7892A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -237,7 +294,6 @@
 		809DCCF12A1667BE0030F746 /* ios-menu-app */ = {
 			isa = PBXGroup;
 			children = (
-				80F341E02A1B332500F3C750 /* Error */,
 				809DCD352A16712D0030F746 /* Models */,
 				809DCD392A16720D0030F746 /* Views */,
 				809DCD232A166AAA0030F746 /* Controllers */,
@@ -284,7 +340,10 @@
 				809DCD312A16706F0030F746 /* ListViewController.swift */,
 				809DCD332A1670920030F746 /* PushAlarmViewController.swift */,
 				802BE77D2A1F4C97005174E6 /* CoreData */,
+				802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */,
+				802BE7912A2082CF005174E6 /* Menu */,
 				805B99D62A17606E003FB5BF /* Calendar */,
+				80D4BCD92A208484009FEFC5 /* CollectionView */,
 				809DCD2E2A166FEB0030F746 /* TabBar */,
 			);
 			path = Controllers;
@@ -293,10 +352,10 @@
 		809DCD262A166BAF0030F746 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
+				80D4BCE62A211D4D009FEFC5 /* Images */,
+				80D4BCE52A211D3C009FEFC5 /* Colors */,
 				80F341D92A1A712A00F3C750 /* UIObjects */,
 				805B99E12A17E6D3003FB5BF /* Fonts */,
-				809DCD282A166BC10030F746 /* Color.xcassets */,
-				809DCD272A166BC10030F746 /* Palette.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -310,6 +369,8 @@
 				805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */,
 				80F341D12A19411100F3C750 /* CALayer+.swift */,
 				80F341D32A19446A00F3C750 /* UIStackView+.swift */,
+				80D4BCDC2A209386009FEFC5 /* Date+.swift */,
+				80D4BCE22A211C32009FEFC5 /* UIButton+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +388,8 @@
 			children = (
 				80C806CC2A1E52E700506FAC /* CoreData */,
 				80EDF9BD2A1DC082002DF0EA /* Menu */,
+				80D4BCFA2A228C59009FEFC5 /* Menu */,
+				80F341E02A1B332500F3C750 /* Error */,
 				809DCD402A1712FC0030F746 /* Calendar */,
 				809DCD362A1671310030F746 /* TabBar */,
 			);
@@ -344,6 +407,7 @@
 		809DCD392A16720D0030F746 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				802BE7922A2082D6005174E6 /* Menu */,
 				809DCD3D2A1711070030F746 /* Calendar */,
 				809DCD3A2A1672120030F746 /* TabBar */,
 			);
@@ -362,7 +426,6 @@
 			isa = PBXGroup;
 			children = (
 				809DCD482A174D2A0030F746 /* Implementation */,
-				809DCD472A174D220030F746 /* Interface */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -380,6 +443,7 @@
 		809DCD472A174D220030F746 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */,
 				809DCD4A2A174D810030F746 /* CollectionCellProvidable.swift */,
 			);
 			path = Interface;
@@ -391,7 +455,6 @@
 				809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */,
 				809DCD4C2A174E6E0030F746 /* DateCell.swift */,
 				805B9A002A192AF3003FB5BF /* WeakView.swift */,
-				80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -418,10 +481,56 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		80D4BCD92A208484009FEFC5 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD472A174D220030F746 /* Interface */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		80D4BCE52A211D3C009FEFC5 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				809DCD282A166BC10030F746 /* Color.xcassets */,
+				809DCD272A166BC10030F746 /* Palette.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		80D4BCE62A211D4D009FEFC5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				80D4BCE72A211D5E009FEFC5 /* SystemName.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		80D4BCFA2A228C59009FEFC5 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				80D4BCFB2A228C5E009FEFC5 /* DailyFood.swift */,
+				80D4BCFF2A228CD6009FEFC5 /* FoodCategory.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		80EBF0C22A232C8D0094798E /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */,
+				80EBF0C52A23319D0094798E /* MenuManager.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		80F341D92A1A712A00F3C750 /* UIObjects */ = {
 			isa = PBXGroup;
 			children = (
+				80F341D52A1A0F3F00F3C750 /* HeaderDateView.swift */,
 				80F341DA2A1A714500F3C750 /* SeparateBarView.swift */,
+				80D4BCEB2A211FAF009FEFC5 /* PretendardLabel.swift */,
+				80D4BCF42A226298009FEFC5 /* ToolBarButton.swift */,
 			);
 			path = UIObjects;
 			sourceTree = "<group>";
@@ -574,19 +683,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */,
 				80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */,
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
 				809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */,
 				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,
+				80D4BCDD2A209386009FEFC5 /* Date+.swift in Sources */,
 				805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */,
+				802BE78A2A1FAD1B005174E6 /* CalendarCollectionViewDelegate.swift in Sources */,
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
 				80EDF9C12A1DC0B9002DF0EA /* DailyFood.swift in Sources */,
 				80F341D22A19411100F3C750 /* CALayer+.swift in Sources */,
+				80D4BCDB2A20872E009FEFC5 /* MenuPopupView.swift in Sources */,
 				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				800BDDE22A1C88F9001C6F17 /* Section.swift in Sources */,
+				802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */,
 				809DCD302A1670000030F746 /* TabBarController.swift in Sources */,
 				809DCD342A1670920030F746 /* PushAlarmViewController.swift in Sources */,
 				809DCD4B2A174D810030F746 /* CollectionCellProvidable.swift in Sources */,
@@ -595,12 +709,20 @@
 				802BE77C2A1F2EDE005174E6 /* Menu+CoreDataProperties.swift in Sources */,
 				809DCD292A166BC10030F746 /* Palette.swift in Sources */,
 				80EDF9C32A1DC0E2002DF0EA /* FoodCategory.swift in Sources */,
+				80D4BCE82A211D5E009FEFC5 /* SystemName.swift in Sources */,
 				800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */,
+				80D4BD002A228CD6009FEFC5 /* FoodCategory.swift in Sources */,
+				802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */,
+				80D4BCEC2A211FAF009FEFC5 /* PretendardLabel.swift in Sources */,
+				80EBF0C42A232CE70094798E /* MenuDiffableDataSourceProvider.swift in Sources */,
+				80D4BCFC2A228C5E009FEFC5 /* DailyFood.swift in Sources */,
+				80D4BCF52A226298009FEFC5 /* ToolBarButton.swift in Sources */,
 				805B9A012A192AF3003FB5BF /* WeakView.swift in Sources */,
 				809DCD2D2A166C0E0030F746 /* UIColor+.swift in Sources */,
 				802BE7792A1F2EDE005174E6 /* Food+CoreDataClass.swift in Sources */,
 				802BE77B2A1F2EDE005174E6 /* Menu+CoreDataClass.swift in Sources */,
 				80F341E22A1B333000F3C750 /* CalendarError.swift in Sources */,
+				80D4BCFE2A228C78009FEFC5 /* MenuCell.swift in Sources */,
 				80F341DD2A1B2C5400F3C750 /* Day.swift in Sources */,
 				809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */,
 				80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */,
@@ -610,8 +732,10 @@
 				80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */,
 				805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */,
 				802BE77F2A1F4CAC005174E6 /* PersistenceManager.swift in Sources */,
+				80EBF0C62A23319D0094798E /* MenuManager.swift in Sources */,
 				80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */,
 				809DCD3F2A1711240030F746 /* CalendarCollectionView.swift in Sources */,
+				80D4BCE32A211C32009FEFC5 /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,7 +832,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -762,7 +886,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
