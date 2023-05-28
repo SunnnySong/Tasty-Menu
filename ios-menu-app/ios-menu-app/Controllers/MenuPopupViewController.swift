@@ -13,8 +13,21 @@ final class MenuPopupViewController: UIViewController {
     // MARK: Properties - Data
     private lazy var menuManager = MenuManager(collectionView: menuCollectionView)
     
+    private var date: Date = .today
+    
     // MARK: Properties - View
-    private lazy var menuPopupView = MenuPopupView(frame: view.bounds, collectionView: menuCollectionView, headerDate: .today)
+    private lazy var menuPopupView: MenuPopupView = { [weak self] in
+        MenuPopupView(
+            frame: view.bounds,
+            collectionView: menuCollectionView,
+            headerDate: date,
+            addButtonAction: {
+                print("add")
+            },
+            closeButtonAction: {
+                self?.dismiss(animated: true)
+            })
+    }()
     private let menuCollectionView = MenuCollectionView(frame: .zero)
     
     // MARK: Lifecycle
@@ -22,12 +35,18 @@ final class MenuPopupViewController: UIViewController {
         super.viewDidLoad()
         
         // 추후 clear로 변경
-//        view.backgroundColor = .clear
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .clear
         configureDataSource()
         configureHierarchy()
     }
 
+    // MARK: Functions - Public
+    func updateDay(_ date: Date) {
+        
+        self.date = date
+    }
+    
+    // MARK: Functions - Private
     private func configureHierarchy() {
         
         view.addSubview(menuPopupView)

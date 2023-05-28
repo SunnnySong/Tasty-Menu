@@ -11,7 +11,6 @@ final class CalendarViewController: UIViewController {
     
     // MARK: Properties - Data
     private lazy var calendarManager = CalendarManager(collectionView: calendarView)
-    private let calendarCollectionViewDelegate = CalendarCollectionViewDelegate()
     
     // MARK: Properties - View
     private lazy var headerDateView: HeaderDateView = { [weak self] in
@@ -71,7 +70,21 @@ final class CalendarViewController: UIViewController {
     // MARK: CollectionView delegate 설정
     private func configureCollectionViewDelegate() {
         
-//        calendarView.delegate = calendarCollectionViewDelegate
-//        calendarCollectionViewDelegate.calendarDelegate = calendarManager
+        calendarView.delegate = self
+    }
+}
+
+extension CalendarViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedItem = calendarManager.getDaysData()[indexPath.item]
+        
+        let menuPopupViewController = MenuPopupViewController()
+        menuPopupViewController.updateDay(selectedItem.date)
+        menuPopupViewController.modalPresentationStyle = .overFullScreen
+        
+        present(menuPopupViewController, animated: true)
+        
     }
 }

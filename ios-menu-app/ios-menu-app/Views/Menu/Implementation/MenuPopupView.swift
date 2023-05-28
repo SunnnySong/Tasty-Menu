@@ -9,6 +9,10 @@ import UIKit
 
 final class MenuPopupView: UIView {
     
+    // MARK: Properties - Data
+    var addButtonAction: (() -> Void)?
+    var closeButtonAction: (() -> Void)?
+    
     // MARK: Properties - View
     private let popupView: UIView = {
         let view = UIView()
@@ -42,11 +46,18 @@ final class MenuPopupView: UIView {
     }()
 
     // MARK: Lifecycle
-    init(frame: CGRect, collectionView: UICollectionView, headerDate: Date) {
+    init(frame: CGRect,
+         collectionView: UICollectionView,
+         headerDate: Date,
+         addButtonAction: @escaping (() -> Void),
+         closeButtonAction: @escaping (() -> Void)
+    ) {
         self.headerDateView = HeaderDateView(headerDate: headerDate, type: .menu)
         super.init(frame: frame)
 
         self.menuCollectionView = collectionView
+        self.addButtonAction = addButtonAction
+        self.closeButtonAction = closeButtonAction
         configureHierarchy()
         configureMenuPopupView()
     }
@@ -112,10 +123,13 @@ final class MenuPopupView: UIView {
     }
     
     @objc private func didTaptoolBarAddButton() {
+        
         print("didTaptoolBarAddButton")
+        addButtonAction?()
     }
     
     @objc private func didTaptoolBarCloseButton() {
-        print("didTaptoolBarCloseButton")
+        
+        closeButtonAction?()
     }
 }

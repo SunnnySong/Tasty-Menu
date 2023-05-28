@@ -35,6 +35,10 @@ final class CalendarManager {
     }
 
     // MARK: Functions - Public
+    func getDaysData() -> [Day] {
+        return daysData
+    }
+    
     func createDataSource() {
         
         guard let collectionView = collectionView else { return }
