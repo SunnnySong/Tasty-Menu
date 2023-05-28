@@ -16,7 +16,7 @@ final class MenuCell: CollectionViewCellProvidable {
         let imageView = UIImageView()
         imageView.backgroundColor = .systemPink
         imageView.contentMode = .scaleAspectFit
-        imageView.setContentHuggingPriority(.dragThatCannotResizeScene, for: .horizontal)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -25,6 +25,7 @@ final class MenuCell: CollectionViewCellProvidable {
                                     weight: .regular,
                                     color: .designSystem(.toolBarBlack),
                                     textAlignment: .left)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .green
         return label
     }()
@@ -35,33 +36,16 @@ final class MenuCell: CollectionViewCellProvidable {
         label.font = .pretendard(size: 12, weight: .regular)
         label.textAlignment = .center
         label.clipsToBounds = true
+        label.layer.cornerRadius = 32 / 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var totalStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [foodImageView, foodLabel])
-        stackView.spacing = 12
-        stackView.distribution = .fillProportionally
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-    
     // MARK: Lifecycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func updateConfiguration(using state: UICellConfigurationState) {
+        super.updateConfiguration(using: state)
         
         configureHierarchy()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("not implemnted")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        categoryLabel.layer.cornerRadius = categoryLabel.frame.height / 2
     }
     
     func configure(with item: DailyFood) {
@@ -75,16 +59,23 @@ final class MenuCell: CollectionViewCellProvidable {
     
     private func configureHierarchy() {
         
-        contentView.addSubview(totalStackView)
+        contentView.addSubview(foodImageView)
+        contentView.addSubview(foodLabel)
         contentView.addSubview(categoryLabel)
         
         NSLayoutConstraint.activate([
-            totalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            totalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            totalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            foodImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            foodImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            foodImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            foodImageView.widthAnchor.constraint(equalToConstant: 40),
             
-            categoryLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: totalStackView.trailingAnchor, constant: 12),
+            foodLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            foodLabel.leadingAnchor.constraint(equalTo: foodImageView.trailingAnchor, constant: 12),
+            foodLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
+            categoryLabel.leadingAnchor.constraint(equalTo: foodLabel.trailingAnchor, constant: 12),
             categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             categoryLabel.widthAnchor.constraint(equalToConstant: 53),
             categoryLabel.heightAnchor.constraint(equalToConstant: 32)
