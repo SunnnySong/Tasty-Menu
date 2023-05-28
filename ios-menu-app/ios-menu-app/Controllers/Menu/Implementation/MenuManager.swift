@@ -12,13 +12,26 @@ final class MenuManager {
     // MARK: Properties - Data
     private let menuDiffableDataSourceProvider = MenuDiffableDataSourceProvider()
     
+    private var baseDate: Date {
+        didSet {
+            menuData = PersistenceManager.shared.fetchMenu(searchDate: baseDate)
+        }
+    }
+    
+    private lazy var menuData: Menu? = PersistenceManager.shared.fetchMenu(searchDate: baseDate) {
+        didSet {
+            update()
+        }
+    }
+    
     // MARK: Properties - View
     private weak var collectionView: UICollectionView?
     private var dataSource: MenuDiffableDataSourceProvider.DataSource?
     
     // MARK: Lifecycle
-    init(collectionView: UICollectionView? = nil) {
+    init(collectionView: UICollectionView?, date: Date) {
         self.collectionView = collectionView
+        self.baseDate = date
     }
     
     // MARK: Functions - Public
@@ -41,15 +54,12 @@ final class MenuManager {
         guard let dataSource = dataSource else {
             return
         }
-        let image = UIImage(systemName: "suit.heart.fill")
-        let mock = [
-            DailyFood(name: "만두", category: .korean),
-            DailyFood(image: image, name: "떡볶이", category: .chinese),
-            DailyFood(image: image, name: "떡볶이", category: .chinese),
-            DailyFood(image: image, name: "떡볶이", category: .chinese),
-            DailyFood(image: image, name: "떡볶이", category: .chinese)
-        ]
-        menuDiffableDataSourceProvider.updateSnapshot(mock, to: dataSource)
+        
+        guard let foods = menuData?.foods?.array as? [Food] else {
+            return
+        }
+        
+        menuDiffableDataSourceProvider.updateSnapshot(foods, to: dataSource)
     }
     
 }

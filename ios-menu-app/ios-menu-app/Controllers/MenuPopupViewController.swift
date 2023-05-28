@@ -11,7 +11,7 @@ import SwiftUI
 final class MenuPopupViewController: UIViewController {
 
     // MARK: Properties - Data
-    private lazy var menuManager = MenuManager(collectionView: menuCollectionView)
+    private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: date)
     
     private var date: Date = .today
     
@@ -34,7 +34,6 @@ final class MenuPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 추후 clear로 변경
         view.backgroundColor = .clear
         configureDataSource()
         configureHierarchy()

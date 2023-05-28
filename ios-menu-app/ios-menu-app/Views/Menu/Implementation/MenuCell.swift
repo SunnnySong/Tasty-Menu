@@ -9,7 +9,7 @@ import UIKit
 
 final class MenuCell: CollectionViewCellProvidable {
 
-    typealias Item = DailyFood
+    typealias Item = Food
     
     // MARK: Properties - View
     private var foodImageView: UIImageView = {
@@ -47,14 +47,19 @@ final class MenuCell: CollectionViewCellProvidable {
         configureHierarchy()
     }
     
-    func configure(with item: DailyFood) {
+    func configure(with item: Food) {
         
         let emptyImage = UIImage(systemName: ImageSystemName.photo.rawValue)
-        foodImageView.image = item.image == nil ? emptyImage : item.image
+        
+        if item.imageData == nil {
+            foodImageView.image = emptyImage
+        } else {
+            foodImageView.image = UIImage(data: item.imageData ?? Data())
+        }
         foodLabel.text = item.name
         
-        categoryLabel.text = item.category.title
-        categoryLabel.backgroundColor = item.category.backgroundColor
+        categoryLabel.text = FoodCategory(rawValue: item.categoryValue)?.title
+        categoryLabel.backgroundColor = FoodCategory(rawValue: item.categoryValue)?.backgroundColor
     }
     
     private func configureHierarchy() {

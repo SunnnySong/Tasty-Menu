@@ -19,6 +19,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
+        
+        // MARK: MockData-CoreData
+//        let context = PersistenceManager.shared.context
+        
+//        let menu = Menu(context: context)
+//        menu.date = .today
+//        menu.isHeart = true
+//
+//        let food1 = Food(context: context)
+//        food1.name = "양념게장"
+//        let food2 = Food(context: context)
+//        food2.name = "간장게장"
+//
+//        menu.addToFoods(food1)
+//        menu.addToFoods(food2)
+//
+//        PersistenceManager.shared.save()
+        
+//        let searchDateComponents = DateComponents(year: 2023, month: 5, day: 20)
+//        
+//        let menu2 = Menu(context: context)
+//        menu2.date = Calendar.current.date(from: searchDateComponents)
+//        menu2.isHeart = true
+//        
+//        let food3 = Food(context: context)
+//        food3.name = "맥도날드"
+//        food3.categoryValue = 1
+//        let food4 = Food(context: context)
+//        food4.name = "롯데리아"
+//        
+//        menu2.addToFoods(food3)
+//        menu2.addToFoods(food4)
+        
+//        PersistenceManager.shared.save()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

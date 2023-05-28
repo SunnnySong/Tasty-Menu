@@ -17,7 +17,7 @@ extension Food {
     }
 
     @NSManaged public var categoryValue: Int32
-    @NSManaged public var image: Data?
+    @NSManaged public var imageData: Data?
     @NSManaged public var name: String?
 
 }

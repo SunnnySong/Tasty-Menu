@@ -17,7 +17,6 @@
 		802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */; };
 		802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */; };
 		802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7962A208359005174E6 /* MenuCollectionView.swift */; };
-		804F0BAB2A23C0A8009325B4 /* DailyFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804F0BAA2A23C0A8009325B4 /* DailyFood.swift */; };
 		804F0BAD2A23C0D1009325B4 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
 		805B99E32A17E6DD003FB5BF /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */; };
@@ -101,7 +100,6 @@
 		802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
 		802BE7962A208359005174E6 /* MenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
-		804F0BAA2A23C0A8009325B4 /* DailyFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyFood.swift; sourceTree = "<group>"; };
 		804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
 		805B99E22A17E6DD003FB5BF /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -501,7 +499,6 @@
 			isa = PBXGroup;
 			children = (
 				80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */,
-				804F0BAA2A23C0A8009325B4 /* DailyFood.swift */,
 				804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */,
 			);
 			path = Menu;
@@ -667,7 +664,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */,
-				804F0BAB2A23C0A8009325B4 /* DailyFood.swift in Sources */,
 				80F341D62A1A0F3F00F3C750 /* HeaderDateView.swift in Sources */,
 				804F0BAD2A23C0D1009325B4 /* FoodCategory.swift in Sources */,
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,

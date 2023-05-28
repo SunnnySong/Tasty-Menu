@@ -22,7 +22,7 @@ struct MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidabl
         return dataSource
     }
     
-    func updateSnapshot(_ items: [DailyFood], to dataSource: UICollectionViewDiffableDataSource<Section, MenuCell.Item>) {
+    func updateSnapshot(_ items: [Food], to dataSource: UICollectionViewDiffableDataSource<Section, MenuCell.Item>) {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
         snapshot.appendSections([.main])
