@@ -10,7 +10,8 @@ import UIKit
 final class DateCell: CollectionViewCellProvidable {
     
     typealias Item = Day
-    
+
+    // MARK: Properties - Data
     override var isSelected: Bool {
         willSet {
             self.setSelected(newValue, isIncludeInMonth: isIncludeInMonth)
