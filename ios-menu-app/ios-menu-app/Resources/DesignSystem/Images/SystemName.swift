@@ -12,5 +12,6 @@ enum ImageSystemName: String {
     case chevronLeft = "chevron.left"
     case chevronRight = "chevron.right"
     case heartFill = "suit.heart.fill"
+    case heart = "heart"
     case photo = "photo"
 }

@@ -87,6 +87,13 @@ final class PersistenceManager {
     
     // Update - add Food
     
+    // Update - heart state
+    func updateHeartToggle(menu: Menu) {
+        
+        menu.isHeart.toggle()
+        save()
+    }
+    
     // Delete - Food
     
     // Find - 이번달 중에 하트가 있는 데이터

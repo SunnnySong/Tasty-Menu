@@ -49,10 +49,12 @@ final class MenuPopupView: UIView {
     init(frame: CGRect,
          collectionView: UICollectionView,
          headerDate: Date,
+         heartState: Bool,
          addButtonAction: @escaping (() -> Void),
-         closeButtonAction: @escaping (() -> Void)
+         closeButtonAction: @escaping (() -> Void),
+         heartButtonAction: @escaping (() -> Void)
     ) {
-        self.headerDateView = HeaderDateView(headerDate: headerDate, type: .menu)
+        self.headerDateView = HeaderDateView(didTapHeartButton: heartButtonAction, headerDate: headerDate, heartState: heartState, type: .menu)
         super.init(frame: frame)
 
         self.menuCollectionView = collectionView
@@ -70,6 +72,12 @@ final class MenuPopupView: UIView {
         super.layoutSubviews()
         
         configurePopupViewHierarchy()
+    }
+    
+    // MARK: Functions - Public
+    func heartButtonToggle() {
+        
+        self.headerDateView.updateHeartButtonToggle()
     }
     
     // MARK: Functions - Private

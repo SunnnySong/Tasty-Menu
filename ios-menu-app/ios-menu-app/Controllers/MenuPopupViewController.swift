@@ -21,11 +21,16 @@ final class MenuPopupViewController: UIViewController {
             frame: view.bounds,
             collectionView: menuCollectionView,
             headerDate: date,
+            heartState: menuManager.getHeartState(),
             addButtonAction: {
                 print("add")
             },
             closeButtonAction: {
                 self?.dismiss(animated: true)
+            },
+            heartButtonAction: {
+                self?.menuManager.heartStateToggle()
+                self?.menuPopupView.heartButtonToggle()
             })
     }()
     private let menuCollectionView = MenuCollectionView(frame: .zero)

@@ -35,6 +35,22 @@ final class MenuManager {
     }
     
     // MARK: Functions - Public
+    func getHeartState() -> Bool {
+        
+        guard let heartState = menuData?.isHeart else {
+            return false
+        }
+        return heartState
+    }
+    
+    func heartStateToggle() {
+        
+        guard let menuData = menuData else {
+            return
+        }
+        PersistenceManager.shared.updateHeartToggle(menu: menuData)
+    }
+    
     func createDataSource() {
         
         guard let collectionView = collectionView else {

@@ -17,6 +17,7 @@ final class HeaderDateView: UIView {
     // MARK: Properties - Data
     var previousButtonAction: (() -> Void)?
     var nextButtonAction: (() -> Void)?
+    var heartButtonAction: (() -> Void)?
     
     private var headerDate: Date {
         didSet {
@@ -25,6 +26,12 @@ final class HeaderDateView: UIView {
     }
     
     private var headerType: HeaderType
+    
+    private var heartState: Bool = false {
+        didSet {
+            updateHeartButton()
+        }
+    }
     
     // MARK: Properties - View
     private lazy var totalStackView = totalStackView(type: headerType)
@@ -50,10 +57,11 @@ final class HeaderDateView: UIView {
                                                      color: .designSystem(.mainBlack),
                                                      textAlignment: .center)
     
-    private let heartButton: UIButton = {
-        let button = UIButton(imageName: .heartFill,
-                              imageColor: .designSystem(.mainOrange),
-                              insets: .init(top: 0, left: 10, bottom: 0, right: 10))
+    private lazy var heartButton: UIButton = {
+        let button = UIButton()
+        button.contentEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 10)
+        button.imageView?.tintColor = .designSystem(.mainOrange)
+        button.addTarget(self, action: #selector(didTapHeartButton), for: .touchUpInside)
         return button
     }()
     
@@ -74,15 +82,20 @@ final class HeaderDateView: UIView {
         setupShadow()
     }
     
-    init(headerDate: Date,
+    init(didTapHeartButton: @escaping (() -> Void),
+         headerDate: Date,
+         heartState: Bool,
          type: HeaderType) {
         
+        self.heartButtonAction = didTapHeartButton
         self.headerDate = headerDate
+        self.heartState = heartState
         self.headerType = type
         super.init(frame: .zero)
         
         configureHeaderDateView()
         updateDateLabel(type: type)
+        updateHeartButton()
         setupShadow()
     }
     
@@ -100,6 +113,11 @@ final class HeaderDateView: UIView {
     func updateHeaderDate(_ date: Date) {
         
         self.headerDate = date
+    }
+    
+    func updateHeartButtonToggle() {
+        
+        self.heartState.toggle()
     }
     
     // MARK: Functions - Private
@@ -146,6 +164,17 @@ final class HeaderDateView: UIView {
         dateLabel.text = date
     }
     
+    private func updateHeartButton() {
+        
+        if heartState {
+            let image = UIImage(systemName: ImageSystemName.heartFill.rawValue)
+            heartButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(systemName: ImageSystemName.heart.rawValue)
+            heartButton.setImage(image, for: .normal)
+        }
+    }
+    
     private func configureHeaderDateView() {
         
         backgroundColor = .systemBackground
@@ -177,5 +206,10 @@ final class HeaderDateView: UIView {
     @objc private func didTapNextButton() {
 
         nextButtonAction?()
+    }
+    
+    @objc private func didTapHeartButton() {
+     
+        heartButtonAction?()
     }
 }
