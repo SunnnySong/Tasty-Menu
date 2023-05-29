@@ -15,7 +15,4 @@ protocol CollectionViewDiffableDataSourceProvidable {
     associatedtype DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
     
     func dataSource(collectionView: UICollectionView) -> DataSource?
-    func updateSnapshot(with items: [ItemType])
-//    func updateSnapshot(for section: SectionType, with items: [ItemType], to dataSource: DataSource)
-//    func updateSnapshot(items: [ItemType], to dataSource: DataSource)
 }
