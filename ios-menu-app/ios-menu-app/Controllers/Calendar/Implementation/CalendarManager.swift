@@ -11,17 +11,18 @@ final class CalendarManager {
     
     // MARK: Properties - Data
     private let calendarDiffableDataSourceProvider = CalendarDiffableDataSourceProvider()
+    private let notificationCenter = NotificationCenter.default
     private lazy var dateCalculator = DateCalculator(baseDate: baseDate)
-
+    
     private var baseDate: Date = .today {
         didSet {
             daysData = dateCalculator.getDaysInMonth(for: baseDate)
         }
     }
     
-    private lazy var daysData: [Day] = dateCalculator.getDaysInMonth(for: baseDate) {
+    private lazy var daysData: [DayComponent] = dateCalculator.getDaysInMonth(for: baseDate) {
         didSet {
-            update()
+            updateSnapshot()
         }
     }
     
@@ -32,10 +33,13 @@ final class CalendarManager {
     // MARK: Lifecycle
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
+        
+        tappedHeaderPreviousButton()
+        tappedHeaderNextButton()
     }
-
+    
     // MARK: Functions - Public
-    func getDaysData() -> [Day] {
+    func getDaysData() -> [DayComponent] {
         return daysData
     }
     
@@ -48,27 +52,43 @@ final class CalendarManager {
         }
         collectionView.dataSource = dataSource
         self.dataSource = dataSource
-        update()
+        updateSnapshot()
     }
     
-    func update() {
+    func updateSnapshot() {
         
         guard let dataSource = dataSource else {
             return
         }
         
-//        let items = daysData.map { Item(headerDate: baseDate, calendarDay: $0) }
-        calendarDiffableDataSourceProvider.updateSnapshot(with: daysData)
-//        calendarDiffableDataSourceProvider.updateSnapshot(with: items)
+        calendarDiffableDataSourceProvider.updateSnapshot(header: baseDate, calendar: daysData, dataSource: dataSource)
     }
     
-    func moveToPreviousMonth() -> Date {
+    // MARK: Functions - Private
+    private func tappedHeaderPreviousButton() {
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(moveToPreviousMonth),
+            name: .tappedPreviousButton,
+            object: nil)
+    }
+    
+    private func tappedHeaderNextButton() {
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(moveToNextMonth),
+            name: .tappedNextButton,
+            object: nil)
+    }
+    
+    @objc private func moveToPreviousMonth() {
         
         baseDate = dateCalculator.calculatePreviousMonth(by: baseDate)
-        return baseDate
     }
     
-    func moveToNextMonth() -> Date {
+    @objc private func moveToNextMonth() -> Date {
         
         baseDate = dateCalculator.calculateNextMonth(by: baseDate)
         return baseDate
