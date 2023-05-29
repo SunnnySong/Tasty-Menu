@@ -7,17 +7,19 @@
 
 import UIKit
 
-final class CalendarHeaderDateView: UICollectionViewCell {
+final class CalendarHeaderDateCell: CollectionViewCellProvidable {
+    
+    typealias Item = Date
     
     // MARK: Properties - Data
     var previousButtonAction: (() -> Void)?
     var nextButtonAction: (() -> Void)?
     
-    private var headerDate: Date {
-        didSet {
-            updateDateLabel()
-        }
-    }
+//    private var headerDate: Date {
+//        didSet {
+//            updateDateLabel()
+//        }
+//    }
     
     // MARK: Properties - View
     private lazy var totalStackView: UIStackView = {
@@ -65,23 +67,23 @@ final class CalendarHeaderDateView: UICollectionViewCell {
     }()
     
     // MARK: Lifecycle
-    init(didTapPreviousButton: @escaping (() -> Void),
-         didTapNextButton: @escaping (() -> Void),
-         headerDate: Date
-    ) {
-        self.previousButtonAction = didTapPreviousButton
-        self.nextButtonAction = didTapNextButton
-        self.headerDate = headerDate
-        super.init(frame: .zero)
-        
-        configureHeaderDateView()
-        updateDateLabel()
-        setupShadow()
-    }
+//    init(didTapPreviousButton: @escaping (() -> Void),
+//         didTapNextButton: @escaping (() -> Void),
+//         headerDate: Date
+//    ) {
+//        self.previousButtonAction = didTapPreviousButton
+//        self.nextButtonAction = didTapNextButton
+////        self.headerDate = headerDate
+//        super.init(frame: .zero)
+//
+//        configureHeaderDateView()
+////        updateDateLabel()
+//        setupShadow()
+//    }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -90,25 +92,34 @@ final class CalendarHeaderDateView: UICollectionViewCell {
     }
     
     // MARK: Functions - Public
-    func updateHeaderDate(_ date: Date) {
-        
-        self.headerDate = date
-    }
-    
-    // MARK: Functions - Private
-    private func updateDateLabel() {
-        
+    func configure(with item: Date) {
+
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월"
-        
-        let date = formatter.string(from: headerDate)
+
+        let date = formatter.string(from: item)
         dateLabel.text = date
     }
+    
+//    func updateHeaderDate(_ date: Date) {
+//
+//        self.headerDate = date
+//    }
+    
+    // MARK: Functions - Private
+//    private func updateDateLabel() {
+//
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "YYYY년 M월"
+//
+//        let date = formatter.string(from: headerDate)
+//        dateLabel.text = date
+//    }
     
     private func configureHeaderDateView() {
         
         backgroundColor = .systemBackground
-        translatesAutoresizingMaskIntoConstraints = false
+//        translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupShadow() {

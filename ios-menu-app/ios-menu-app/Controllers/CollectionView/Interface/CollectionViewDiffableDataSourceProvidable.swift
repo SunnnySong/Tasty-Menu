@@ -10,10 +10,12 @@ import UIKit
 // MARK: 추후 makeDataSource, update 모두 extension으로 구현할까 생각 중
 protocol CollectionViewDiffableDataSourceProvidable {
     
-    associatedtype CellType: CollectionViewCellProvidable
     associatedtype SectionType: Hashable
-    associatedtype DataSource = UICollectionViewDiffableDataSource<SectionType, CellType.Item>
+    associatedtype ItemType: Hashable
+    associatedtype DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
     
     func dataSource(collectionView: UICollectionView) -> DataSource?
-    func updateSnapshot(_ items: [CellType.Item], to dataSource: DataSource)
+    func updateSnapshot(with items: [Item])
+//    func updateSnapshot(for section: SectionType, with items: [ItemType], to dataSource: DataSource)
+//    func updateSnapshot(items: [ItemType], to dataSource: DataSource)
 }

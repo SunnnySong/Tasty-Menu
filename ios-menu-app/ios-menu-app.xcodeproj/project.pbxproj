@@ -17,7 +17,7 @@
 		802BE78E2A1FB9D5005174E6 /* CalendarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */; };
 		802BE7902A2081C3005174E6 /* MenuPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */; };
 		802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7962A208359005174E6 /* MenuCollectionView.swift */; };
-		802DFA202A24753D00DB6724 /* CalendarHeaderDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802DFA1F2A24753D00DB6724 /* CalendarHeaderDateView.swift */; };
+		802DFA202A24753D00DB6724 /* CalendarHeaderDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802DFA1F2A24753D00DB6724 /* CalendarHeaderDateCell.swift */; };
 		802DFA222A24769200DB6724 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802DFA212A24769200DB6724 /* MenuHeaderView.swift */; };
 		804F0BAD2A23C0D1009325B4 /* FoodCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */; };
 		805B99DE2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */; };
@@ -101,7 +101,7 @@
 		802BE78D2A1FB9D5005174E6 /* CalendarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDelegate.swift; sourceTree = "<group>"; };
 		802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewController.swift; sourceTree = "<group>"; };
 		802BE7962A208359005174E6 /* MenuCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionView.swift; sourceTree = "<group>"; };
-		802DFA1F2A24753D00DB6724 /* CalendarHeaderDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderDateView.swift; sourceTree = "<group>"; };
+		802DFA1F2A24753D00DB6724 /* CalendarHeaderDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeaderDateCell.swift; sourceTree = "<group>"; };
 		802DFA212A24769200DB6724 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategory.swift; sourceTree = "<group>"; };
 		805B99DD2A17D80D003FB5BF /* CollectionViewDiffableDataSourceProvidable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDiffableDataSourceProvidable.swift; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 				809DCD3E2A1711240030F746 /* CalendarCollectionView.swift */,
 				809DCD4C2A174E6E0030F746 /* DateCell.swift */,
 				805B9A002A192AF3003FB5BF /* WeakView.swift */,
-				802DFA1F2A24753D00DB6724 /* CalendarHeaderDateView.swift */,
+				802DFA1F2A24753D00DB6724 /* CalendarHeaderDateCell.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -670,7 +670,7 @@
 				804F0BAD2A23C0D1009325B4 /* FoodCategory.swift in Sources */,
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
-				802DFA202A24753D00DB6724 /* CalendarHeaderDateView.swift in Sources */,
+				802DFA202A24753D00DB6724 /* CalendarHeaderDateCell.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
 				809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */,
 				805B99FD2A1928BC003FB5BF /* UICollectionView+.swift in Sources */,

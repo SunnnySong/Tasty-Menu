@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
+struct MenuDiffableDataSourceProvider {
     
     // MARK: Properties - Data
     typealias CellType = MenuCell
@@ -25,7 +25,7 @@ struct MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidabl
     func updateSnapshot(_ items: [Food], to dataSource: UICollectionViewDiffableDataSource<Section, MenuCell.Item>) {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
-        snapshot.appendSections([.calendar])
+        snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
     }

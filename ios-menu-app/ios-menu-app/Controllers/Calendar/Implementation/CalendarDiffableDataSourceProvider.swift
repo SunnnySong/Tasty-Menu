@@ -7,46 +7,47 @@
 
 import UIKit
 
-struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
+final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
-    typealias CellType = DateCell
     typealias SectionType = Section
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, DateCell.Item>
+    typealias ItemType = Item
     
+    private var dataSource: UICollectionViewDiffableDataSource<SectionType, ItemType>?
     private let calendar = Calendar(identifier: .gregorian)
-        
+    
     // MARK: Functions - Public
-    func dataSource(collectionView: UICollectionView) -> DataSource? {
-
-        let dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
-        dataSource.supplementaryViewProvider = headerProvider
-
+    func dataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<SectionType, ItemType>? {
+        
+        dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell in
+            
+            switch SectionType(rawValue: indexPath.section) {
+            case .headerDate:
+                collectionView.register(CalendarHeaderDateCell.self)
+                let headerCell: CalendarHeaderDateCell = collectionView.dequeue(for: indexPath)
+                headerCell.configure(with: item.headerDate)
+                return headerCell
+            case .main:
+                collectionView.register(DateCell.self)
+                let dateCell: DateCell = collectionView.dequeue(for: indexPath)
+                dateCell.configure(with: item.calendarDay)
+                return dateCell
+            case .none:
+                return UICollectionViewCell()
+            }
+        }
+        dataSource?.supplementaryViewProvider = headerProvider
+        
         return dataSource
     }
     
-    func updateSnapshot(_ items: [CellType.Item], to dataSource: DataSource) {
-
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
-        snapshot.appendSections([.calendar])
+    func updateSnapshot(with items: [Item]) {
+        
+        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
+        snapshot.appendSections([.headerDate, .main])
         snapshot.appendItems(items)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    // MARK: Functions - Private
-    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
-
-        collectionView.register(CellType.self)
-//        collectionView.register(HeaderDateView.self)
-        let cell: CellType = collectionView.dequeue(for: indexPath)
-//        let headerCell: HeaderDateView = collectionView.dequeue(for: indexPath)
-
-        if calendar.isDateInToday(item.date) {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
-        }
-        cell.configure(with: item)
-
-        return cell
+        
+        dataSource?.apply(snapshot)
     }
     
     private func headerProvider(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {

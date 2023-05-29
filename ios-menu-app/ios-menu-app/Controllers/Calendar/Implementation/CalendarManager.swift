@@ -56,7 +56,9 @@ final class CalendarManager {
         guard let dataSource = dataSource else {
             return
         }
-        calendarDiffableDataSourceProvider.updateSnapshot(daysData, to: dataSource)
+        
+        let items = daysData.map { Item(headerDate: baseDate, calendarDay: $0) }
+        calendarDiffableDataSourceProvider.updateSnapshot(with: items)
     }
     
     func moveToPreviousMonth() -> Date {
