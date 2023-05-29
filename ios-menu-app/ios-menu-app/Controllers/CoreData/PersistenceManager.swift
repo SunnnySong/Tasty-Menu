@@ -28,7 +28,7 @@ final class PersistenceManager {
         return container
     }()
     
-    private var context: NSManagedObjectContext {
+    var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
@@ -59,7 +59,7 @@ final class PersistenceManager {
     //        }
     //    }
     
-    // 전체 데이터 가져오기
+    // Fetch - 전체 데이터 가져오기
     func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
             let fetchResult = try self.context.fetch(request)
@@ -70,7 +70,7 @@ final class PersistenceManager {
         }
     }
     
-    // 특정 날짜 식단 가져오기
+    // Fetch - 특정 날짜 식단 가져오기
     func fetchMenu(searchDate: Date) -> Menu? {
         
         let fetchRequest = Menu.fetchRequest()
@@ -82,6 +82,31 @@ final class PersistenceManager {
         return menu.first
     }
 
+    // Fetch - 한 달 동안의 식단 중에 isHeart가 true인 식단 가져오기
+    func fetchHeartMenuInMonth(baseDate: Date) -> [Menu] {
+        
+        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: baseDate))
+        let lastDay = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth!)
+        
+        let fetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isHeart == true AND date >= %@ && date <= %@", firstDayOfMonth! as NSDate, lastDay! as NSDate)
+        
+        let menu: [Menu] = fetch(request: fetchRequest)
+        
+        return menu
+    }
+    
+    // 모든 식단 중에서 isHeart인 식단 가져오기
+    func fetchMenu() -> [Menu] {
+        
+        let fetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "isHeart == true")
+        
+        let menu: [Menu] = fetch(request: fetchRequest)
+        
+        return menu
+    }
+    
     
     // Create - Menu & Food
     
