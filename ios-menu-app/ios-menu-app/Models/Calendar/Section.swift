@@ -9,10 +9,5 @@ import Foundation
 
 enum Section: Int, CaseIterable {
     case headerDate
-    case main
-}
-
-struct Item: Hashable {
-    let headerDate: Date
-    let calendarDay: Day
+    case calendar
 }
