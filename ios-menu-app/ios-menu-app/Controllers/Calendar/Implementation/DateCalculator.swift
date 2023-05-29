@@ -34,7 +34,7 @@ struct DateCalculator {
         return previousMonth
     }
     
-    func getDaysInMonth(for baseDate: Date) -> [Day] {
+    func getDaysInMonth(for baseDate: Date) -> [DayComponent] {
         
         guard let monthlyData = try? getMonth(for: baseDate) else {
             return []
@@ -48,7 +48,7 @@ struct DateCalculator {
     }
     
     // MARK: Functions - Private
-    private func getMonth(for baseDate: Date) throws -> Month {
+    private func getMonth(for baseDate: Date) throws -> MonthComponent {
         
         guard let numberOfDaysInMonth = calendar.range(
             of: .day, in: .month, for: baseDate)?.count,
@@ -58,21 +58,21 @@ struct DateCalculator {
         }
         
         let firstDayWeekday = calendar.component(.weekday, from: firstDayOfMonth)
-        let monthlyDay = Month(numberOfDays: numberOfDaysInMonth, firstDay: firstDayOfMonth, firstDayWeekday: firstDayWeekday)
+        let monthlyDay = MonthComponent(numberOfDays: numberOfDaysInMonth, firstDay: firstDayOfMonth, firstDayWeekday: firstDayWeekday)
         
         return monthlyDay
     }
     
-    private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> Day {
+    private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> DayComponent {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
-        let day = Day(date: date,
+        let day = DayComponent(date: date,
                       isIncludeInMonth: isIncludeInMonth)
         
         return day
     }
     
-    private func generateDays(for baseDate: Date) -> [Day] {
+    private func generateDays(for baseDate: Date) -> [DayComponent] {
         
         guard let monthlyData = try? getMonth(for: baseDate) else {
             return []
@@ -82,7 +82,7 @@ struct DateCalculator {
         let firstDayOfMonth = monthlyData.firstDay
         let offsetInFirstRow = monthlyData.firstDayWeekday
         
-        let days: [Day] = (1..<(numberOfDays + offsetInFirstRow)).map { day in
+        let days: [DayComponent] = (1..<(numberOfDays + offsetInFirstRow)).map { day in
             
             let isIncludeInMonth = day >= offsetInFirstRow
             let dayOffset = isIncludeInMonth ? (day - offsetInFirstRow) : -(offsetInFirstRow - day)
@@ -95,7 +95,7 @@ struct DateCalculator {
         return days
     }
     
-    private func generateStartOfNextMonth(using currentMonth: Date) -> [Day] {
+    private func generateStartOfNextMonth(using currentMonth: Date) -> [DayComponent] {
         
         guard let lastDay = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: currentMonth) else {
             return []
@@ -106,7 +106,7 @@ struct DateCalculator {
             return []
         }
         
-        let days: [Day] = (1...additionalDays).map {
+        let days: [DayComponent] = (1...additionalDays).map {
             generateDay(offsetBy: $0, for: lastDay, isIncludeInMonth: false)
         }
         
