@@ -28,7 +28,7 @@ struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvi
     func updateSnapshot(_ items: [CellType.Item], to dataSource: DataSource) {
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
-        snapshot.appendSections([.main])
+        snapshot.appendSections([.calendar])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
@@ -37,7 +37,9 @@ struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvi
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
 
         collectionView.register(CellType.self)
+//        collectionView.register(HeaderDateView.self)
         let cell: CellType = collectionView.dequeue(for: indexPath)
+//        let headerCell: HeaderDateView = collectionView.dequeue(for: indexPath)
 
         if calendar.isDateInToday(item.date) {
             collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)

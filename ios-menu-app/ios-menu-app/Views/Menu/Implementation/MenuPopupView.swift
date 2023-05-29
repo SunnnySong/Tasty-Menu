@@ -21,7 +21,7 @@ final class MenuPopupView: UIView {
         return view
     }()
     
-    private let headerDateView: HeaderDateView
+    private let headerDateView: MenuHeaderDateView
     private var menuCollectionView: UICollectionView?
     
     private lazy var toolBarStackView: UIStackView = {
@@ -54,7 +54,10 @@ final class MenuPopupView: UIView {
          closeButtonAction: @escaping (() -> Void),
          heartButtonAction: @escaping (() -> Void)
     ) {
-        self.headerDateView = HeaderDateView(didTapHeartButton: heartButtonAction, headerDate: headerDate, heartState: heartState, type: .menu)
+        self.headerDateView = MenuHeaderDateView(
+            didTapHeartButton: heartButtonAction,
+            headerDate: headerDate,
+            heartState: heartState)
         super.init(frame: frame)
 
         self.menuCollectionView = collectionView

@@ -8,5 +8,6 @@
 import Foundation
 
 enum Section {
-    case main
+    case header
+    case calendar
 }
