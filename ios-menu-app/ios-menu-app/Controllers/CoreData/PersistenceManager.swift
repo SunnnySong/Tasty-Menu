@@ -12,6 +12,7 @@ final class PersistenceManager {
     
     // MARK: Properties - Data
     static let shared: PersistenceManager = PersistenceManager()
+    private let calendar = Calendar(identifier: .gregorian)
     
     private init() {}
     
@@ -73,8 +74,13 @@ final class PersistenceManager {
     // Fetch - 특정 날짜 식단 가져오기
     func fetchMenu(searchDate: Date) -> Menu? {
         
+        let startOfDay = calendar.startOfDay(for: searchDate)
+        let endOfDay = calendar.startOfDay(for: searchDate + 86400)
+        let predicate = NSPredicate(format: "date >= %@ && date <= %@",
+                                    startOfDay as CVarArg,
+                                    endOfDay as CVarArg)
+        
         let fetchRequest = Menu.fetchRequest()
-        let predicate = NSPredicate(format: "date >= %@ && date <= %@", Calendar.current.startOfDay(for: searchDate) as CVarArg, Calendar.current.startOfDay(for: searchDate + 86400) as CVarArg)
         fetchRequest.predicate = predicate
         
         let menu: [Menu] = fetch(request: fetchRequest)
@@ -85,11 +91,14 @@ final class PersistenceManager {
     // Fetch - 한 달 동안의 식단 중에 isHeart가 true인 식단 가져오기
     func fetchHeartMenuInMonth(baseDate: Date) -> [Menu] {
         
-        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: baseDate))
-        let lastDay = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth!)
+        let firstDayOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: baseDate))
+        let lastDayOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth!)
+        let predicate = NSPredicate(format: "isHeart == true AND date >= %@ && date <= %@",
+                                    firstDayOfMonth! as NSDate,
+                                    lastDayOfMonth! as NSDate)
         
-        let fetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isHeart == true AND date >= %@ && date <= %@", firstDayOfMonth! as NSDate, lastDay! as NSDate)
+        let fetchRequest = Menu.fetchRequest()
+        fetchRequest.predicate = predicate
         
         let menu: [Menu] = fetch(request: fetchRequest)
         
@@ -99,8 +108,10 @@ final class PersistenceManager {
     // 모든 식단 중에서 isHeart인 식단 가져오기
     func fetchMenu() -> [Menu] {
         
-        let fetchRequest: NSFetchRequest<Menu> = Menu.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "isHeart == true")
+        let predicate = NSPredicate(format: "isHeart == true")
+        
+        let fetchRequest = Menu.fetchRequest()
+        fetchRequest.predicate = predicate
         
         let menu: [Menu] = fetch(request: fetchRequest)
         
