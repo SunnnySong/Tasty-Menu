@@ -64,23 +64,3 @@ extension CalendarViewController: UICollectionViewDelegate {
         present(menuPopupViewController, animated: true)
     }
 }
-
-struct ViewController_Previews: PreviewProvider {   // 이름 바꿔도 됨
-    
-    static var previews: some View {
-        Container().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct Container: UIViewControllerRepresentable {
-        
-        func makeUIViewController(context: Context) -> UIViewController {
-            return CalendarViewController()    // <- 미리 볼 뷰컨 인스턴스
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            
-        }
-        
-    }
-    
-}

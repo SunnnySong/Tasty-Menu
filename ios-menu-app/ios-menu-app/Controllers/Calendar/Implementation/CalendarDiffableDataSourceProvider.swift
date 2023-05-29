@@ -11,29 +11,29 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
     
     // MARK: Properties - Data
     typealias SectionType = Section
-    typealias ItemType = Item
+    typealias ItemType = Day
     
     private var dataSource: UICollectionViewDiffableDataSource<SectionType, ItemType>?
     private let calendar = Calendar(identifier: .gregorian)
     
     // MARK: Functions - Public
     func dataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<SectionType, ItemType>? {
+
+        collectionView.register(CalendarHeaderDateCell.self)
+        collectionView.register(DateCell.self)
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell in
             
-            switch SectionType(rawValue: indexPath.section) {
+            print("\(indexPath), \(item)")
+            switch Section.allCases[indexPath.section] {
             case .headerDate:
-                collectionView.register(CalendarHeaderDateCell.self)
                 let headerCell: CalendarHeaderDateCell = collectionView.dequeue(for: indexPath)
-                headerCell.configure(with: item.headerDate)
+                headerCell.configure(with: item.date)
                 return headerCell
             case .main:
-                collectionView.register(DateCell.self)
                 let dateCell: DateCell = collectionView.dequeue(for: indexPath)
-                dateCell.configure(with: item.calendarDay)
+                dateCell.configure(with: item)
                 return dateCell
-            case .none:
-                return UICollectionViewCell()
             }
         }
         dataSource?.supplementaryViewProvider = headerProvider
@@ -41,11 +41,13 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
         return dataSource
     }
     
-    func updateSnapshot(with items: [Item]) {
+    func updateSnapshot(with items: [Day]) {
         
         var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
         snapshot.appendSections([.headerDate, .main])
-        snapshot.appendItems(items)
+        
+        snapshot.appendItems(items, toSection: .main)
+        snapshot.appendItems([items[0].reversed()], toSection: .headerDate)
         
         dataSource?.apply(snapshot)
     }
