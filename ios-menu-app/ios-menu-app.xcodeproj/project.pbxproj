@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */; };
 		800BDDE22A1C88F9001C6F17 /* CalendarSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800BDDE12A1C88F9001C6F17 /* CalendarSection.swift */; };
+		80137CFD2A25EA8D00DE7E17 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80137CFC2A25EA8D00DE7E17 /* FoodViewController.swift */; };
 		802BE7792A1F2EDE005174E6 /* Food+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7752A1F2EDE005174E6 /* Food+CoreDataClass.swift */; };
 		802BE77A2A1F2EDE005174E6 /* Food+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7762A1F2EDE005174E6 /* Food+CoreDataProperties.swift */; };
 		802BE77B2A1F2EDE005174E6 /* Menu+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */; };
@@ -100,6 +101,7 @@
 /* Begin PBXFileReference section */
 		800BDDDF2A1C5CDE001C6F17 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		800BDDE12A1C88F9001C6F17 /* CalendarSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSection.swift; sourceTree = "<group>"; };
+		80137CFC2A25EA8D00DE7E17 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		802BE7752A1F2EDE005174E6 /* Food+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataClass.swift"; sourceTree = "<group>"; };
 		802BE7762A1F2EDE005174E6 /* Food+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		802BE7772A1F2EDE005174E6 /* Menu+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Menu+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
 				802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */,
+				80137CFC2A25EA8D00DE7E17 /* FoodViewController.swift */,
 				809DCD312A16706F0030F746 /* ListViewController.swift */,
 				809DCD332A1670920030F746 /* PushAlarmViewController.swift */,
 				802BE77D2A1F4C97005174E6 /* CoreData */,
@@ -741,6 +744,7 @@
 				80F341DD2A1B2C5400F3C750 /* DayComponent.swift in Sources */,
 				809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */,
 				80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */,
+				80137CFD2A25EA8D00DE7E17 /* FoodViewController.swift in Sources */,
 				80C806CF2A1E52FC00506FAC /* Menu.xcdatamodeld in Sources */,
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,
 				802DFA2B2A259A8F00DB6724 /* MenuHeaderComponent.swift in Sources */,

@@ -60,6 +60,9 @@ final class MenuFooterView: UIView {
     @objc private func tappedAddButton() {
         
         print("add 버튼 눌림")
+        notificationCenter.post(
+            name: .tappedAddButton,
+            object: nil)
     }
     
     @objc private func tappedCloseButton() {

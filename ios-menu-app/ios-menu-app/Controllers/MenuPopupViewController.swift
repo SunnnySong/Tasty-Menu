@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 final class MenuPopupViewController: UIViewController {
     
@@ -33,7 +32,10 @@ final class MenuPopupViewController: UIViewController {
         view.backgroundColor = .clear
         configureDataSource()
         configureHierarchy()
+        
         tappedFooterCloseButton()
+        tappedFooterAddButton()
+        
         menuHeaderHeartToggle()
     }
     
@@ -64,6 +66,15 @@ final class MenuPopupViewController: UIViewController {
             }
     }
     
+    private func tappedFooterAddButton() {
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(presentFoodViewController),
+            name: .tappedAddButton,
+            object: nil)
+    }
+    
     private func menuHeaderHeartToggle() {
         
         notificationCenter.addObserver(
@@ -80,7 +91,15 @@ final class MenuPopupViewController: UIViewController {
         else { return }
         
         if menuManager.updateHeartState(heartState) {
-            heartStateCallback?()            
+            heartStateCallback?()
         }
+    }
+    
+    @objc private func presentFoodViewController() {
+        
+        let foodViewController = FoodViewController()
+        foodViewController.modalPresentationStyle = .fullScreen
+        
+        present(foodViewController, animated: true)
     }
 }

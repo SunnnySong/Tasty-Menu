@@ -64,6 +64,7 @@ extension CalendarViewController: UICollectionViewDelegate {
     func setupPopupViewController(_ menuPopupViewController: MenuPopupViewController, indexPath: IndexPath) {
         
         menuPopupViewController.modalPresentationStyle = .overFullScreen
+        menuPopupViewController.modalTransitionStyle = .crossDissolve
         
         let selectedItem = calendarManager.getDaysData()[indexPath.item]
         menuPopupViewController.updateDay(selectedItem.date)
