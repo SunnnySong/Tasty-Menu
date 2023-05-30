@@ -22,11 +22,12 @@ final class CalendarCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Functions - Private
     private func createLayout() -> UICollectionViewCompositionalLayout {
         
         let layout = UICollectionViewCompositionalLayout { (sectionNum, env) -> NSCollectionLayoutSection? in
             
-            switch Section(rawValue: sectionNum) {
+            switch CalendarSection(rawValue: sectionNum) {
             case .headerDate:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                       heightDimension: .fractionalHeight(1.0))

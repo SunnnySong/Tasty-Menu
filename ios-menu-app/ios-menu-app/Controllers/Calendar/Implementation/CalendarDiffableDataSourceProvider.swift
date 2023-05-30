@@ -10,9 +10,9 @@ import UIKit
 final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
-    typealias SectionType = Section
-    typealias ItemType = Item
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, ItemType>
+    typealias SectionType = CalendarSection
+    typealias ItemType = CalendarItem
+    typealias DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
     
     private let calendar = Calendar(identifier: .gregorian)
     
@@ -33,7 +33,7 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
         snapshot.appendItems([.header(baseDate)], toSection: .headerDate)
         calendarDay.forEach { snapshot.appendItems([.calendar($0)], toSection: .calendar)}
 
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
 //    func updateHeaderSnapshot(baseDate: Date, dataSource: DataSource) {
@@ -50,7 +50,7 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
 //        dataSource.apply(snapshot)
 //    }
     
-    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell? {
+    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CalendarItem) -> UICollectionViewCell? {
         
         collectionView.register(CalendarHeaderDateCell.self)
         collectionView.register(DateCell.self)

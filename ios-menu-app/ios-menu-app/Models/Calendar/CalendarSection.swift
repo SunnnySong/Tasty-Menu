@@ -1,5 +1,5 @@
 //
-//  Section.swift
+//  CalendarSection.swift
 //  ios-menu-app
 //
 //  Created by Sunny on 2023/05/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Section: Int, CaseIterable {
+enum CalendarSection: Int, CaseIterable {
     case headerDate
     case calendar
 }

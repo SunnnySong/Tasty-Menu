@@ -58,12 +58,12 @@ final class CalendarHeaderDateCell: CollectionViewCellProvidable {
     }
     
     // MARK: Functions - Public
-    func configure(with headerComponent: Date) {
+    func configure(with item: Date) {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY년 M월"
 
-        let date = formatter.string(from: headerComponent)
+        let date = formatter.string(from: item)
         dateLabel.text = date
     }
     
