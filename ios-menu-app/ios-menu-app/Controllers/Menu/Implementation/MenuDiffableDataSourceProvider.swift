@@ -7,37 +7,42 @@
 
 import UIKit
 
-struct MenuDiffableDataSourceProvider {
+final class MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
-    typealias CellType = MenuCell
-    typealias SectionType = Section
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, MenuCell.Item>
+    typealias SectionType = MenuSection
+    typealias ItemType = MenuItem
+    typealias DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
     
     // MARK: Functions - Public
-    func dataSource(collectionView: UICollectionView) -> UICollectionViewDiffableDataSource<Section, MenuCell.Item>? {
+    func dataSource(collectionView: UICollectionView) -> DataSource?  {
         
         let dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
-
         return dataSource
     }
     
-    func updateSnapshot(_ items: [Food], to dataSource: UICollectionViewDiffableDataSource<Section, MenuCell.Item>) {
+    func updateSnapshot(foods: [Food], dataSource: DataSource) {
+
+        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
+        snapshot.appendSections([.menuList])
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(items)
+        foods.forEach {
+            snapshot.appendItems([.menuList($0)], toSection: .menuList)
+        }
+      
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     // MARK: Functions - Private
-    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
+    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: MenuItem) -> UICollectionViewCell? {
         
-        collectionView.register(CellType.self)
+        collectionView.register(MenuCell.self)
         
-        let cell: CellType = collectionView.dequeue(for: indexPath)
-        cell.configure(with: item)
-        
-        return cell
+        switch item {
+        case .menuList(let food):
+            let menuCell: MenuCell = collectionView.dequeue(for: indexPath)
+            menuCell.configure(with: food)
+            return menuCell
+        }
     }
 }
