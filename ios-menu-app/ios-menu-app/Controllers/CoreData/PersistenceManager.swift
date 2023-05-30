@@ -124,10 +124,33 @@ final class PersistenceManager {
         return menu
     }
     
-    
     // Create - Menu & Food
+    func createMenu(date: Date) -> Menu {
+        
+        let menu = Menu(context: context)
+        menu.date = date
+        save()
+        
+        return menu
+    }
+    
+    private func createFood(image: Data?, name: String, category: Int32) -> Food {
+        
+        let food = Food(context: context)
+        food.imageData = image
+        food.name = name
+        food.categoryValue = category
+        
+        return food
+    }
     
     // Update - add Food
+    func add(image: Data?, name: String, category: Int32, to menu: Menu) {
+        
+        let food = createFood(image: image, name: name, category: category)
+        menu.addToFoods(food)
+        save()
+    }
     
     // Update - heart state
     func updateHeartState(menu: Menu, state: Bool) {

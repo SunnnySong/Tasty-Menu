@@ -17,6 +17,7 @@ enum ImageSystemName: String {
     case multiPhoto = "photo.on.rectangle"
     case check = "checkmark"
     case trash = "trash"
+    case xmark = "xmark"
     
     var image: UIImage? {
         UIImage(systemName: self.rawValue)

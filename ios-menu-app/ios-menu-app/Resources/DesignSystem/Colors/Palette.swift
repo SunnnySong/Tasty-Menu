@@ -16,4 +16,9 @@ enum Palette: String {
     case separateBarGray
     case toolBarGray
     case toolBarBlack
+    case category1
+    case category2
+    case category3
+    case category4
+    case category5
 }

@@ -46,6 +46,8 @@
 		805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */; };
 		807215872A2609B0002EF053 /* FoodListStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807215862A2609B0002EF053 /* FoodListStackView.swift */; };
 		8072158A2A261DCD002EF053 /* FoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807215892A261DCD002EF053 /* FoodManager.swift */; };
+		8072158C2A262EA7002EF053 /* FoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8072158B2A262EA7002EF053 /* FoodList.swift */; };
+		8072158F2A265ED0002EF053 /* MenuPopupViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8072158E2A265ED0002EF053 /* MenuPopupViewDelegate.swift */; };
 		809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF22A1667BE0030F746 /* AppDelegate.swift */; };
 		809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF42A1667BE0030F746 /* SceneDelegate.swift */; };
 		809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF62A1667BE0030F746 /* CalendarViewController.swift */; };
@@ -75,7 +77,6 @@
 		80D4BCFE2A228C78009FEFC5 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */; };
 		80EBF0C42A232CE70094798E /* MenuDiffableDataSourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */; };
 		80EBF0C62A23319D0094798E /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EBF0C52A23319D0094798E /* MenuManager.swift */; };
-		80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */; };
 		80F341D22A19411100F3C750 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D12A19411100F3C750 /* CALayer+.swift */; };
 		80F341D42A19446A00F3C750 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341D32A19446A00F3C750 /* UIStackView+.swift */; };
 		80F341DB2A1A714500F3C750 /* SeparateBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F341DA2A1A714500F3C750 /* SeparateBarView.swift */; };
@@ -141,6 +142,8 @@
 		805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		807215862A2609B0002EF053 /* FoodListStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListStackView.swift; sourceTree = "<group>"; };
 		807215892A261DCD002EF053 /* FoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManager.swift; sourceTree = "<group>"; };
+		8072158B2A262EA7002EF053 /* FoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodList.swift; sourceTree = "<group>"; };
+		8072158E2A265ED0002EF053 /* MenuPopupViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPopupViewDelegate.swift; sourceTree = "<group>"; };
 		809DCCEF2A1667BE0030F746 /* ios-menu-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-menu-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		809DCCF22A1667BE0030F746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809DCCF42A1667BE0030F746 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,7 +178,6 @@
 		80D4BCFD2A228C78009FEFC5 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		80EBF0C32A232CE70094798E /* MenuDiffableDataSourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDiffableDataSourceProvider.swift; sourceTree = "<group>"; };
 		80EBF0C52A23319D0094798E /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
-		80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMenu.swift; sourceTree = "<group>"; };
 		80F341D12A19411100F3C750 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
 		80F341D32A19446A00F3C750 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
 		80F341DA2A1A714500F3C750 /* SeparateBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateBarView.swift; sourceTree = "<group>"; };
@@ -212,6 +214,8 @@
 		80137CFE2A25FA4A00DE7E17 /* Food */ = {
 			isa = PBXGroup;
 			children = (
+				804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */,
+				8072158B2A262EA7002EF053 /* FoodList.swift */,
 			);
 			path = Food;
 			sourceTree = "<group>";
@@ -235,6 +239,7 @@
 		802BE7912A2082CF005174E6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				8072158D2A265EBB002EF053 /* Interface */,
 				80EBF0C22A232C8D0094798E /* Implementation */,
 			);
 			path = Menu;
@@ -318,6 +323,14 @@
 				807215892A261DCD002EF053 /* FoodManager.swift */,
 			);
 			path = Food;
+			sourceTree = "<group>";
+		};
+		8072158D2A265EBB002EF053 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				8072158E2A265ED0002EF053 /* MenuPopupViewDelegate.swift */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		809DCCE62A1667BE0030F746 = {
@@ -563,8 +576,6 @@
 		80EDF9BD2A1DC082002DF0EA /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				80EDF9BE2A1DC08A002DF0EA /* DailyMenu.swift */,
-				804F0BAC2A23C0D1009325B4 /* FoodCategory.swift */,
 				802DFA2A2A259A8F00DB6724 /* MenuHeaderComponent.swift */,
 				802DFA2C2A25A8E300DB6724 /* MenuSection.swift */,
 				802DFA2E2A25A90200DB6724 /* MenuItem.swift */,
@@ -736,6 +747,7 @@
 				805B99F52A17E779003FB5BF /* UIFont+.swift in Sources */,
 				807215872A2609B0002EF053 /* FoodListStackView.swift in Sources */,
 				809DCD382A1671570030F746 /* TabBarModel.swift in Sources */,
+				8072158C2A262EA7002EF053 /* FoodList.swift in Sources */,
 				802DFA202A24753D00DB6724 /* CalendarHeaderDateCell.swift in Sources */,
 				809DCD4D2A174E6E0030F746 /* DateCell.swift in Sources */,
 				802DFA312A25AB8200DB6724 /* MenuFooterView.swift in Sources */,
@@ -763,6 +775,7 @@
 				802DFA272A252BEC00DB6724 /* Notification.Name+.swift in Sources */,
 				80D4BCE82A211D5E009FEFC5 /* SystemName.swift in Sources */,
 				800BDDE02A1C5CDE001C6F17 /* CalendarManager.swift in Sources */,
+				8072158F2A265ED0002EF053 /* MenuPopupViewDelegate.swift in Sources */,
 				802BE7972A208359005174E6 /* MenuCollectionView.swift in Sources */,
 				80D4BCEC2A211FAF009FEFC5 /* PretendardLabel.swift in Sources */,
 				802DFA2D2A25A8E300DB6724 /* MenuSection.swift in Sources */,
@@ -779,7 +792,6 @@
 				80D4BCFE2A228C78009FEFC5 /* MenuCell.swift in Sources */,
 				80F341DD2A1B2C5400F3C750 /* DayComponent.swift in Sources */,
 				809DCD3C2A1672230030F746 /* TabBarView.swift in Sources */,
-				80EDF9BF2A1DC08A002DF0EA /* DailyMenu.swift in Sources */,
 				80137CFD2A25EA8D00DE7E17 /* FoodViewController.swift in Sources */,
 				80C806CF2A1E52FC00506FAC /* Menu.xcdatamodeld in Sources */,
 				809DCD322A16706F0030F746 /* ListViewController.swift in Sources */,

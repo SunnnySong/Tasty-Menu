@@ -33,15 +33,15 @@ enum FoodCategory: Int32, CaseIterable {
     var backgroundColor: UIColor? {
         switch self {
         case .korean:
-            return .systemBlue
+            return .designSystem(.category1)
         case .japanese:
-            return .systemYellow
+            return .designSystem(.category2)
         case .chinese:
-            return .systemRed
+            return .designSystem(.category3)
         case .western:
-            return .systemPink
+            return .designSystem(.category4)
         case .etc:
-            return .designSystem(.calendarDayGray)
+            return .designSystem(.category5)
         }
     }
 }

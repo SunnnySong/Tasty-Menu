@@ -9,7 +9,14 @@ import UIKit
 import SwiftUI
 
 final class FoodViewController: UIViewController {
-
+    
+    // MARK: Properties - Data
+    private let foodManager = FoodManager()
+    private var selectedDate: Date = .today
+    private var imageData: Data?
+    
+    weak var menuPopupViewDelegate: MenuPopupViewDelegate?
+    
     // MARK: Properties - View
     private lazy var foodModalView: FoodModalView = { [weak self] in
         FoodModalView(
@@ -26,6 +33,11 @@ final class FoodViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureHierarchy()
         configureNavigationBarItem()
+    }
+    
+    func configureSelectedDate(_ selectedDate: Date) {
+        
+        self.selectedDate = selectedDate
     }
     
     private func configureHierarchy() {
@@ -47,10 +59,10 @@ final class FoodViewController: UIViewController {
                                         target: self,
                                         action: #selector(TappedCheckButton))
         checkItem.tintColor = .designSystem(.calendarDayGray)
-        let deleteItem = UIBarButtonItem(image: ImageSystemName.trash.image,
+        let deleteItem = UIBarButtonItem(image: ImageSystemName.xmark.image,
                                          style: .plain,
                                          target: self,
-                                         action: #selector(TappedDeleteButton))
+                                         action: #selector(TappedCancelButton))
         deleteItem.tintColor = .designSystem(.calendarDayGray)
         navigationItem.rightBarButtonItem = checkItem
         navigationItem.leftBarButtonItem = deleteItem
@@ -65,11 +77,18 @@ final class FoodViewController: UIViewController {
     }
     
     @objc private func TappedCheckButton() {
+                
+        var food = foodModalView.getFoodModalData()
+        food.image = imageData
         
-        print("check 버튼 눌림")
+        foodManager.addFood(food, to: self.selectedDate)
+        
+        dismiss(animated: true)
+        
+        menuPopupViewDelegate?.didDismissFoodViewController()
     }
     
-    @objc private func TappedDeleteButton() {
+    @objc private func TappedCancelButton() {
         
         print("delete 버튼 눌림")
     }
@@ -81,10 +100,10 @@ extension FoodViewController: UIImagePickerControllerDelegate & UINavigationCont
         
         guard let image = info[.originalImage] as? UIImage else { return }
         foodModalView.configureImageView(image)
+        
         dismiss(animated: true)
         
-        // 이미지 Data 타입으로 변환
         let imageData = image.pngData()
-        
+        self.imageData = imageData
     }
 }

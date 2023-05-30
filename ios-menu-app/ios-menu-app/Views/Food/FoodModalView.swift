@@ -42,9 +42,9 @@ final class FoodModalView: UIView {
         return stackView
     }()
     
+    private let menuTextField = FoodListTextField(type: .menu)
+    
     private lazy var foodListStackView: UIStackView = {
-        let menuTextField = FoodListTextField(type: .menu)
-        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 20
@@ -77,6 +77,13 @@ final class FoodModalView: UIView {
     func configureImageView(_ image: UIImage?) {
         
         imageView.image = image
+    }
+    
+    func getFoodModalData() -> FoodList {
+        
+        FoodList(image: imageView.image?.pngData(),
+                 name: menuTextField.getFoodTitle(),
+                 categroy: Int32(segmentedControl.selectedSegmentIndex))
     }
     
     // MARK: Functions - Private

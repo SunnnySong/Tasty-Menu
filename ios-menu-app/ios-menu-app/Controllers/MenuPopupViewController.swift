@@ -10,10 +10,10 @@ import UIKit
 final class MenuPopupViewController: UIViewController {
     
     // MARK: Properties - Data
-    private var date: Date = .today
+    private var selectedDate: Date = .today
     var heartStateCallback: (() -> Void)?
     
-    private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: date)
+    private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: selectedDate)
     private let notificationCenter = NotificationCenter.default
     
     // MARK: Properties - View
@@ -39,10 +39,16 @@ final class MenuPopupViewController: UIViewController {
         menuHeaderHeartToggle()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("heyyyy")
+    }
+    
     // MARK: Functions - Public
     func updateDay(_ date: Date) {
         
-        self.date = date
+        self.selectedDate = date
     }
     
     // MARK: Functions - Private
@@ -99,14 +105,18 @@ final class MenuPopupViewController: UIViewController {
         
         let foodViewController = FoodViewController()
         foodViewController.modalPresentationStyle = .pageSheet
+        foodViewController.menuPopupViewDelegate = self
+        foodViewController.configureSelectedDate(selectedDate)
         
-        // MARK: Half modal
-//        if let sheet = foodViewController.sheetPresentationController {
-//
-//            sheet.detents = [.medium(), .large()]
-//        }
-        
-        let navigationFoodViewController = UINavigationController(rootViewController: FoodViewController())
+        let navigationFoodViewController = UINavigationController(rootViewController: foodViewController)
         present(navigationFoodViewController, animated: true)
+    }
+}
+
+extension MenuPopupViewController: MenuPopupViewDelegate {
+    
+    func didDismissFoodViewController() {
+        
+        menuManager.updateMenuData()
     }
 }

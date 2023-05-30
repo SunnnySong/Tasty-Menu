@@ -40,6 +40,11 @@ final class FoodListTextField: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func getFoodTitle() -> String {
+        
+        textField.text ?? ""
+    }
+    
     private func configureHierarchy() {
         
         addArrangedSubviews([titleLabel, textField])

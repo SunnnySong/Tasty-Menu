@@ -18,7 +18,7 @@ final class MenuManager {
         }
     }
     
-    private lazy var menuData: Menu? = PersistenceManager.shared.fetchMenu(searchDate: baseDate) {
+    private var menuData: Menu? {
         didSet {
             updateSnapshot()
         }
@@ -32,6 +32,8 @@ final class MenuManager {
     init(collectionView: UICollectionView?, date: Date) {
         self.collectionView = collectionView
         self.baseDate = date
+        
+        updateMenuData()
     }
     
     // MARK: Functions - Public
@@ -59,6 +61,11 @@ final class MenuManager {
         self.dataSource = dataSource
         
         updateSnapshot()
+    }
+    
+    func updateMenuData() {
+        
+        menuData = PersistenceManager.shared.fetchMenu(searchDate: baseDate)
     }
     
     func updateSnapshot() {
