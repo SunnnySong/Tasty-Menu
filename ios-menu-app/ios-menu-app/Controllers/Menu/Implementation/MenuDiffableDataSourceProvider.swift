@@ -36,8 +36,6 @@ final class MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProv
     // MARK: Functions - Private
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: MenuItem) -> UICollectionViewCell? {
         
-        collectionView.register(MenuCell.self)
-        
         switch item {
         case .menuList(let food):
             let menuCell: MenuCell = collectionView.dequeue(for: indexPath)

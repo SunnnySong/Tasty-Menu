@@ -52,9 +52,6 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
     
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CalendarItem) -> UICollectionViewCell? {
         
-        collectionView.register(CalendarHeaderDateCell.self)
-        collectionView.register(DateCell.self)
-        
         switch item {
         case .header(let date):
             let headerCell: CalendarHeaderDateCell = collectionView.dequeue(for: indexPath)
