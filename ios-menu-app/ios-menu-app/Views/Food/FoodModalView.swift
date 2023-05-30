@@ -1,0 +1,20 @@
+//
+//  FoodModalView.swift
+//  ios-menu-app
+//
+//  Created by Sunny on 2023/05/30.
+//
+
+import UIKit
+
+class FoodModalView: UIView {
+
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
+
+}
