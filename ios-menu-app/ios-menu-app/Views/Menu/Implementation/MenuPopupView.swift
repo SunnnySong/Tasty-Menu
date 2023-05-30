@@ -14,6 +14,8 @@ final class MenuPopupView: UIView {
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
         return view
     }()
     
@@ -55,7 +57,7 @@ final class MenuPopupView: UIView {
         
         addSubview(popupView)
         
-        let popupStackViewWidth = frame.width * 0.87
+        let popupStackViewWidth = frame.width * 0.89
         NSLayoutConstraint.activate([
             popupView.widthAnchor.constraint(equalToConstant: popupStackViewWidth),
             popupView.heightAnchor.constraint(equalToConstant: popupStackViewWidth),
