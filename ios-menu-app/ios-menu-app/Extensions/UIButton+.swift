@@ -15,7 +15,7 @@ extension UIButton {
     ) {
         self.init()
         
-        let image = UIImage(systemName: imageName.rawValue)
+        let image = imageName.image
         setImage(image, for: .normal)
         imageView?.tintColor = imageColor
         contentEdgeInsets = insets

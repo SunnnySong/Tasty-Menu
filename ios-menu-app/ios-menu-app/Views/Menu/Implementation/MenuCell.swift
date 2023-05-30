@@ -49,10 +49,8 @@ final class MenuCell: CollectionViewCellProvidable {
     
     func configure(with item: Food) {
         
-        let emptyImage = UIImage(systemName: ImageSystemName.photo.rawValue)
-        
         if item.imageData == nil {
-            foodImageView.image = emptyImage
+            foodImageView.image = ImageSystemName.photo.image
         } else {
             foodImageView.image = UIImage(data: item.imageData ?? Data())
         }

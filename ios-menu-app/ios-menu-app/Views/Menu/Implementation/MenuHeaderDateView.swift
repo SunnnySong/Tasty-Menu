@@ -82,11 +82,9 @@ final class MenuHeaderDateView: UIView {
     private func updateHeartButton(heartState: Bool) {
         
         if heartState {
-            let image = UIImage(systemName: ImageSystemName.heartFill.rawValue)
-            heartButton.setImage(image, for: .normal)
+            heartButton.setImage(ImageSystemName.heartFill.image, for: .normal)
         } else {
-            let image = UIImage(systemName: ImageSystemName.heart.rawValue)
-            heartButton.setImage(image, for: .normal)
+            heartButton.setImage(ImageSystemName.heart.image, for: .normal)
         }
     }
     

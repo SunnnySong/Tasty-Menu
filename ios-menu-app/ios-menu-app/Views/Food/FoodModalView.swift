@@ -11,7 +11,7 @@ final class FoodModalView: UIView {
 
     private var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: ImageSystemName.multiPhoto.rawValue)
+        imageView.image = ImageSystemName.multiPhoto.image
         imageView.contentMode = .scaleAspectFit
         imageView.backgroundColor = .white
         imageView.tintColor = .designSystem(.mainOrange)

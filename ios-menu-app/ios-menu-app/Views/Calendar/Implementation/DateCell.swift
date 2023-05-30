@@ -40,7 +40,7 @@ final class DateCell: CollectionViewCellProvidable {
     
     private let heartImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: ImageSystemName.heartFill.rawValue)
+        imageView.image = ImageSystemName.heartFill.image
         imageView.tintColor = .designSystem(.mainOrange)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
