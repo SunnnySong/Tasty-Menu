@@ -79,7 +79,8 @@ final class MenuPopupViewController: UIViewController {
               let heartState = userInfo[NotificationKeys.menuHeartState] as? Bool
         else { return }
         
-        menuManager.updateHeartState(heartState)
-        heartStateCallback?()
+        if menuManager.updateHeartState(heartState) {
+            heartStateCallback?()            
+        }
     }
 }

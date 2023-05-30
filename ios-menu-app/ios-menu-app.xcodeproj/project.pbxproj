@@ -355,9 +355,9 @@
 			isa = PBXGroup;
 			children = (
 				809DCCF62A1667BE0030F746 /* CalendarViewController.swift */,
+				802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */,
 				809DCD312A16706F0030F746 /* ListViewController.swift */,
 				809DCD332A1670920030F746 /* PushAlarmViewController.swift */,
-				802BE78F2A2081C3005174E6 /* MenuPopupViewController.swift */,
 				802BE77D2A1F4C97005174E6 /* CoreData */,
 				802BE7912A2082CF005174E6 /* Menu */,
 				805B99D62A17606E003FB5BF /* Calendar */,

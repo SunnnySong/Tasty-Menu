@@ -69,13 +69,14 @@ final class MenuManager {
         menuDiffableDataSourceProvider.updateSnapshot(foods: foods, dataSource: dataSource)
     }
     
-    func updateHeartState(_ state: Bool) {
+    func updateHeartState(_ state: Bool) -> Bool {
 
         guard let menuData = menuData else {
-            return
+            return false
         }
         
         PersistenceManager.shared.updateHeartState(menu: menuData, state: state)
+        return true
     }
     
 }
