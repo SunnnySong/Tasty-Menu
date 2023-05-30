@@ -45,6 +45,7 @@
 		805B9A012A192AF3003FB5BF /* WeakView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B9A002A192AF3003FB5BF /* WeakView.swift */; };
 		805B9A032A192FCC003FB5BF /* UICollectionReusableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */; };
 		807215872A2609B0002EF053 /* FoodListStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807215862A2609B0002EF053 /* FoodListStackView.swift */; };
+		8072158A2A261DCD002EF053 /* FoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807215892A261DCD002EF053 /* FoodManager.swift */; };
 		809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF22A1667BE0030F746 /* AppDelegate.swift */; };
 		809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF42A1667BE0030F746 /* SceneDelegate.swift */; };
 		809DCCF72A1667BE0030F746 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DCCF62A1667BE0030F746 /* CalendarViewController.swift */; };
@@ -139,6 +140,7 @@
 		805B9A002A192AF3003FB5BF /* WeakView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakView.swift; sourceTree = "<group>"; };
 		805B9A022A192FCC003FB5BF /* UICollectionReusableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+.swift"; sourceTree = "<group>"; };
 		807215862A2609B0002EF053 /* FoodListStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListStackView.swift; sourceTree = "<group>"; };
+		807215892A261DCD002EF053 /* FoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodManager.swift; sourceTree = "<group>"; };
 		809DCCEF2A1667BE0030F746 /* ios-menu-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-menu-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		809DCCF22A1667BE0030F746 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809DCCF42A1667BE0030F746 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +312,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		807215882A261DBC002EF053 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				807215892A261DCD002EF053 /* FoodManager.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
 		809DCCE62A1667BE0030F746 = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +390,7 @@
 				80137CFC2A25EA8D00DE7E17 /* FoodViewController.swift */,
 				809DCD312A16706F0030F746 /* ListViewController.swift */,
 				809DCD332A1670920030F746 /* PushAlarmViewController.swift */,
+				807215882A261DBC002EF053 /* Food */,
 				802BE77D2A1F4C97005174E6 /* CoreData */,
 				802BE7912A2082CF005174E6 /* Menu */,
 				805B99D62A17606E003FB5BF /* Calendar */,
@@ -735,6 +746,7 @@
 				809DCCF32A1667BE0030F746 /* AppDelegate.swift in Sources */,
 				80F341D22A19411100F3C750 /* CALayer+.swift in Sources */,
 				80D4BCDB2A20872E009FEFC5 /* MenuPopupView.swift in Sources */,
+				8072158A2A261DCD002EF053 /* FoodManager.swift in Sources */,
 				805B99FB2A192837003FB5BF /* DateCalculator.swift in Sources */,
 				809DCCF52A1667BE0030F746 /* SceneDelegate.swift in Sources */,
 				800BDDE22A1C88F9001C6F17 /* CalendarSection.swift in Sources */,

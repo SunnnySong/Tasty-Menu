@@ -11,7 +11,13 @@ import SwiftUI
 final class FoodViewController: UIViewController {
 
     // MARK: Properties - View
-    private lazy var foodModalView = FoodModalView()
+    private lazy var foodModalView: FoodModalView = { [weak self] in
+        FoodModalView(
+            imagePickerCall: {
+                self?.presentImagePicker()
+            }
+        )
+    }()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -50,6 +56,14 @@ final class FoodViewController: UIViewController {
         navigationItem.leftBarButtonItem = deleteItem
     }
     
+    private func presentImagePicker() {
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+       
+        present(picker, animated: true)
+    }
+    
     @objc private func TappedCheckButton() {
         
         print("check 버튼 눌림")
@@ -58,5 +72,19 @@ final class FoodViewController: UIViewController {
     @objc private func TappedDeleteButton() {
         
         print("delete 버튼 눌림")
+    }
+}
+
+extension FoodViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.originalImage] as? UIImage else { return }
+        foodModalView.configureImageView(image)
+        dismiss(animated: true)
+        
+        // 이미지 Data 타입으로 변환
+        let imageData = image.pngData()
+        
     }
 }

@@ -9,6 +9,10 @@ import UIKit
 
 final class FoodModalView: UIView {
 
+    // MARK: Properties - Data
+    var imagePickerCall: (() -> Void)?
+    
+    // MARK: Properties - View
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageSystemName.multiPhoto.image
@@ -49,11 +53,14 @@ final class FoodModalView: UIView {
         return stackView
     }()
     
-    init() {
+    init(imagePickerCall: @escaping (() -> Void)) {
+        
+        self.imagePickerCall = imagePickerCall
         super.init(frame: .zero)
     
         configure()
         selectFoodCategory(segmentedControl)
+        setupTouchToImageView()
     }
     
     required init?(coder: NSCoder) {
@@ -64,6 +71,20 @@ final class FoodModalView: UIView {
         super.layoutSubviews()
         
         configureHierarchy()
+    }
+    
+    // MARK: Functions - Public
+    func configureImageView(_ image: UIImage?) {
+        
+        imageView.image = image
+    }
+    
+    // MARK: Functions - Private
+    private func setupTouchToImageView() {
+        
+        let tapGuesture = UITapGestureRecognizer(target: self, action: #selector(tappedImageView))
+        imageView.addGestureRecognizer(tapGuesture)
+        imageView.isUserInteractionEnabled = true
     }
     
     private func configure() {
@@ -95,5 +116,11 @@ final class FoodModalView: UIView {
     @objc private func selectFoodCategory(_ segment: UISegmentedControl) {
         
         print("segmented control value: \(segment.selectedSegmentIndex)")
+    }
+    
+    @objc private func tappedImageView() {
+        
+        print("tappedImageView")
+        imagePickerCall?()
     }
 }
