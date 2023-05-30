@@ -12,7 +12,6 @@ struct DayComponent: Hashable {
     let date: Date
     let isIncludeInMonth: Bool
     var hasHeart: Bool = false
-    var headerType: Bool = false
 }
 
 extension DayComponent {
