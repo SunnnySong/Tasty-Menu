@@ -7,5 +7,7 @@
 
 import Foundation
 
-enum NotificationKeys {
+enum NotificationKeys: String {
+    
+    case menuHeartState
 }

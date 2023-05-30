@@ -10,6 +10,7 @@ import UIKit
 final class MenuHeaderDateView: UIView {
     
     // MARK: Properties - Data
+    private let notificationCenter = NotificationCenter.default
     private var heartState: Bool = false {
         didSet {
             updateHeartButton(heartState: heartState)
@@ -109,7 +110,11 @@ final class MenuHeaderDateView: UIView {
     
     @objc private func didTapHeartButton() {
      
-        print("하트 버튼 눌림")
         self.heartState.toggle()
+        
+        notificationCenter.post(
+            name: .menuHeaderHeartToggle,
+            object: nil,
+            userInfo: [NotificationKeys.menuHeartState: self.heartState])
     }
 }

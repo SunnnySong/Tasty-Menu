@@ -9,16 +9,19 @@ import UIKit
 
 final class MenuFooterView: UIView {
     
+    // MARK: Properties - Data
+    private let notificationCenter = NotificationCenter.default
+    
     // MARK: Properties - View
     private lazy var toolBarAddButton: ToolBarButton = {
         let button = ToolBarButton(type: .add)
-        button.addTarget(self, action: #selector(didTaptoolBarAddButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedAddButton), for: .touchUpInside)
         return button
     }()
     
     private lazy var toolBarCloseButton: ToolBarButton = {
         let button = ToolBarButton(type: ._close)
-        button.addTarget(self, action: #selector(didTaptoolBarCloseButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedCloseButton), for: .touchUpInside)
         return button
     }()
     
@@ -54,13 +57,16 @@ final class MenuFooterView: UIView {
         ])
     }
     
-    @objc private func didTaptoolBarAddButton() {
+    @objc private func tappedAddButton() {
         
         print("add 버튼 눌림")
     }
     
-    @objc private func didTaptoolBarCloseButton() {
+    @objc private func tappedCloseButton() {
         
         print("close 버튼 눌림")
+        notificationCenter.post(
+            name: .tappedCloseButton,
+            object: nil)
     }
 }

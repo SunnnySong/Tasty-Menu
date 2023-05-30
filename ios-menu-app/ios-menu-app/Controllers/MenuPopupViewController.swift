@@ -9,9 +9,10 @@ import UIKit
 import SwiftUI
 
 final class MenuPopupViewController: UIViewController {
-
+    
     // MARK: Properties - Data
     private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: date)
+    private let notificationCenter = NotificationCenter.default
     private var date: Date = .today
     
     // MARK: Properties - View
@@ -30,8 +31,10 @@ final class MenuPopupViewController: UIViewController {
         view.backgroundColor = .clear
         configureDataSource()
         configureHierarchy()
+        tappedFooterCloseButton()
+        menuHeaderHeartToggle()
     }
-
+    
     // MARK: Functions - Public
     func updateDay(_ date: Date) {
         
@@ -47,5 +50,33 @@ final class MenuPopupViewController: UIViewController {
     private func configureDataSource() {
         
         menuManager.createDataSource()
+    }
+    
+    private func tappedFooterCloseButton() {
+        
+        notificationCenter.addObserver(
+            forName: .tappedCloseButton,
+            object: nil,
+            queue: nil) { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+    }
+    
+    private func menuHeaderHeartToggle() {
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(changeHeartState(_:)),
+            name: .menuHeaderHeartToggle,
+            object: nil)
+    }
+    
+    @objc private func changeHeartState(_ notification: Notification) {
+        
+        guard let userInfo = notification.userInfo,
+              let heartState = userInfo[NotificationKeys.menuHeartState] as? Bool
+        else { return }
+        
+        menuManager.updateHeartState(heartState)
     }
 }

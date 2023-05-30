@@ -47,13 +47,13 @@ final class MenuManager {
         return menuHeaderComponents
     }
     
-//    func heartStateToggle() {
-//
-//        guard let menuData = menuData else {
-//            return
-//        }
-//        PersistenceManager.shared.updateHeartToggle(menu: menuData)
-//    }
+    func updateHeartState(_ state: Bool) {
+
+        guard let menuData = menuData else {
+            return
+        }
+        PersistenceManager.shared.updateHeartState(menu: menuData, state: state)
+    }
     
     func createDataSource() {
         

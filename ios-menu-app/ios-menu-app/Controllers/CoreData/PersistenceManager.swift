@@ -124,9 +124,9 @@ final class PersistenceManager {
     // Update - add Food
     
     // Update - heart state
-    func updateHeartToggle(menu: Menu) {
+    func updateHeartState(menu: Menu, state: Bool) {
         
-        menu.isHeart.toggle()
+        menu.isHeart = state
         save()
     }
     
