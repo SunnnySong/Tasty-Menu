@@ -9,10 +9,6 @@ import UIKit
 
 final class MenuPopupView: UIView {
     
-    // MARK: Properties - Data
-    var addButtonAction: (() -> Void)?
-    var closeButtonAction: (() -> Void)?
-    
     // MARK: Properties - View
     private let popupView: UIView = {
         let view = UIView()
@@ -21,45 +17,19 @@ final class MenuPopupView: UIView {
         return view
     }()
     
-    private let headerDateView: HeaderDateView
+    private let headerView = MenuHeaderDateView()
+    private let footerView = MenuFooterView()
     private var menuCollectionView: UICollectionView?
     
-    private lazy var toolBarStackView: UIStackView = {
-        var toolBarAddButton: ToolBarButton = {
-            let button = ToolBarButton(type: .add)
-            button.addTarget(self, action: #selector(didTaptoolBarAddButton), for: .touchUpInside)
-            return button
-        }()
-        
-        var toolBarCloseButton: ToolBarButton = {
-            let button = ToolBarButton(type: ._close)
-            button.addTarget(self, action: #selector(didTaptoolBarCloseButton), for: .touchUpInside)
-            return button
-        }()
-        
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.addArrangedSubviews([toolBarAddButton, toolBarCloseButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
     // MARK: Lifecycle
     init(frame: CGRect,
          collectionView: UICollectionView,
-         headerDate: Date,
-         heartState: Bool,
-         addButtonAction: @escaping (() -> Void),
-         closeButtonAction: @escaping (() -> Void),
-         heartButtonAction: @escaping (() -> Void)
+         menuHeaderComponent: MenuHeaderComponent
     ) {
-        self.headerDateView = HeaderDateView(didTapHeartButton: heartButtonAction, headerDate: headerDate, heartState: heartState, type: .menu)
         super.init(frame: frame)
-
         self.menuCollectionView = collectionView
-        self.addButtonAction = addButtonAction
-        self.closeButtonAction = closeButtonAction
+        
+        headerView.configure(with: menuHeaderComponent)
         configureHierarchy()
         configureMenuPopupView()
     }
@@ -72,12 +42,6 @@ final class MenuPopupView: UIView {
         super.layoutSubviews()
         
         configurePopupViewHierarchy()
-    }
-    
-    // MARK: Functions - Public
-    func heartButtonToggle() {
-        
-        self.headerDateView.updateHeartButtonToggle()
     }
     
     // MARK: Functions - Private
@@ -103,9 +67,9 @@ final class MenuPopupView: UIView {
     private func configurePopupViewHierarchy() {
         
         guard let menuCollectionView = menuCollectionView else { return }
-        popupView.addSubview(headerDateView)
         popupView.addSubview(menuCollectionView)
-        popupView.addSubview(toolBarStackView)
+        popupView.addSubview(headerView)
+        popupView.addSubview(footerView)
         
         let popupViewHeight = popupView.frame.height
         let headerDateViewHeight = popupViewHeight * 0.275
@@ -113,31 +77,20 @@ final class MenuPopupView: UIView {
         let menuCollectionViewHorizontal: CGFloat = 16
         let menuCollectionViewBottom: CGFloat = -24
         NSLayoutConstraint.activate([
-            headerDateView.topAnchor.constraint(equalTo: popupView.topAnchor),
-            headerDateView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
-            headerDateView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor),
-            headerDateView.heightAnchor.constraint(equalToConstant: headerDateViewHeight),
+            headerView.topAnchor.constraint(equalTo: popupView.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: headerDateViewHeight),
             
-            menuCollectionView.topAnchor.constraint(equalTo: headerDateView.bottomAnchor),
+            menuCollectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             menuCollectionView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor, constant: menuCollectionViewHorizontal),
             menuCollectionView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor, constant: -menuCollectionViewHorizontal),
-            menuCollectionView.bottomAnchor.constraint(equalTo: toolBarStackView.topAnchor, constant: menuCollectionViewBottom),
+            menuCollectionView.bottomAnchor.constraint(equalTo: footerView.topAnchor, constant: menuCollectionViewBottom),
             
-            toolBarStackView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor),
-            toolBarStackView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
-            toolBarStackView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor),
-            toolBarStackView.heightAnchor.constraint(equalToConstant: toolBarStackViewHeight)
+            footerView.bottomAnchor.constraint(equalTo: popupView.bottomAnchor),
+            footerView.leadingAnchor.constraint(equalTo: popupView.leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: popupView.trailingAnchor),
+            footerView.heightAnchor.constraint(equalToConstant: toolBarStackViewHeight)
         ])
-    }
-    
-    @objc private func didTaptoolBarAddButton() {
-        
-        print("didTaptoolBarAddButton")
-        addButtonAction?()
-    }
-    
-    @objc private func didTaptoolBarCloseButton() {
-        
-        closeButtonAction?()
     }
 }

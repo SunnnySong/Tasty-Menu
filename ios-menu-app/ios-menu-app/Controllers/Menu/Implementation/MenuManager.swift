@@ -20,7 +20,7 @@ final class MenuManager {
     
     private lazy var menuData: Menu? = PersistenceManager.shared.fetchMenu(searchDate: baseDate) {
         didSet {
-            update()
+            updateSnapshot()
         }
     }
     
@@ -32,24 +32,28 @@ final class MenuManager {
     init(collectionView: UICollectionView?, date: Date) {
         self.collectionView = collectionView
         self.baseDate = date
+        print(self.menuData ?? "hi")
     }
     
     // MARK: Functions - Public
-    func getHeartState() -> Bool {
+    func getMenuHeaderComponent() -> MenuHeaderComponent {
+        var isHeart: Bool = false
         
-        guard let heartState = menuData?.isHeart else {
-            return false
+        if let menuData = menuData {
+            isHeart = menuData.isHeart
         }
-        return heartState
+        
+        let menuHeaderComponents = MenuHeaderComponent(date: baseDate, isHeart: isHeart)
+        return menuHeaderComponents
     }
     
-    func heartStateToggle() {
-        
-        guard let menuData = menuData else {
-            return
-        }
-        PersistenceManager.shared.updateHeartToggle(menu: menuData)
-    }
+//    func heartStateToggle() {
+//
+//        guard let menuData = menuData else {
+//            return
+//        }
+//        PersistenceManager.shared.updateHeartToggle(menu: menuData)
+//    }
     
     func createDataSource() {
         
@@ -62,20 +66,16 @@ final class MenuManager {
         }
         collectionView.dataSource = dataSource
         self.dataSource = dataSource
-        update()
+        
+        updateSnapshot()
     }
     
-    func update() {
+    func updateSnapshot() {
         
-        guard let dataSource = dataSource else {
-            return
-        }
-        
-        guard let foods = menuData?.foods?.array as? [Food] else {
-            return
-        }
-        
-        menuDiffableDataSourceProvider.updateSnapshot(foods, to: dataSource)
+        guard let dataSource = dataSource else { return }
+        guard let foods = menuData?.foods?.array as? [Food] else { return }
+
+        menuDiffableDataSourceProvider.updateSnapshot(foods: foods, dataSource: dataSource)
     }
     
 }

@@ -7,44 +7,67 @@
 
 import UIKit
 
-struct CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
+final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
     // MARK: Properties - Data
-    typealias CellType = DateCell
-    typealias SectionType = Section
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, DateCell.Item>
+    typealias SectionType = CalendarSection
+    typealias ItemType = CalendarItem
+    typealias DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
     
     private let calendar = Calendar(identifier: .gregorian)
-        
+    
     // MARK: Functions - Public
     func dataSource(collectionView: UICollectionView) -> DataSource? {
-
+        
         let dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
         dataSource.supplementaryViewProvider = headerProvider
 
         return dataSource
     }
     
-    func updateSnapshot(_ items: [CellType.Item], to dataSource: DataSource) {
+    func updateSnapshot(header baseDate: Date, calendar calendarDay: [DayComponent], dataSource: DataSource) {
 
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CellType.Item>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(items)
+        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
+        snapshot.appendSections([.headerDate, .calendar])
+
+        snapshot.appendItems([.header(baseDate)], toSection: .headerDate)
+        calendarDay.forEach { snapshot.appendItems([.calendar($0)], toSection: .calendar)}
+
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    // MARK: Functions - Private
-    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CellType.Item) -> UICollectionViewCell? {
+//    func updateHeaderSnapshot(baseDate: Date, dataSource: DataSource) {
+//        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
+//        snapshot.appendSections([.headerDate])
+//        snapshot.appendItems([.header(baseDate)], toSection: .headerDate)
+//        dataSource.apply(snapshot)
+//    }
 
-        collectionView.register(CellType.self)
-        let cell: CellType = collectionView.dequeue(for: indexPath)
-
-        if calendar.isDateInToday(item.date) {
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+//    func updateCalendarSnapshot(calendarDay: [DayComponent], dataSource: DataSource) {
+//        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
+//        snapshot.appendSections([.calendar])
+//        snapshot.appendItems(calendarDay.map { .calendar($0) }, toSection: .calendar)
+//        dataSource.apply(snapshot)
+//    }
+    
+    private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CalendarItem) -> UICollectionViewCell? {
+        
+        collectionView.register(CalendarHeaderDateCell.self)
+        collectionView.register(DateCell.self)
+        
+        switch item {
+        case .header(let date):
+            let headerCell: CalendarHeaderDateCell = collectionView.dequeue(for: indexPath)
+            headerCell.configure(with: date)
+            return headerCell
+        case .calendar(let day):
+            let dateCell: DateCell = collectionView.dequeue(for: indexPath)
+            if calendar.isDateInToday(day.date) {
+                collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+            }
+            dateCell.configure(with: day)
+            return dateCell
         }
-        cell.configure(with: item)
-
-        return cell
     }
     
     private func headerProvider(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {

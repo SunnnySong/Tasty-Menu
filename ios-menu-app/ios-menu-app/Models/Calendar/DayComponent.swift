@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct Day: Hashable {
+struct DayComponent: Hashable {
     
     let date: Date
     let isIncludeInMonth: Bool
     var hasHeart: Bool = false
+    var headerType: Bool = false
 }
 
-extension Day {
+extension DayComponent {
     
     var number: String {
         let formatter = DateFormatter()

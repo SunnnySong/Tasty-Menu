@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class CalendarViewController: UIViewController {
     
@@ -13,21 +14,6 @@ final class CalendarViewController: UIViewController {
     private lazy var calendarManager = CalendarManager(collectionView: calendarView)
     
     // MARK: Properties - View
-    private lazy var headerDateView: HeaderDateView = { [weak self] in
-        HeaderDateView (
-            didTapPreviousButton: {
-                let previousBaseDate = self?.calendarManager.moveToPreviousMonth() ?? .today
-                self?.headerDateView.updateHeaderDate(previousBaseDate)
-            },
-            didTapNextButton: {
-                let nextBaseDate = self?.calendarManager.moveToNextMonth() ?? .today
-                self?.headerDateView.updateHeaderDate(nextBaseDate)
-            },
-            headerDate: .today,
-            type: .calendar
-        )
-    }()
-    
     private var calendarView = CalendarCollectionView(frame: .zero)
     
     // MARK: Lifecycle
@@ -43,21 +29,12 @@ final class CalendarViewController: UIViewController {
     // MARK: Functions - private
     private func configureHierarchy() {
         
-        view.addSubview(headerDateView)
         view.addSubview(calendarView)
         
-        let calendarTotalHeight = view.frame.height
-        let headerDateViewHeight = calendarTotalHeight * 0.11
-        
         NSLayoutConstraint.activate([
-            headerDateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerDateView.heightAnchor.constraint(equalToConstant: headerDateViewHeight),
-            headerDateView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerDateView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            calendarView.topAnchor.constraint(equalTo: headerDateView.bottomAnchor),
-            calendarView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            calendarView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             calendarView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
@@ -85,6 +62,5 @@ extension CalendarViewController: UICollectionViewDelegate {
         menuPopupViewController.modalPresentationStyle = .overFullScreen
         
         present(menuPopupViewController, animated: true)
-        
     }
 }

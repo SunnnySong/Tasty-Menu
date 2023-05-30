@@ -12,26 +12,14 @@ final class MenuPopupViewController: UIViewController {
 
     // MARK: Properties - Data
     private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: date)
-    
     private var date: Date = .today
     
     // MARK: Properties - View
-    private lazy var menuPopupView: MenuPopupView = { [weak self] in
+    private lazy var menuPopupView: MenuPopupView = {
         MenuPopupView(
             frame: view.bounds,
             collectionView: menuCollectionView,
-            headerDate: date,
-            heartState: menuManager.getHeartState(),
-            addButtonAction: {
-                print("add")
-            },
-            closeButtonAction: {
-                self?.dismiss(animated: true)
-            },
-            heartButtonAction: {
-                self?.menuManager.heartStateToggle()
-                self?.menuPopupView.heartButtonToggle()
-            })
+            menuHeaderComponent: menuManager.getMenuHeaderComponent())
     }()
     private let menuCollectionView = MenuCollectionView(frame: .zero)
     

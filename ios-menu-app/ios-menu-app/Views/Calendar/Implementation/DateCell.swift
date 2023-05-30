@@ -9,7 +9,7 @@ import UIKit
 
 final class DateCell: CollectionViewCellProvidable {
     
-    typealias Item = Day
+    typealias Item = DayComponent
 
     // MARK: Properties - Data
     override var isSelected: Bool {
@@ -40,7 +40,7 @@ final class DateCell: CollectionViewCellProvidable {
     
     private let heartImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "suit.heart.fill")
+        imageView.image = UIImage(systemName: ImageSystemName.heart.rawValue)
         imageView.tintColor = .designSystem(.mainOrange)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -60,16 +60,16 @@ final class DateCell: CollectionViewCellProvidable {
     }
     
     // MARK: Functions - Public
-    func configure(with dayData: Day) {
+    func configure(with dayComponent: DayComponent) {
         
-        numberLabel.text = dayData.number
-        heartImageView.isHidden = !dayData.hasHeart
+        numberLabel.text = dayComponent.number
+        heartImageView.isHidden = !dayComponent.hasHeart
 
-        if !dayData.isIncludeInMonth {
+        if !dayComponent.isIncludeInMonth {
             numberLabel.textColor = .designSystem(.calendarDayGray)
         }
 
-        self.isIncludeInMonth = dayData.isIncludeInMonth
+        self.isIncludeInMonth = dayComponent.isIncludeInMonth
         setSelected(isSelected, isIncludeInMonth: isIncludeInMonth)
     }
     
