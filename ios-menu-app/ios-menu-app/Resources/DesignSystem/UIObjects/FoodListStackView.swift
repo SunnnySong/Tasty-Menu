@@ -11,7 +11,6 @@ final class FoodListTextField: UIStackView {
     
     enum FoodListType: String {
         case menu = "메뉴"
-        case category = "카테고리"
     }
 
     private var titleLabel: UILabel = {
@@ -25,13 +24,14 @@ final class FoodListTextField: UIStackView {
     private var textField: UITextField = {
         let textField = UITextField()
         textField.font = .pretendard(size: 15, weight: .regular)
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
     init(type: FoodListType) {
         super.init(frame: .zero)
         
-        spacing = 10
+        spacing = 15
         titleLabel.text = type.rawValue
         configureHierarchy()
     }

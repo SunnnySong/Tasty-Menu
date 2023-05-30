@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FoodCategory: Int32 {
+enum FoodCategory: Int32, CaseIterable {
     
     case korean
     case japanese

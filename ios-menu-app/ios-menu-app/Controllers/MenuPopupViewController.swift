@@ -98,8 +98,15 @@ final class MenuPopupViewController: UIViewController {
     @objc private func presentFoodViewController() {
         
         let foodViewController = FoodViewController()
-        foodViewController.modalPresentationStyle = .fullScreen
+        foodViewController.modalPresentationStyle = .pageSheet
         
-        present(foodViewController, animated: true)
+        // MARK: Half modal
+//        if let sheet = foodViewController.sheetPresentationController {
+//
+//            sheet.detents = [.medium(), .large()]
+//        }
+        
+        let navigationFoodViewController = UINavigationController(rootViewController: FoodViewController())
+        present(navigationFoodViewController, animated: true)
     }
 }
