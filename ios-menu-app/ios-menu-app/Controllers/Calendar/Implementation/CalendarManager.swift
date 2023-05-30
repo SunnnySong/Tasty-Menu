@@ -55,7 +55,13 @@ final class CalendarManager {
         updateSnapshot()
     }
     
-    func updateSnapshot() {
+    func updateHeartState(indexPath: IndexPath) {
+
+        daysData[indexPath.item].hasHeart.toggle()
+    }
+    
+    // MARK: Functions - Private
+    private func updateSnapshot() {
         
         guard let dataSource = dataSource else {
             return
@@ -64,7 +70,6 @@ final class CalendarManager {
         calendarDiffableDataSourceProvider.updateSnapshot(header: baseDate, calendar: daysData, dataSource: dataSource)
     }
     
-    // MARK: Functions - Private
     private func tappedHeaderPreviousButton() {
         
         notificationCenter.addObserver(

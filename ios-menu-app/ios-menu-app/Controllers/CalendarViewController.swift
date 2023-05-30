@@ -55,12 +55,22 @@ extension CalendarViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let selectedItem = calendarManager.getDaysData()[indexPath.item]
-        
         let menuPopupViewController = MenuPopupViewController()
-        menuPopupViewController.updateDay(selectedItem.date)
+        setupPopupViewController(menuPopupViewController, indexPath: indexPath)
+       
+        present(menuPopupViewController, animated: true)
+    }
+    
+    func setupPopupViewController(_ menuPopupViewController: MenuPopupViewController, indexPath: IndexPath) {
+        
         menuPopupViewController.modalPresentationStyle = .overFullScreen
         
-        present(menuPopupViewController, animated: true)
+        let selectedItem = calendarManager.getDaysData()[indexPath.item]
+        menuPopupViewController.updateDay(selectedItem.date)
+        
+        menuPopupViewController.heartStateCallback = { [weak self] in
+            
+            self?.calendarManager.updateHeartState(indexPath: indexPath)
+        }
     }
 }

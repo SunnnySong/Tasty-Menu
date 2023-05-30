@@ -11,9 +11,11 @@ import SwiftUI
 final class MenuPopupViewController: UIViewController {
     
     // MARK: Properties - Data
+    private var date: Date = .today
+    var heartStateCallback: (() -> Void)?
+    
     private lazy var menuManager = MenuManager(collectionView: menuCollectionView, date: date)
     private let notificationCenter = NotificationCenter.default
-    private var date: Date = .today
     
     // MARK: Properties - View
     private lazy var menuPopupView: MenuPopupView = {
@@ -78,5 +80,6 @@ final class MenuPopupViewController: UIViewController {
         else { return }
         
         menuManager.updateHeartState(heartState)
+        heartStateCallback?()
     }
 }

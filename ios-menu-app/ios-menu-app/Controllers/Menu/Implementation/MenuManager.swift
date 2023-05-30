@@ -32,7 +32,6 @@ final class MenuManager {
     init(collectionView: UICollectionView?, date: Date) {
         self.collectionView = collectionView
         self.baseDate = date
-        print(self.menuData ?? "hi")
     }
     
     // MARK: Functions - Public
@@ -45,14 +44,6 @@ final class MenuManager {
         
         let menuHeaderComponents = MenuHeaderComponent(date: baseDate, isHeart: isHeart)
         return menuHeaderComponents
-    }
-    
-    func updateHeartState(_ state: Bool) {
-
-        guard let menuData = menuData else {
-            return
-        }
-        PersistenceManager.shared.updateHeartState(menu: menuData, state: state)
     }
     
     func createDataSource() {
@@ -76,6 +67,15 @@ final class MenuManager {
         guard let foods = menuData?.foods?.array as? [Food] else { return }
 
         menuDiffableDataSourceProvider.updateSnapshot(foods: foods, dataSource: dataSource)
+    }
+    
+    func updateHeartState(_ state: Bool) {
+
+        guard let menuData = menuData else {
+            return
+        }
+        
+        PersistenceManager.shared.updateHeartState(menu: menuData, state: state)
     }
     
 }

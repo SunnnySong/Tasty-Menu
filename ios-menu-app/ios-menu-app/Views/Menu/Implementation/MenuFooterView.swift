@@ -64,7 +64,6 @@ final class MenuFooterView: UIView {
     
     @objc private func tappedCloseButton() {
         
-        print("close 버튼 눌림")
         notificationCenter.post(
             name: .tappedCloseButton,
             object: nil)

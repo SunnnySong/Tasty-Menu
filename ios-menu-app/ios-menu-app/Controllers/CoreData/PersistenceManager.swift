@@ -76,7 +76,7 @@ final class PersistenceManager {
         
         let startOfDay = calendar.startOfDay(for: searchDate)
         let endOfDay = calendar.startOfDay(for: searchDate + 86400)
-        let predicate = NSPredicate(format: "date >= %@ && date <= %@",
+        let predicate = NSPredicate(format: "date >= %@ && date < %@",
                                     startOfDay as CVarArg,
                                     endOfDay as CVarArg)
         
@@ -84,8 +84,14 @@ final class PersistenceManager {
         fetchRequest.predicate = predicate
         
         let menu: [Menu] = fetch(request: fetchRequest)
-        
         return menu.first
+    }
+    
+    // Fetch - 특정 날짜 식단의 heart state 가져오기
+    func fetchHeart(date: Date) -> Bool {
+        
+        let menu = fetchMenu(searchDate: date)
+        return menu?.isHeart ?? false
     }
 
     // Fetch - 한 달 동안의 식단 중에 isHeart가 true인 식단 가져오기

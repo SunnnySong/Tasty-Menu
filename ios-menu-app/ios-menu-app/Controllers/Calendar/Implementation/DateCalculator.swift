@@ -66,8 +66,11 @@ struct DateCalculator {
     private func generateDay(offsetBy dayOffset: Int, for baseDate: Date, isIncludeInMonth: Bool) -> DayComponent {
         
         let date = calendar.date(byAdding: .day, value: dayOffset, to: baseDate) ?? baseDate
+        let heartState = PersistenceManager.shared.fetchHeart(date: date)
+        
         let day = DayComponent(date: date,
-                      isIncludeInMonth: isIncludeInMonth)
+                               isIncludeInMonth: isIncludeInMonth,
+                               hasHeart: heartState)
         
         return day
     }

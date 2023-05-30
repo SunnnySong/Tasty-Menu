@@ -38,11 +38,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        PersistenceManager.shared.save()
         
 //        let searchDateComponents = DateComponents(year: 2023, month: 5, day: 20)
-//        
+//
 //        let menu2 = Menu(context: context)
 //        menu2.date = Calendar.current.date(from: searchDateComponents)
 //        menu2.isHeart = true
-//        
+//
 //        let food3 = Food(context: context)
 //        food3.name = "맥도날드"
 //        food3.categoryValue = 1

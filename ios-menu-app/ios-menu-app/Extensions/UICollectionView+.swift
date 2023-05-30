@@ -20,7 +20,6 @@ extension UICollectionView {
     func dequeue<T: UICollectionViewCell>(for indexPath: IndexPath) -> T {
         
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
-            print("here")
             return UICollectionViewCell() as! T
         }
         
