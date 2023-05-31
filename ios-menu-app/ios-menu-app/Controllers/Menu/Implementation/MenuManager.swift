@@ -14,7 +14,7 @@ final class MenuManager {
     
     private var baseDate: Date {
         didSet {
-            menuData = PersistenceManager.shared.fetchMenu(searchDate: baseDate)
+            updateMenuData()
         }
     }
     
@@ -48,30 +48,26 @@ final class MenuManager {
         return menuHeaderComponents
     }
     
-    func createDataSource() {
-        
-        guard let collectionView = collectionView else {
-            return
-        }
-        
-        guard let dataSource = menuDiffableDataSourceProvider.dataSource(collectionView: collectionView) else {
-            return
-        }
-        collectionView.dataSource = dataSource
-        self.dataSource = dataSource
-        
-        updateSnapshot()
-    }
-    
     func updateMenuData() {
         
         menuData = PersistenceManager.shared.fetchMenu(searchDate: baseDate)
     }
     
+    func createDataSource() {
+        
+        guard let collectionView = collectionView,
+              let dataSource = menuDiffableDataSourceProvider.dataSource(collectionView: collectionView) else {
+            return
+        }
+        
+        collectionView.dataSource = dataSource
+        self.dataSource = dataSource
+    }
+    
     func updateSnapshot() {
         
-        guard let dataSource = dataSource else { return }
-        guard let foods = menuData?.foods?.array as? [Food] else { return }
+        guard let dataSource = dataSource,
+                let foods = menuData?.foods?.array as? [Food] else { return }
 
         menuDiffableDataSourceProvider.updateSnapshot(foods: foods, dataSource: dataSource)
     }

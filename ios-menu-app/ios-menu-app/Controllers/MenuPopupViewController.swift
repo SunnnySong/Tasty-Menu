@@ -30,13 +30,14 @@ final class MenuPopupViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
+        
         configureDataSource()
+        
         configureHierarchy()
+        menuHeaderHeartToggle()
         
         tappedFooterCloseButton()
         tappedFooterAddButton()
-        
-        menuHeaderHeartToggle()
     }
     
     // MARK: Functions - Public
@@ -54,6 +55,7 @@ final class MenuPopupViewController: UIViewController {
     private func configureDataSource() {
         
         menuManager.createDataSource()
+        menuManager.updateMenuData()
     }
     
     private func tappedFooterCloseButton() {
@@ -76,7 +78,7 @@ final class MenuPopupViewController: UIViewController {
     }
     
     private func menuHeaderHeartToggle() {
-        
+
         notificationCenter.addObserver(
             self,
             selector: #selector(changeHeartState(_:)),
