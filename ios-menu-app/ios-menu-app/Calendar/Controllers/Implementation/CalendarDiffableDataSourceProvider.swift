@@ -9,7 +9,6 @@ import UIKit
 
 final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
-    // MARK: Properties - Data
     typealias SectionType = CalendarSection
     typealias ItemType = CalendarItem
     typealias DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>
@@ -36,6 +35,7 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
+    // MARK: Functions - Private
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CalendarItem) -> UICollectionViewCell? {
         
         switch item {

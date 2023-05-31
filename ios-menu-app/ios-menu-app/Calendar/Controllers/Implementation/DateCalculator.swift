@@ -13,6 +13,7 @@ struct DateCalculator {
     private let calendar = Calendar(identifier: .gregorian)
     private var selectedDate: Date
     
+    // MARK: Lifecycle
     init(baseDate: Date) {
         self.selectedDate = baseDate
     }

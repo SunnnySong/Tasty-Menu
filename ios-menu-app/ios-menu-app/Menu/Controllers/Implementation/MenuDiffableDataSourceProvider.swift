@@ -9,7 +9,6 @@ import UIKit
 
 final class MenuDiffableDataSourceProvider: CollectionViewDiffableDataSourceProvidable {
     
-    // MARK: Properties - Data
     typealias SectionType = MenuSection
     typealias ItemType = MenuItem
     typealias DataSource = UICollectionViewDiffableDataSource<SectionType, ItemType>

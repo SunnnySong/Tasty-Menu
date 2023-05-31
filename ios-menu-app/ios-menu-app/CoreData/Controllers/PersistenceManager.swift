@@ -45,21 +45,6 @@ final class PersistenceManager {
         }
     }
     
-    // Read
-    //    func fetch<T: NSManagedObject>() -> [T] {
-    //
-    //        do {
-    //            let request: NSFetchRequest = T.fetchRequest()
-    //            guard let result = try context.fetch(request) as? [T] else {
-    //                return []
-    //            }
-    //            return result
-    //        } catch {
-    //            print(error.localizedDescription)
-    //            return []
-    //        }
-    //    }
-    
     // Fetch - 전체 데이터 가져오기
     func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
@@ -92,23 +77,6 @@ final class PersistenceManager {
         
         let menu = fetchMenu(searchDate: date)
         return menu?.isHeart ?? false
-    }
-
-    // Fetch - 한 달 동안의 식단 중에 isHeart가 true인 식단 가져오기
-    func fetchHeartMenuInMonth(baseDate: Date) -> [Menu] {
-        
-        let firstDayOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: baseDate))
-        let lastDayOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: firstDayOfMonth!)
-        let predicate = NSPredicate(format: "isHeart == true AND date >= %@ && date <= %@",
-                                    firstDayOfMonth! as NSDate,
-                                    lastDayOfMonth! as NSDate)
-        
-        let fetchRequest = Menu.fetchRequest()
-        fetchRequest.predicate = predicate
-        
-        let menu: [Menu] = fetch(request: fetchRequest)
-        
-        return menu
     }
     
     // 모든 식단 중에서 isHeart인 식단 가져오기
@@ -158,9 +126,5 @@ final class PersistenceManager {
         menu.isHeart = state
         save()
     }
-    
-    // Delete - Food
-    
-    // Find - 이번달 중에 하트가 있는 데이터
 }
 
