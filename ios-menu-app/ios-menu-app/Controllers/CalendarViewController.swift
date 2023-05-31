@@ -42,6 +42,7 @@ final class CalendarViewController: UIViewController {
     private func configureDataSource() {
         
         calendarManager.createDataSource()
+        calendarManager.updateDaysData()
     }
     
     // MARK: CollectionView delegate 설정
@@ -71,7 +72,7 @@ extension CalendarViewController: UICollectionViewDelegate {
         
         menuPopupViewController.heartStateCallback = { [weak self] in
             
-            self?.calendarManager.updateHeartState(indexPath: indexPath)
+            self?.calendarManager.updateDaysData()
         }
     }
 }

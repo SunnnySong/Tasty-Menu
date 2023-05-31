@@ -16,11 +16,11 @@ final class CalendarManager {
     
     private var baseDate: Date = .today {
         didSet {
-            daysData = dateCalculator.getDaysInMonth(for: baseDate)
+            updateDaysData()
         }
     }
     
-    private lazy var daysData: [DayComponent] = dateCalculator.getDaysInMonth(for: baseDate) {
+    private var daysData: [DayComponent]? {
         didSet {
             updateSnapshot()
         }
@@ -40,7 +40,14 @@ final class CalendarManager {
     
     // MARK: Functions - Public
     func getDaysData() -> [DayComponent] {
+        
+        guard let daysData = daysData else { return [] }
         return daysData
+    }
+    
+    func updateDaysData() {
+        
+        daysData = dateCalculator.getDaysInMonth(for: baseDate)
     }
     
     func createDataSource() {
@@ -52,18 +59,13 @@ final class CalendarManager {
         }
         collectionView.dataSource = dataSource
         self.dataSource = dataSource
-        updateSnapshot()
-    }
-    
-    func updateHeartState(indexPath: IndexPath) {
-
-        daysData[indexPath.item].hasHeart.toggle()
     }
     
     // MARK: Functions - Private
     private func updateSnapshot() {
         
-        guard let dataSource = dataSource else {
+        guard let dataSource = dataSource,
+                let daysData = daysData else {
             return
         }
         
