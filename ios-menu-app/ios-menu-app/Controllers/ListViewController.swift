@@ -23,6 +23,12 @@ final class ListViewController: UIViewController {
         configureDataSource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        listManager.updateHeartMenusData()
+    }
+    
     private func configureDataSource() {
         
         listManager.createDataSource()

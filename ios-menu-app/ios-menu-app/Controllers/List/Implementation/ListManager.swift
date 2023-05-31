@@ -22,8 +22,6 @@ final class ListManager {
     
     init(tableView: UITableView?) {
         self.tableView = tableView
-        
-        updateHeartMenusData()
     }
     
     func createDataSource() {
@@ -37,8 +35,6 @@ final class ListManager {
         }
         tableView.dataSource = dataSource
         self.dataSource = dataSource
-        
-        updateSnapshot()
     }
     
     func updateHeartMenusData() {
