@@ -10,9 +10,7 @@ import UIKit
 final class ListViewController: UIViewController {
     
     private lazy var listManager = ListManager(tableView: listTableView)
-    private lazy var listTableView: ListTableView = {
-        ListTableView()
-    }()
+    private lazy var listTableView = ListTableView()
     
     // MARK: Lifecycle
     override func viewDidLoad() {
