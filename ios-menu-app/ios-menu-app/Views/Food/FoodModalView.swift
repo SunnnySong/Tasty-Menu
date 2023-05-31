@@ -17,8 +17,11 @@ final class FoodModalView: UIView {
         let imageView = UIImageView()
         imageView.image = ImageSystemName.multiPhoto.image
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .white
         imageView.tintColor = .designSystem(.mainOrange)
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.designSystem(.toolBarGray)?.cgColor
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 15
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -26,6 +29,7 @@ final class FoodModalView: UIView {
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl(items: FoodCategory.allCases.map { $0.title })
         segmentedControl.addTarget(self, action: #selector(selectFoodCategory(_:)), for: .valueChanged)
+        segmentedControl.backgroundColor = .designSystem(.mainOrange)?.withAlphaComponent(0.3)
         return segmentedControl
     }()
     
@@ -112,7 +116,7 @@ final class FoodModalView: UIView {
             imageView.widthAnchor.constraint(equalToConstant: imageViewWidth),
             imageView.heightAnchor.constraint(equalToConstant: imageViewHeight),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
             
             foodListStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             foodListStackView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
