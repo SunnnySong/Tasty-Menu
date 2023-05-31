@@ -9,5 +9,5 @@ import Foundation
 
 enum NotificationKeys: String {
     
-    case menuHeartState
+    case heartState
 }

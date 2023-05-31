@@ -113,6 +113,6 @@ final class MenuHeaderDateView: UIView {
         notificationCenter.post(
             name: .menuHeaderHeartToggle,
             object: nil,
-            userInfo: [NotificationKeys.menuHeartState: self.heartState])
+            userInfo: [NotificationKeys.heartState: self.heartState])
     }
 }

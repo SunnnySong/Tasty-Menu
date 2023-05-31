@@ -89,7 +89,7 @@ final class MenuPopupViewController: UIViewController {
     @objc private func changeHeartState(_ notification: Notification) {
         
         guard let userInfo = notification.userInfo,
-              let heartState = userInfo[NotificationKeys.menuHeartState] as? Bool
+              let heartState = userInfo[NotificationKeys.heartState] as? Bool
         else { return }
         
         if menuManager.updateHeartState(heartState) {
