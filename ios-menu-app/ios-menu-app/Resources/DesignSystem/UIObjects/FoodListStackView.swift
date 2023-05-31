@@ -24,7 +24,8 @@ final class FoodListTextField: UIStackView {
     private var textField: UITextField = {
         let textField = UITextField()
         textField.font = .pretendard(size: 15, weight: .regular)
-        textField.borderStyle = .roundedRect
+        textField.placeholder = "메뉴 이름을 입력해주세요"
+        textField.becomeFirstResponder()
         return textField
     }()
     
