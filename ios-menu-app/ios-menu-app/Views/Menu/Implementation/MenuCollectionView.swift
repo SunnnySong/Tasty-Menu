@@ -14,6 +14,8 @@ final class MenuCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: UICollectionViewLayout())
         self.collectionViewLayout = createLayout()
         self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.register(MenuCell.self)
     }
     
     required init?(coder: NSCoder) {

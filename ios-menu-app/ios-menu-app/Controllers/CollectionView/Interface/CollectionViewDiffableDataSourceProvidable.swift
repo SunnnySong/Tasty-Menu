@@ -7,7 +7,6 @@
 
 import UIKit
 
-// MARK: 추후 makeDataSource, update 모두 extension으로 구현할까 생각 중
 protocol CollectionViewDiffableDataSourceProvidable {
     
     associatedtype SectionType: Hashable

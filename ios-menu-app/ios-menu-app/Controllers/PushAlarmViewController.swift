@@ -9,11 +9,19 @@ import UIKit
 
 final class PushAlarmViewController: UIViewController {
 
+    private lazy var alarmSwitchView = AlarmSwitchView(frame: view.bounds)
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemBackground
+        configureHierarchy()
+    }
+    
+    private func configureHierarchy() {
+        
+        view.addSubview(alarmSwitchView)
     }
     
 }

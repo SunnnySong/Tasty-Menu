@@ -39,12 +39,6 @@ final class MenuPopupViewController: UIViewController {
         menuHeaderHeartToggle()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        print("heyyyy")
-    }
-    
     // MARK: Functions - Public
     func updateDay(_ date: Date) {
         

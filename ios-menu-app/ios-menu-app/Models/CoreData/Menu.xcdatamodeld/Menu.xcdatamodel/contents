@@ -7,7 +7,7 @@
         <relationship name="menu" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Menu" inverseName="foods" inverseEntity="Menu"/>
     </entity>
     <entity name="Menu" representedClassName="Menu" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isHeart" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Food" inverseName="menu" inverseEntity="Food"/>
     </entity>

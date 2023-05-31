@@ -36,20 +36,6 @@ final class CalendarDiffableDataSourceProvider: CollectionViewDiffableDataSource
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-//    func updateHeaderSnapshot(baseDate: Date, dataSource: DataSource) {
-//        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
-//        snapshot.appendSections([.headerDate])
-//        snapshot.appendItems([.header(baseDate)], toSection: .headerDate)
-//        dataSource.apply(snapshot)
-//    }
-
-//    func updateCalendarSnapshot(calendarDay: [DayComponent], dataSource: DataSource) {
-//        var snapshot = NSDiffableDataSourceSnapshot<SectionType, ItemType>()
-//        snapshot.appendSections([.calendar])
-//        snapshot.appendItems(calendarDay.map { .calendar($0) }, toSection: .calendar)
-//        dataSource.apply(snapshot)
-//    }
-    
     private func cellProvider(collectionView: UICollectionView, indexPath: IndexPath, item: CalendarItem) -> UICollectionViewCell? {
         
         switch item {

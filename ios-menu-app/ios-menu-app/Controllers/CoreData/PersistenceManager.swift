@@ -112,7 +112,7 @@ final class PersistenceManager {
     }
     
     // 모든 식단 중에서 isHeart인 식단 가져오기
-    func fetchMenu() -> [Menu] {
+    func fetchHeartMenu() -> [Menu] {
         
         let predicate = NSPredicate(format: "isHeart == true")
         

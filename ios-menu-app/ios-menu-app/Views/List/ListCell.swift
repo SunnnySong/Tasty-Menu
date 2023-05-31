@@ -14,6 +14,7 @@ final class ListCell: TableViewCellProvidable {
     private lazy var listStackView: UIStackView = {
         let stackView = UIStackView(frame: self.bounds)
         stackView.addArrangedSubviews([dateLabel, heartButton])
+        stackView.alignment = .center
         return stackView
     }()
     
@@ -27,9 +28,11 @@ final class ListCell: TableViewCellProvidable {
     private lazy var heartButton: UIButton = {
         let button = UIButton(imageName: .heartFill,
                               imageColor: .designSystem(.mainOrange),
-                              insets: .init(top: 7, left: 7, bottom: 7, right: 7))
+                              insets: .init(top: 10, left: 10, bottom: 10, right: 10))
         button.layer.borderColor = UIColor.designSystem(.separateBarGray)?.cgColor
         button.layer.borderWidth = 1
+//        button.clipsToBounds = true
+//        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(didTapHeartButton), for: .touchUpInside)
         return button
     }()

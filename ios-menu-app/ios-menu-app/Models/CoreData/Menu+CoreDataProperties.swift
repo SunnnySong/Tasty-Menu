@@ -16,7 +16,7 @@ extension Menu {
         return NSFetchRequest<Menu>(entityName: "Menu")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var date: Date
     @NSManaged public var isHeart: Bool
     @NSManaged public var foods: NSOrderedSet?
 
