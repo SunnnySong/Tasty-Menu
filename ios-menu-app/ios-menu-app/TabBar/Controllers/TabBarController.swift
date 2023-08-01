@@ -44,7 +44,7 @@ final class TabBarController: UITabBarController {
     private func configureNavigationTitle(navigationController: UINavigationController) {
         
         let titleLabel = PretendardLabel(size: 21, weight: .bold, color: UIColor.white, textAlignment: .left)
-        titleLabel.text = "야곰 아카데미 식단표"
+        titleLabel.text = "맛있는 식단표"
 
         let rightBarButtonItem = UIBarButtonItem(customView: titleLabel)
         navigationController.topViewController?.navigationItem.leftBarButtonItem = rightBarButtonItem
