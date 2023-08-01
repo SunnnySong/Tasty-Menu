@@ -48,7 +48,7 @@ final class CalendarCollectionView: UICollectionView {
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
                 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .fractionalHeight(1.0 / 6.35))
+                                                       heightDimension: .fractionalHeight(1.0 / 7.6))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 
                 let section = NSCollectionLayoutSection(group: group)
